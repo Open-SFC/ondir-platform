@@ -1,0 +1,12 @@
+include $(cminfra_dir)/rules.mod
+MODSET_OBJ_DIR = $(switch_cminfra_obj_dir)
+SWITCH_INCLUDES =-I $(switch_dir)/include \
+		-I $(switch_mgmt_dir)/includes/global\
+		-I $(ofdpagent_dir)/ofagent/include\
+	        -I $(ext_dir)/urcu\
+        -I $(ext_dir)/openssl-1.0.0/include/openssl\
+	        -I $(ext_dir)/futex
+INCLUDES +=  $(SWITCH_INCLUDES)
+CFLAGS += -DOF_CM_SWITCH_CBK_SUPPORT
+CFLAGS += -I $(cminfra_dir)/include/common
+CFLAGS += $(INCLUDES)

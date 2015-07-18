@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.namespace.apps.mcast</dmpath>
+ <breadcrumb>Not Available &gt; Multicast</breadcrumb>
+ <help src="ucmmcast.htm" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="39" name="mcastgroup" lbl="Multicast Group Address" type="STR" key="yes" mand="yes">
+ </obj>
+ <obj oid="40" name="srcipaddress" lbl="Source IP Address" type="STR" mand="yes">
+ </obj>
+ <obj oid="41" name="viface" lbl="In Interface" type="STR">
+ </obj>
+ <obj oid="42" name="out_ifaces" lbl="Out Interface" type="STR">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Multicast Group Address">
+     <objref oid="39"/>
+   </col>
+   <col name="Source IP Address">
+     <objref oid="40"/>
+   </col>
+   <col name="In Interface">
+     <objref oid="41"/>
+   </col>
+   <col name="Out Interface">
+     <objref oid="42"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="mcast_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="mcast_MetaData.xml"/>
+     <btn name="refresh" lbl="Refresh" type="refresh"   mtpath="mcast_MetaData.xml" spg="tbl_meta.xsl"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

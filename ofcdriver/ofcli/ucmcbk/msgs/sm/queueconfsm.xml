@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>Queue Configuration</title>
+  <DMPath>on_director.datapath{0}.queue_config</DMPath>
+  <depends vrtlInst="datapathid" filename="datapathdm.xml">datapath</depends>
+
+  <Component type="TABLE" title="Queue Configuration">
+    <GroupNodes name="port" title="Port ID" type="coloumn">
+       <DMNode path="port" label="Port ID" type="UINT"/>
+    </GroupNodes>
+    <GroupNodes name="portproperty" title="Port Property" type="coloumn">
+       <DMNode path="portproperty" label="Port Property" type="STR"/>
+    </GroupNodes>  
+    <GroupNodes name="queue_count" title="Number of Queues" type="coloumn">
+        <DMNode path="queue_count" label="Number of Queues" type="UINT"/>   
+    </GroupNodes>
+    <GroupNodes name="openflow_queue" title="Open Flow Queue ID" type="coloumn">
+       <DMNode path="openflow_queue" label="Open Flow Queue ID" type="UINT"/>
+    </GroupNodes>
+    <GroupNodes name="class_queue" title="Class Queue ID" type="coloumn">
+       <DMNode path="class_queue" label="Class Queue ID" type="UINT"/>
+    </GroupNodes>
+    
+    <!--GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+    </GroupNodes>
+    <link name="Add"/-->
+    <link name="Next"/>
+    <link name="Previous"/>
+
+    <Button type="refresh" name="refresh" label="Refresh" screenModel="queueconfsm.xml" spg="tbl_meta.xsl"/>   
+    <Button type="close" name="close" label="Close"/>
+  </Component>
+  <Component type="Form" title="">  
+  </Component>  
+</UIModel>
+

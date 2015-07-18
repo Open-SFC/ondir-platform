@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>Multicast</title>
+  <DMPath>on_director.namespace.apps.mcast</DMPath>
+
+  <Component type="TABLE" title="Multicast">
+    <GroupNodes name="mcastgroup" title="Multicast Group Address" type="coloumn">
+        <DMNode path="mcastgroup" label="Multicast Group Address" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="srcipaddress" title="Source IP Address" type="coloumn">
+        <DMNode path="srcipaddress" label="Source IP Address" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="viface" title="In Interface" type="coloumn">
+        <DMNode path="viface" label="In Interface" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="out_ifaces" title="Out Interface" type="coloumn">
+        <DMNode path="out_ifaces" label="Out Interface" type="STR"/>   
+    </GroupNodes>
+    
+    <!--GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+    </GroupNodes>
+    <link name="Add"/-->
+    <link name="Next"/>
+    <link name="Previous"/>
+
+    <Button type="refresh" name="refresh" label="Refresh" screenModel="mcastsm.xml" spg="tbl_meta.xsl"/>   
+    <Button type="close" name="close" label="Close"/>
+  </Component>
+  
+  <Component type="Form" title="Multicast"> 
+    <!--DMNode path="mcastgroup" label="Multicast Group Address"/>
+    <DMNode path="srcipaddress" label="Source IP Address"/>
+    <DMNode path="viface" label="In Interface"/>
+    <DMNode path="out_ifaces" label="Out Interface"/>
+    
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/-->
+  </Component> 
+
+</UIModel>
+

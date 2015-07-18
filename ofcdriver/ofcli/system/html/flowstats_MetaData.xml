@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.stats.flowstats</dmpath>
+ <breadcrumb>Not Available &gt; Flow Statistics</breadcrumb>
+ <help src="ucmflowstats.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="452" name="tableid" lbl="Table Name" type="UINT">
+ </obj>
+ <obj oid="453" name="tablename" lbl="" type="STR">
+ </obj>
+ <obj oid="454" name="priority" lbl="Priority" type="UINT">
+ </obj>
+ <obj oid="455" name="alivesec" lbl="Alive time in Seconds" type="UINT">
+ </obj>
+ <obj oid="456" name="alivensec" lbl="Alive time in nano Seconds" type="UINT">
+ </obj>
+ <obj oid="457" name="cookie" lbl="Cookie" type="UINT">
+ </obj>
+ <obj oid="458" name="idletimeout" lbl="Idle Timeout" type="UINT">
+ </obj>
+ <obj oid="459" name="hardtimeout" lbl="Hard timeout" type="UINT">
+ </obj>
+ <obj oid="460" name="packetcount" lbl="Packet Count" type="UINT">
+ </obj>
+ <obj oid="461" name="bytecount" lbl="Byte count" type="UINT">
+ </obj>
+ <obj oid="462" name="matchfield_count" lbl="Number of Match Fields" type="UINT">
+ </obj>
+ <obj oid="463" name="matchfieldinfo" lbl="Match Field Information" type="STR" defVal="">
+ </obj>
+ <obj oid="464" name="instruction_count" lbl="Number of Instructions" type="UINT">
+ </obj>
+ <obj oid="465" name="instructioninfo" lbl="Instruction Information" type="STR" defVal="">
+ </obj>
+ <obj oid="466" name="action_count" lbl="Number of Actions" type="UINT">
+ </obj>
+ <obj oid="467" name="actioninfo" lbl="Action Information" type="STR" defVal="">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Table Name">
+     <objref oid="452"/>
+   </col>
+   <col name="Priority">
+     <objref oid="454"/>
+   </col>
+   <col name="Alive time in Seconds">
+     <objref oid="455"/>
+   </col>
+   <col name="Alive time in nano Seconds">
+     <objref oid="456"/>
+   </col>
+   <col name="Cookie">
+     <objref oid="457"/>
+   </col>
+   <col name="Idle Timeout">
+     <objref oid="458"/>
+   </col>
+   <col name="Hard timeout">
+     <objref oid="459"/>
+   </col>
+   <col name="Packet Count">
+     <objref oid="460"/>
+   </col>
+   <col name="Byte count">
+     <objref oid="461"/>
+   </col>
+   <col name="Number of Match Fields">
+     <objref oid="462"/>
+   </col>
+   <col name="Match Field Information">
+     <objref oid="463"/>
+   </col>
+   <col name="Number of Instructions">
+     <objref oid="464"/>
+   </col>
+   <col name="Instruction Information">
+     <objref oid="465"/>
+   </col>
+   <col name="Number of Actions">
+     <objref oid="466"/>
+   </col>
+   <col name="Action Information">
+     <objref oid="467"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="flowstats_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="flowstats_MetaData.xml"/>
+     <btn name="refresh" lbl="Refresh" type="refresh"   mtpath="flowstats_MetaData.xml" spg="tbl_meta.xsl"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

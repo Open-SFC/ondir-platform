@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.nsrm.chain</dmpath>
+ <breadcrumb>Not Available &gt; Service Chain</breadcrumb>
+ <help src="ucmchain.htm" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="634" name="name" lbl="Chain Name" type="STR" key="yes" mand="yes">
+ </obj>
+ <obj oid="635" name="tenant" lbl="Tenant Name" type="STR" key="yes" mand="yes">
+ </obj>
+ <obj oid="636" name="enabled" lbl="Enabled" type="BOOL">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Chain Name">
+     <objref oid="634"/>
+   </col>
+   <col name="Tenant Name">
+     <objref oid="635"/>
+   </col>
+   <col name="Chain Type">
+     <objref oid=""/>
+   </col>
+   <col name="Load Sharing Algorithm">
+     <objref oid=""/>
+   </col>
+   <col name="Load Indication Type">
+     <objref oid=""/>
+   </col>
+   <col name="High Threshold">
+     <objref oid=""/>
+   </col>
+   <col name="Low Threshold">
+     <objref oid=""/>
+   </col>
+   <col name="Enabled">
+     <objref oid="636"/>
+   </col>
+   <col name="Configuration">
+     <link name="Attributes" mtpath="chainattribute_MetaData.xml" instancekey="chainattribute" target="new" spg="tbl_meta.xsl"/>
+   </col>
+   <col name="">
+     <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+     <btn name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+   </col>
+   <link name="Add Record" opcode="ADD" spg="frm_meta.xsl" mtpath="chain_MetaData.xml"/>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="chain_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="chain_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="634"/>
+  <field oid="635" dmpath="on_director.crm.tenant" depends="name+STR" name="lstgrp-1" type="list">
+  </field>
+  <field oid="" name="lstgrp-2" type="list">
+  </field>
+  <field oid="" name="lstgrp-3" type="list">
+  </field>
+  <field oid="" name="lstgrp-4" type="list">
+  </field>
+   <field     oid=""/>
+   <field     oid=""/>
+  <field oid="636" name="" type="checkbox">
+  </field>
+  <field oid="637" dmpath="on_director.nsrm.service" depends="name+STR" name="" type="selcrtl" action="multiReq">
+  </field>
+  <btn lbl="Apply" type="submit" mtpath="chain_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

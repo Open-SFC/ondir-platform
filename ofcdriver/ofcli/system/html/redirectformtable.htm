@@ -1,0 +1,46 @@
+<html>
+  <script language="JavaScript1.2" src="com_utlils.js"></script>
+  <script language="JavaScript1.2">
+    function submitFrames() {
+       //alert(this.name);
+       var params = this.name.split("$#SDN#$");
+       //alert(params.length);
+       //alert(params[0]);       
+      //hard-coded object...
+      /*var ucmReqObj = new UCMReq("igd.vsg{general}.tcm.capturepoint{cap1}.policy{0}.monitoringset", "", "ToolTypeSet_MetaData.xml",
+                         "tbl_meta.xsl", "tbl_meta.xsl", 
+                         "", "policyid^INT!0", "GET",
+                         "MASTER");*/ 
+      //var ucmReqObj = parent.getUCMReqObjDirect();
+      var curFrm = document.getElementById('cur-form');
+      //if (ucmReqObj != null && ucmReqObj.dmpath) {
+      if (params.length == 9) {
+          curFrm.dmpath.value = params[0];//ucmReqObj.dmpath;
+          curFrm.opcode.value = params[1];//ucmReqObj.opcode;
+          curFrm.mtpath.value = params[2];//ucmReqObj.mtpath;
+          curFrm.sredirect.value = params[3];//ucmReqObj.sredirect;
+          curFrm.fredirect.value = params[4];//ucmReqObj.fredirect;
+          curFrm.ucmreq.value = params[5];//ucmReqObj.ucmreq;
+          curFrm.keyprms.value = params[6];//ucmReqObj.keyprms;
+          curFrm.reqtype.value = params[7];//ucmReqObj.reqtype;
+          curFrm.host.value = params[8];//ucmReqObj.host;
+       }   
+      //}
+      //alert(curFrm.dmpath.value);*/      
+      curFrm.submit();
+    }
+  </script>
+  <body onload="submitFrames();"> 
+    <form name="cur-form" id="cur-form" action="ucmreq.igw" method="post">
+      <input type="hidden" id="dmpath" name="dmpath" />
+      <input type="hidden" id="opcode" name="opcode"/>
+      <input type="hidden" id="mtpath" name="mtpath"/>
+      <input type="hidden" id="sredirect" name="sredirect"/>
+      <input type="hidden" id="fredirect" name="fredirect"/>
+      <input type="hidden" id="ucmreq" name="ucmreq"/>
+      <input type="hidden" id="keyprms" name="keyprms"/>
+      <input type="hidden" id="reqtype" name="reqtype"/>
+      <input type="hidden" id="host" name="host"/>
+    </form>
+  </body>
+</html>

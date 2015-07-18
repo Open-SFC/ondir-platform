@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>Layer2 Network Map</title>
+  <DMPath>on_director.nsrm.l2networkmap</DMPath>
+
+  <Component type="TABLE" title="Layer2 Network Map">
+    <GroupNodes name="name" title="Map Name" type="coloumn">
+        <DMNode path="name" label="Map Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="tenant" title="Tenant Name" type="coloumn">
+        <DMNode path="tenant" label="Tenant Name" type="STR"/>   
+    </GroupNodes>  
+    <GroupNodes name="chainset" title="Chainset Name" type="coloumn">
+        <DMNode path="chainset" label="Chainset Name" type="STR"/>   
+    </GroupNodes> 
+    <GroupNodes name="vnname" title="Virtual Network Name" type="coloumn">
+        <DMNode path="vnname" label="Virtual Network Name" type="STR"/>   
+    </GroupNodes>    
+    <GroupNodes name="enabled" title="Enabled" type="coloumn">
+        <DMNode path="enabled" label="Enabled" type="STR"/>   
+    </GroupNodes>
+
+    <GroupNodes name="lnkGrp" title="Configuration" type="column">
+      <link name="Attributes" spg ="tbl_meta.xsl" mtpath="l2networkmapattribute_MetaData.xml" instancekey="l2networkmapattribute" target="new"/>      
+    </GroupNodes>
+       
+    <GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+      <!--Button name="Roles" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/-->
+    </GroupNodes>
+    <link name="Add"/>
+    <link name="Next"/>
+    <link name="Previous"/>
+  </Component>
+  
+  <Component type="Form" title="Layer2 Network Map"> 
+    <DMNode path="name" label="Map Name"/>  
+    <Component type="list" path="tenant" name="lstgrp-1" label="Tenant Name" depends="name" file="tenantsm.xml"/> 
+    <Component type="list" path="chainset" name="lstgrp-2" label="Chainset Name" depends="name" file="chainsetsm.xml"/>
+    <Component type="list" path="vnname" name="lstgrp-3" label="Virtual Network Name" depends="name" file="vnsm.xml"/>    
+    <Component type="checkbox" path="enabled" label="Enabled"/>    
+    
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/>
+  </Component> 
+
+</UIModel>
+

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataModel ModuleName="trace" Version="3.4" schemaVersion="3.0">
+  <InstallPath>on_director.trace</InstallPath>
+          
+	<DataModelNode>
+		<InstallPath>module</InstallPath>
+		<Name>module</Name>
+		<FriendlyName>Trace Module</FriendlyName>
+		<NodeID />
+		<Description>This field is used to filter log messages using log modules.</Description>
+		<SaveDirName>CM_CONFIG_DIR</SaveDirName>
+		<StorageFileName>NULL</StorageFileName>
+		<NodeAttributes>
+			<NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+			<Visible>TRUE</Visible>
+			<IsKey>FALSE</IsKey>
+			<Mandatory>FALSE</Mandatory>
+			<OrderedTable>FALSE</OrderedTable>
+			<PriorityNode>FALSE</PriorityNode>
+			<NotifyChange>TRUE</NotifyChange>
+			<NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+			<RebootOnChange>FALSE</RebootOnChange>
+			<StickyToParent>FALSE</StickyToParent>
+			<SaveInParentDir>TRUE</SaveInParentDir>
+			<NonConfigLeafNode>FALSE</NonConfigLeafNode>
+			<AccessControl>CM_ACCESS_ALL</AccessControl>
+			<GroupedScalar>TRUE</GroupedScalar>
+			<GlobalTrans>FALSE</GlobalTrans>
+			<UseParentTrans>FALSE</UseParentTrans>
+		</NodeAttributes>
+		<DataAttributes>
+			<DataType>CM_DATA_TYPE_STRING</DataType>
+			<Type>CM_DATA_ATTRIB_STR_ENUM</Type>
+			<DataAttrib>
+			<StrEnum>
+			  <Value friendlyName="All">all</Value>
+			  <Value friendlyName="Controller">controller</Value>
+		          <Value friendlyName="Transport">cntlrxprt</Value>
+			  <Value friendlyName="NEM">nem</Value>
+			  <Value friendlyName="Route">route</Value>
+			  <Value friendlyName="pEth">peth</Value>
+			  <Value friendlyName="Sample Application">sampleapp</Value>
+			  <Value friendlyName="ARP NF">arpnf</Value>
+			  <Value friendlyName="Infra Application">infraapp</Value>
+			  <Value friendlyName="Forward NF">fwdnf</Value>
+			  <Value friendlyName="IPSEC">ipsec</Value>
+			  <Value friendlyName="Netlink">netlink</Value>
+			  <Value friendlyName="Firewall NAT">fwnat</Value>
+			  <Value friendlyName="Utility">util</Value>
+			  <Value friendlyName="CRM">crm</Value>
+			  <Value friendlyName="NSRM">nsrm</Value>
+			  <Value friendlyName="Test">cntlrtest</Value>
+			  <Value friendlyName="Utility L3 Extensions">utill3ext</Value>
+			  <Value friendlyName="Nicira Extensions">niciraext</Value>
+			  <Value friendlyName="Bind Object">bindobj</Value>
+			  <Value friendlyName="ARP Application">arpapp</Value>
+			  <Value friendlyName="IPv4 Forward">ipv4fwd</Value>
+			  <Value friendlyName="IPv4 Multicast Forward">ipv4mcastfwd</Value>
+			  <Value friendlyName="TSC">tsc</Value>
+                          <Value friendlyName="QoS Application">qosapp</Value>
+                          <Value friendlyName="QoS NF">qosnf</Value>
+                          <Value friendlyName="QoS">qos</Value>
+                          <Value friendlyName="QoS - Table Type Pattern">qossubttp</Value>
+			  <!--Value friendlyName="False">none</Value-->
+			</StrEnum>
+			</DataAttrib>
+		</DataAttributes>
+	</DataModelNode>
+
+
+	<DataModelNode>
+		 <InstallPath>level</InstallPath>
+	 	<Name>level</Name>
+		 <FriendlyName>Trace log level</FriendlyName>
+		 <NodeID />
+		 <Description>This field is used to filter log messages using log severity like info, warn, debug, error etc.</Description>
+		 <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+		 <StorageFileName>NULL</StorageFileName>
+		 <NodeAttributes>
+			 <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+			 <Visible>TRUE</Visible>
+			 <IsKey>FALSE</IsKey>
+			 <Mandatory>FALSE</Mandatory>
+			 <OrderedTable>FALSE</OrderedTable>
+			 <PriorityNode>FALSE</PriorityNode>
+			 <NotifyChange>TRUE</NotifyChange>
+			 <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+			 <RebootOnChange>FALSE</RebootOnChange>
+			 <StickyToParent>FALSE</StickyToParent>
+			 <SaveInParentDir>TRUE</SaveInParentDir>
+			 <NonConfigLeafNode>FALSE</NonConfigLeafNode>
+			 <AccessControl>CM_ACCESS_ALL</AccessControl>
+			 <GroupedScalar>TRUE</GroupedScalar>
+			 <GlobalTrans>FALSE</GlobalTrans>
+			 <UseParentTrans>FALSE</UseParentTrans>
+		 </NodeAttributes>
+		 <DataAttributes>
+		 	<DataType>CM_DATA_TYPE_STRING</DataType>
+			 <Type>CM_DATA_ATTRIB_STR_ENUM</Type>
+			 <DataAttrib>
+			 <StrEnum>
+			   <Value friendlyName="All">all</Value>
+			   <Value friendlyName="Info">info</Value>
+			   <Value friendlyName="Notice">notice</Value>
+			   <Value friendlyName="Debug">debug</Value>
+			   <Value friendlyName="Warning">warn</Value>
+			   <Value friendlyName="Error">error</Value>
+			   <Value friendlyName="Critical">critical</Value>
+			   <Value friendlyName="None">none</Value>
+			 </StrEnum>
+			 </DataAttrib>
+			 <!-- <DefaultValue>all</DefaultValue> -->
+		 </DataAttributes>
+	 </DataModelNode>
+
+	<DataModelNode>
+		 <InstallPath>ipsec_redside_frag</InstallPath>
+	 	<Name>ipsec_redside_frag</Name>
+		 <FriendlyName>IPSEC Redside Fragmentation</FriendlyName>
+		 <NodeID />
+		 <Description>This field is used to enable/disable red side fragmentation</Description>
+		 <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+		 <StorageFileName>NULL</StorageFileName>
+		 <NodeAttributes>
+			 <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+			 <Visible>TRUE</Visible>
+			 <IsKey>FALSE</IsKey>
+			 <Mandatory>FALSE</Mandatory>
+			 <OrderedTable>FALSE</OrderedTable>
+			 <PriorityNode>FALSE</PriorityNode>
+			 <NotifyChange>TRUE</NotifyChange>
+			 <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+			 <RebootOnChange>FALSE</RebootOnChange>
+			 <StickyToParent>FALSE</StickyToParent>
+			 <SaveInParentDir>TRUE</SaveInParentDir>
+			 <NonConfigLeafNode>FALSE</NonConfigLeafNode>
+			 <AccessControl>CM_ACCESS_ALL</AccessControl>
+			 <GroupedScalar>TRUE</GroupedScalar>
+			 <GlobalTrans>FALSE</GlobalTrans>
+			 <UseParentTrans>FALSE</UseParentTrans>
+		 </NodeAttributes>
+		 <DataAttributes>
+		 	<DataType>CM_DATA_TYPE_STRING</DataType>
+			 <Type>CM_DATA_ATTRIB_STR_ENUM</Type>
+			 <DataAttrib>
+			 <StrEnum>
+			   <Value friendlyName="Enable">enable</Value>
+			   <Value friendlyName="Disable">disable</Value>
+			 </StrEnum>
+			 </DataAttrib>
+			 <!-- <DefaultValue>all</DefaultValue> -->
+		 </DataAttributes>
+	 </DataModelNode>
+     </DataModel>

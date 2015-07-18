@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.flowmod</dmpath>
+ <breadcrumb>Not Available &gt; Flow Modification</breadcrumb>
+ <help src="ucmflowmod.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="255" name="flowId" lbl="Flow Identifier" type="UINT" key="yes" mand="yes">
+ </obj>
+ <obj oid="256" name="tableId" lbl="Table Identifier" type="UINT" mand="yes">
+ </obj>
+ <obj oid="257" name="command" lbl="Command Type" type="STR" mand="yes">
+  <list>
+    <item name="Add" value="add"/>
+    <item name="Modify" value="modify"/>
+    <item name="Modify Strict" value="modify_strict"/>
+    <item name="Delete" value="delete"/>
+    <item name="Delete Strict" value="delete_strict"/>
+  </list>
+ </obj>
+ <obj oid="258" name="priority" lbl="Flow Priority" type="UINT">
+ </obj>
+ <obj oid="259" name="idletimeout" lbl="Idle Timeout" type="UINT">
+ </obj>
+ <obj oid="260" name="cookie" lbl="Cookie" type="STR">
+ </obj>
+ <obj oid="261" name="cookiemask" lbl="Cookie Mask" type="STR">
+ </obj>
+ <obj oid="262" name="hardtimeout" lbl="Hard Timeout" type="UINT">
+ </obj>
+ <obj oid="263" name="sendFlowRem" lbl="Send flow removed flag" type="UINT">
+  <list>
+    <item name="False" value="0"/>
+    <item name="True" value="1"/>
+  </list>
+ </obj>
+ <obj oid="264" name="checkOverlap" lbl="Check Overlap flag" type="UINT">
+  <list>
+    <item name="False" value="0"/>
+    <item name="True" value="1"/>
+  </list>
+ </obj>
+ <obj oid="265" name="noPktCounts" lbl="No Packet Counts flag" type="UINT">
+  <list>
+    <item name="False" value="0"/>
+    <item name="True" value="1"/>
+  </list>
+ </obj>
+ <obj oid="266" name="noByteCounts" lbl="No Byte Counts flag" type="UINT">
+  <list>
+    <item name="False" value="0"/>
+    <item name="True" value="1"/>
+  </list>
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Flow Identifier">
+     <objref oid="255"/>
+   </col>
+   <col name="Table Identifier">
+     <objref oid="256"/>
+   </col>
+   <col name="Command Type">
+     <objref oid="257"/>
+   </col>
+   <col name="Flow Priority">
+     <objref oid="258"/>
+   </col>
+   <col name="Idle Timeout">
+     <objref oid="259"/>
+   </col>
+   <col name="Hard Timeout">
+     <objref oid="262"/>
+   </col>
+   <col name="Cookie">
+     <objref oid="260"/>
+   </col>
+   <col name="Cookie Mask">
+     <objref oid="261"/>
+   </col>
+   <col name="Send flow removed flag">
+     <objref oid="263"/>
+   </col>
+   <col name="Check Overlap flag">
+     <objref oid="264"/>
+   </col>
+   <col name="No Packet Counts flag">
+     <objref oid="265"/>
+   </col>
+   <col name="No Byte Counts flag">
+     <objref oid="266"/>
+   </col>
+   <col name="">
+     <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+     <btn name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+   </col>
+   <link name="Add Record" ptx="y" opcode="ADD" spg="frm_meta.xsl"   mtpath="flowmod_MetaData.xml"  pkeys="datapathid+UINT64$$215,|" />
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="flowmod_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="flowmod_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="255"/>
+   <field     oid="256"/>
+  <field oid="257" name="lstgrp-1" type="list">
+  </field>
+   <field     oid="258"/>
+   <field     oid="259"/>
+   <field     oid="262"/>
+   <field     oid="260"/>
+   <field     oid="261"/>
+  <field oid="263" name="lstgrp-2" type="list">
+  </field>
+  <field oid="264" name="lstgrp-3" type="list">
+  </field>
+  <field oid="265" name="lstgrp-4" type="list">
+  </field>
+  <field oid="266" name="lstgrp-5" type="list">
+  </field>
+  <grp  name="matchField"  style="portrait"  act="expcol"  clr="no"  showMore="yes"  title="Match Fields"   mtpath="matchField_MetaData.xml"  pkeys="datapathid+UINT64$$215,|flowId+UINT$$255,|"  dmpath="on_director.datapath{0}.flowmod{0}.matchField" >
+  </grp>
+  <grp  name="instruction"  style="portrait"  act="expcol"  clr="no"  showMore="yes"  title="Instructions"   mtpath="instruction_MetaData.xml"  pkeys="datapathid+UINT64$$215,|flowId+UINT$$255,|"  dmpath="on_director.datapath{0}.flowmod{0}.instruction" >
+  </grp>
+  <btn lbl="Apply" type="submit" mtpath="flowmod_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl" action="COMMIT"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

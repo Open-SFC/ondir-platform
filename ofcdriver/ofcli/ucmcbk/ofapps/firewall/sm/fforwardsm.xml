@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>Forward Filter</title>
+  <DMPath>on_director.datapath{0}.firewall.filterforward</DMPath>
+  <depends vrtlInst="datapathid" filename="datapathdm.xml">datapath</depends>
+
+  <Component type="TABLE" title="Forward Filter">   
+    <GroupNodes name="tablename" title="Table Name" type="coloumn">
+        <DMNode path="tablename" label="Table Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="chainname" title="Chain Name" type="coloumn">
+        <DMNode path="chainname" label="Chain Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="sourceip" title="Source IP Address" type="coloumn">
+    	<DMNode path="sourceip" label="Source IP Address" type="IPADDR"/>
+    </GroupNodes>
+    <GroupNodes name="destip" title="Destination IP Address" type="coloumn">
+    	<DMNode path="destip" label="Destination IP Address" type="IPADDR"/>
+    </GroupNodes> 
+    <GroupNodes name="protocol" title="Protocol" type="coloumn">
+    	<DMNode path="protocol" label="Protocol" type="INT"/>
+    </GroupNodes>    
+    <GroupNodes name="sourceport" title="Source Port" type="coloumn">
+    	<DMNode path="sourceport" label="Source Port" type="INT"/>
+    </GroupNodes>
+    <GroupNodes name="destport" title="Destination Port" type="coloumn">
+    	<DMNode path="destport" label="Destination Port" type="INT"/>
+    </GroupNodes>
+    <GroupNodes name="inifacename" title="In Interface" type="coloumn">
+        <DMNode path="inifacename" label="In Interface" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="outifacename" title="Out Interface" type="coloumn">
+        <DMNode path="outifacename" label="Out Interface" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="action" title="Action Name" type="coloumn">
+        <DMNode path="action" label="Action Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="rulePosition" title="Rule Position" type="coloumn">
+    	<DMNode path="rulePosition" label="Rule Position" type="INT"/>
+    </GroupNodes>
+    <GroupNodes name="flow_priority" title="Flow Priority" type="coloumn">
+    	<DMNode path="flow_priority" label="Flow Priority" type="INT"/>
+    </GroupNodes>
+       
+    <!--GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+    </GroupNodes>
+    <link name="Add"/-->
+    <link name="Next"/>
+    <link name="Previous"/>
+
+    <Button type="refresh" name="refresh" label="Refresh" screenModel="fforwardsm.xml" spg="tbl_meta.xsl"/>   
+    <Button type="close" name="close" label="Close"/>
+  </Component>
+  
+  <Component type="Form" title="Forward Filter"> 
+    <!--DMNode path="tablename" label="Table Name"/>
+    <DMNode path="chainname" label="Chain Name"/>
+    <DMNode path="sourceip" label="Source IP Address"/>
+    <DMNode path="destip" label="Destination IP Address"/>
+    <DMNode path="protocol" label="Protocol"/>
+    <DMNode path="sourceport" label="Source Port"/>
+    <DMNode path="destport" label="Destination Port"/>
+    <DMNode path="inifacename" label="In Interface"/>
+    <DMNode path="outifacename" label="Out Interface"/>
+    <DMNode path="action" label="Action Name"/>
+    <DMNode path="rulePosition" label="Rule Position"/>
+    <DMNode path="flow_priority" label="Flow Priority"/>
+
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/-->
+  </Component> 
+
+</UIModel>

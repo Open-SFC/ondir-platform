@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/* 
+ *
+ * Copyright  2012, 2013  Freescale Semiconductor
+ *
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+*/
+
+/*
+ *
+ * File name: queuestats.xml
+ * Author: Freescale Semiconductor
+ * Date: 
+ * Description: 
+ * 
+ */
+-->
+
+<DataModel ModuleName="queue_config" Version="1.0" schemaVersion="3.0">
+
+	 <InstallPath>on_director.datapath.queue_config</InstallPath>
+
+      <DataModelNode>
+         <InstallPath>port</InstallPath>
+         <Name>port</Name>
+         <FriendlyName>Port ID</FriendlyName>
+         <NodeID />
+         <Description>Port Identifier</Description>
+         <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+         <StorageFileName>NULL</StorageFileName>
+         <NodeAttributes>
+             <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+             <Visible>TRUE</Visible>
+             <IsKey>TRUE</IsKey>
+             <Mandatory>TRUE</Mandatory>
+             <OrderedTable>FALSE</OrderedTable>
+             <PriorityNode>FALSE</PriorityNode>
+             <NotifyChange>TRUE</NotifyChange> 
+             <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+             <RebootOnChange>FALSE</RebootOnChange>
+             <StickyToParent>FALSE</StickyToParent>
+             <SaveInParentDir>FALSE</SaveInParentDir>
+             <NonConfigLeafNode>TRUE</NonConfigLeafNode>
+             <AccessControl>CM_ACCESS_ALL</AccessControl>
+             <GroupedScalar>FALSE</GroupedScalar>
+             <GlobalTrans>FALSE</GlobalTrans>
+             <UseParentTrans>FALSE</UseParentTrans>
+         </NodeAttributes>
+         <DataAttributes>
+             <DataType>CM_DATA_TYPE_UINT</DataType>
+	     <Type>CM_DATA_ATTRIB_NONE</Type>
+	    <DataAttrib/>
+         </DataAttributes>
+    </DataModelNode>
+
+      <DataModelNode>
+         <InstallPath>portproperty</InstallPath>
+         <Name>portproperty</Name>
+         <FriendlyName>Port Property</FriendlyName>
+         <NodeID />
+         <Description>Port Property</Description>
+         <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+         <StorageFileName>NULL</StorageFileName>
+         <NodeAttributes>
+             <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+             <Visible>FALSE</Visible>
+             <IsKey>FALSE</IsKey>
+             <Mandatory>FALSE</Mandatory>
+             <OrderedTable>FALSE</OrderedTable>
+             <PriorityNode>FALSE</PriorityNode>
+             <NotifyChange>TRUE</NotifyChange> 
+             <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+             <RebootOnChange>FALSE</RebootOnChange>
+             <StickyToParent>FALSE</StickyToParent>
+             <SaveInParentDir>FALSE</SaveInParentDir>
+             <NonConfigLeafNode>TRUE</NonConfigLeafNode>
+             <AccessControl>CM_ACCESS_ALL</AccessControl>
+             <GroupedScalar>FALSE</GroupedScalar>
+             <GlobalTrans>FALSE</GlobalTrans>
+             <UseParentTrans>FALSE</UseParentTrans>
+         </NodeAttributes>
+         <DataAttributes>
+              <DataType>CM_DATA_TYPE_STRING</DataType>
+	       <Type>CM_DATA_ATTRIB_NONE</Type>
+	     <DataAttrib/>
+         </DataAttributes>
+    </DataModelNode>
+
+      <DataModelNode>
+         <InstallPath>queue_count</InstallPath>
+         <Name>queue_count</Name>
+         <FriendlyName>Number of Queues</FriendlyName>
+         <NodeID/>
+         <Description>Number of Queues</Description>
+         <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+         <StorageFileName>NULL</StorageFileName>
+         <NodeAttributes>
+             <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+             <Visible>FALSE</Visible>
+             <IsKey>FALSE</IsKey>
+             <Mandatory>FALSE</Mandatory>
+             <OrderedTable>FALSE</OrderedTable>
+             <PriorityNode>FALSE</PriorityNode>
+             <NotifyChange>TRUE</NotifyChange>
+             <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+             <RebootOnChange>FALSE</RebootOnChange>
+             <StickyToParent>FALSE</StickyToParent>
+             <SaveInParentDir>TRUE</SaveInParentDir>
+             <NonConfigLeafNode>TRUE</NonConfigLeafNode>
+             <AccessControl>CM_ACCESS_ALL</AccessControl>
+             <GroupedScalar>FALSE</GroupedScalar>
+             <GlobalTrans>FALSE</GlobalTrans>
+             <UseParentTrans>FALSE</UseParentTrans>
+         </NodeAttributes>
+         <DataAttributes>
+             <DataType>CM_DATA_TYPE_UINT</DataType>
+             <Type>CM_DATA_ATTRIB_NONE</Type>
+             <DataAttrib/>
+         </DataAttributes>
+    </DataModelNode>
+
+      <DataModelNode>
+         <InstallPath>openflow_queue</InstallPath>
+         <Name>openflow_queue</Name>
+         <FriendlyName>Open Flow Queue ID</FriendlyName>
+         <NodeID/>
+         <Description>Open flow queue id</Description>
+         <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+         <StorageFileName>NULL</StorageFileName>
+         <NodeAttributes>
+             <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+             <Visible>FALSE</Visible>
+             <IsKey>FALSE</IsKey>
+             <Mandatory>FALSE</Mandatory>
+             <OrderedTable>FALSE</OrderedTable>
+             <PriorityNode>FALSE</PriorityNode>
+             <NotifyChange>TRUE</NotifyChange>
+             <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+             <RebootOnChange>FALSE</RebootOnChange>
+             <StickyToParent>FALSE</StickyToParent>
+             <SaveInParentDir>TRUE</SaveInParentDir>
+             <NonConfigLeafNode>TRUE</NonConfigLeafNode>
+             <AccessControl>CM_ACCESS_ALL</AccessControl>
+             <GroupedScalar>FALSE</GroupedScalar>
+             <GlobalTrans>FALSE</GlobalTrans>
+             <UseParentTrans>FALSE</UseParentTrans>
+         </NodeAttributes>
+         <DataAttributes>
+             <DataType>CM_DATA_TYPE_UINT</DataType>
+             <Type>CM_DATA_ATTRIB_NONE</Type>
+             <DataAttrib/>
+         </DataAttributes>
+    </DataModelNode>
+
+      <DataModelNode>
+         <InstallPath>class_queue</InstallPath>
+         <Name>class_queue</Name>
+         <FriendlyName>Class Queue ID</FriendlyName>
+         <NodeID/>
+         <Description>Class Queue id</Description>
+         <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+         <StorageFileName>NULL</StorageFileName>
+         <NodeAttributes>
+             <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+             <Visible>FALSE</Visible>
+             <IsKey>FALSE</IsKey>
+             <Mandatory>FALSE</Mandatory>
+             <OrderedTable>FALSE</OrderedTable>
+             <PriorityNode>FALSE</PriorityNode>
+             <NotifyChange>TRUE</NotifyChange>
+             <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+             <RebootOnChange>FALSE</RebootOnChange>
+             <StickyToParent>FALSE</StickyToParent>
+             <SaveInParentDir>TRUE</SaveInParentDir>
+             <NonConfigLeafNode>TRUE</NonConfigLeafNode>
+             <AccessControl>CM_ACCESS_ALL</AccessControl>
+             <GroupedScalar>FALSE</GroupedScalar>
+             <GlobalTrans>FALSE</GlobalTrans>
+             <UseParentTrans>FALSE</UseParentTrans>
+         </NodeAttributes>
+         <DataAttributes>
+             <DataType>CM_DATA_TYPE_UINT</DataType>
+             <Type>CM_DATA_ATTRIB_NONE</Type>
+             <DataAttrib/>
+         </DataAttributes>
+    </DataModelNode>
+
+</DataModel>

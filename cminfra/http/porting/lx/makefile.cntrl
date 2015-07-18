@@ -1,0 +1,18 @@
+#/************************************************************************ */
+#/*   File            : makefile                                           */
+#/*   Purpose         :                                                    */
+#/*   Date            :                                                    */
+#/*------------------------------------------------------------------------*/
+
+
+CM_DIR = ../../..
+
+include $(CM_DIR)/rules.mod.cntrl
+
+all:
+	make -C uspace -f makefile.cntrl PROD_DIR=$(PROD_DIR)
+
+clean:
+	make -C uspace -f makefile.cntrl PROD_DIR=$(PROD_DIR) clean
+
+#include $(UCM_DIR)/$(PROD_DIR)/rules.inc

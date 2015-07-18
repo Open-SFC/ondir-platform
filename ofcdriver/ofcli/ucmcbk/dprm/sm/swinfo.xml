@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>Switch Information</title>
+  <DMPath>on_director.datapath{0}.Switchinfo</DMPath>
+  <depends vrtlInst="datapathid" filename="datapathdm.xml">datapath</depends>
+  
+  <Component type="Form" title="Switch Information" frmType="grpscalar"> 
+    <DMNode path="manfacturedesc" label="Manufacturer Description"/>
+    <DMNode path="hardwaredesc" label="Hardware Description"/>
+    <DMNode path="softwaredesc" label="Software Description"/>
+    <DMNode path="serialnumber" label="Serial Number"/>
+    <DMNode path="datapathdesc" label="Release Date"/>
+    <!--Button name="EDIT" label="Apply" sredirect="frm_meta.xsl" fredirect ="frm_meta.xsl" action=""/-->
+  </Component> 
+
+</UIModel>
+

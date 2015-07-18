@@ -1,0 +1,141 @@
+<?xml version="1.0"  ?>
+<root>
+  <DPRMConfig>
+
+ 	<NoofDatapaths>20</NoofDatapaths>
+	<NoofPhysicalSwitches>10</NoofPhysicalSwitches>
+	<NoofNamespaces>32</NoofNamespaces>
+  </DPRMConfig>
+
+  <Transport>
+	<TransportStartingCoreID>0</TransportStartingCoreID>
+	<TransportNoofCores>4</TransportNoofCores>
+	<NoofTransportThreads>8</NoofTransportThreads>
+	<PEthStartingCoreID>4</PEthStartingCoreID>
+	<PEthNoofCores>4</PEthNoofCores>
+	<NoofPEthThreads>4</NoofPEthThreads>
+  </Transport>
+
+  <TimerConfig>
+	<NoofContainers>16</NoofContainers>
+	<Granularity>10000</Granularity>
+  </TimerConfig>
+
+  <MempoolConfig>
+	<NoofPktMbufPools>7</NoofPktMbufPools>
+     <PktMbufpool>
+	     <PoolID>0</PoolID>
+		<PacketSize>128</PacketSize>
+	     <NoofBuffers>500</NoofBuffers>
+	</PktMbufpool>
+	<PktMbufpool>
+	     <PoolID>1</PoolID>
+		<PacketSize>256</PacketSize>
+	     <NoofBuffers>500</NoofBuffers>
+	</PktMbufpool>
+	<PktMbufpool>
+	     <PoolID>6</PoolID>
+		<PacketSize>4096</PacketSize>
+	     <NoofBuffers>500</NoofBuffers>
+	</PktMbufpool>
+	<NoofOFMessagePools>33</NoofOFMessagePools>
+	<NoofGroups>3</NoofGroups>
+	<GroupInfo>
+		<GroupId>0</GroupId>
+		<Granularity>128</Granularity>
+	</GroupInfo>
+	<GroupInfo>
+		<GroupId>1</GroupId>
+		<Granularity>512</Granularity>
+	</GroupInfo>
+	<GroupInfo>
+		<GroupId>2</GroupId>
+		<Granularity>2048</Granularity>
+	</GroupInfo>
+   </MempoolConfig>
+
+   <IPsec>
+	<MaxPolicyNodes>512</MaxPolicyNodes>
+	<MaxSANodes>2048</MaxSANodes>
+	<GenidMaxInstaceidValue>2048</GenidMaxInstaceidValue>
+   </IPsec>
+
+   <GenericConfig>
+	<NoofTransactions>5000</NoofTransactions>
+	<LogRedirection>FILE</LogRedirection>
+	<LogLevels>ERROR</LogLevels>
+   </GenericConfig>
+
+   <CntrlModuleInfo>
+     <NoOfMaxTableRows>
+             <ArpInboundTable_max_row>4000</ArpInboundTable_max_row>
+             <ArpResolutionTable_max_row>1024</ArpResolutionTable_max_row>
+             <PBRTable_max_row>1024</PBRTable_max_row>
+             <RoutingUnicastFwdTable_max_row>1024</RoutingUnicastFwdTable_max_row>
+             <FWSessionTable_max_row>200000</FWSessionTable_max_row>
+             <FWInputFilterTable_max_row>16384</FWInputFilterTable_max_row>
+             <FWForwardFilterTable_max_row>16384</FWForwardFilterTable_max_row>
+             <IPSecInboundSATable_max_row>4000</IPSecInboundSATable_max_row>
+             <IPSecOutboundSATable_max_row>4000</IPSecOutboundSATable_max_row>
+             <IPSecInboundPolicyTable_max_row>4000</IPSecInboundPolicyTable_max_row>
+             <IPSecOutboundPolicyTable_max_row>4000</IPSecOutboundPolicyTable_max_row>
+
+     <!-- For capacity testing with IPSec 16k tunnels START 
+     <CntrlModuleInfo>
+     <NoOfMaxTableRows>
+             <ArpInboundTable_max_row>65536</ArpInboundTable_max_row>
+             <ArpResolutionTable_max_row>65536</ArpResolutionTable_max_row>
+             <PBRTable_max_row>65536</PBRTable_max_row>
+             <RoutingUnicastFwdTable_max_row>65536</RoutingUnicastFwdTable_max_row>
+             <FWSessionTable_max_row>200000</FWSessionTable_max_row>
+             <FWInputFilterTable_max_row>16384</FWInputFilterTable_max_row>
+             <FWForwardFilterTable_max_row>16384</FWForwardFilterTable_max_row>
+             <IPSecInboundSATable_max_row>16384</IPSecInboundSATable_max_row>
+             <IPSecOutboundSATable_max_row>16384</IPSecOutboundSATable_max_row>
+             <IPSecInboundPolicyTable_max_row>16384</IPSecInboundPolicyTable_max_row>
+             <IPSecOutboundPolicyTable_max_row>16384</IPSecOutboundPolicyTable_max_row>
+     </NoOfMaxTableRows>
+     <LinuxIntegrationModuleInfo>
+             <FW_ConnInfo_max_count>120000</FW_ConnInfo_max_count>
+             <FW_IPTable_max_count>65536</FW_IPTable_max_count>
+             <ARP_DB_max_count>1024</ARP_DB_max_count>
+             <IPsec_Policy_max_Count>65536</IPsec_Policy_max_Count>
+             <QOS_max_count>1024</QOS_max_count>
+     </LinuxIntegrationModuleInfo>
+     <SubTTPInfo>
+             <FWNAT_Conntrack_max_cnt>120000</FWNAT_Conntrack_max_cnt>
+             <IP4FwdPBR_DB_max_cnt>1024</IP4FwdPBR_DB_max_cnt>
+             <IP4FwdUnicastRoute_DB_max_cnt>1024</IP4FwdUnicastRoute_DB_max_cnt>
+             <IPsec_DB_Policy_max_cnt>16384</IPsec_DB_Policy_max_cnt>
+             <IPsec_DB_SA_max_cnt>16384</IPsec_DB_SA_max_cnt>
+             <IPsec_DB_Policy_SA_max_cnt>16384</IPsec_DB_Policy_SA_max_cnt>
+     </SubTTPInfo>
+     <TmrInfo>
+             <MaxTmrNode>1048576</MaxTmrNode> 
+       For capacity testing with IPSec 16k tunnels END -->
+
+
+     </NoOfMaxTableRows>
+     <LinuxIntegrationModuleInfo>
+             <FW_ConnInfo_max_count>120000</FW_ConnInfo_max_count>
+             <FW_IPTable_max_count>500</FW_IPTable_max_count>
+             <ARP_DB_max_count>1024</ARP_DB_max_count>
+             <IPsec_Policy_max_Count>512</IPsec_Policy_max_Count>
+             <QOS_max_count>1024</QOS_max_count>
+     </LinuxIntegrationModuleInfo>
+     <SubTTPInfo>
+             <FWNAT_Conntrack_max_cnt>120000</FWNAT_Conntrack_max_cnt>
+             <IP4FwdPBR_DB_max_cnt>1024</IP4FwdPBR_DB_max_cnt>
+             <IP4FwdUnicastRoute_DB_max_cnt>1024</IP4FwdUnicastRoute_DB_max_cnt>
+             <IPsec_DB_Policy_max_cnt>512</IPsec_DB_Policy_max_cnt>
+             <IPsec_DB_SA_max_cnt>2048</IPsec_DB_SA_max_cnt>
+             <IPsec_DB_Policy_SA_max_cnt>2048</IPsec_DB_Policy_SA_max_cnt>
+     </SubTTPInfo>
+     <TmrInfo>
+             <MaxTmrNode>1000000</MaxTmrNode>
+     </TmrInfo>
+   </CntrlModuleInfo>
+
+
+</root>
+

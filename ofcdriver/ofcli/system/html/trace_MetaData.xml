@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.trace</dmpath>
+ <breadcrumb>Not Available &gt; Log Settings</breadcrumb>
+ <help src="ucmtrace.htm" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="789" name="module" lbl="Module" type="STR">
+  <list>
+    <item name="All" value="all"/>
+    <item name="Controller" value="controller"/>
+    <item name="Transport" value="cntlrxprt"/>
+    <item name="NEM" value="nem"/>
+    <item name="Route" value="route"/>
+    <item name="pEth" value="peth"/>
+    <item name="Sample Application" value="sampleapp"/>
+    <item name="ARP NF" value="arpnf"/>
+    <item name="Infra Application" value="infraapp"/>
+    <item name="Forward NF" value="fwdnf"/>
+    <item name="IPSEC" value="ipsec"/>
+    <item name="Netlink" value="netlink"/>
+    <item name="Firewall NAT" value="fwnat"/>
+    <item name="Utility" value="util"/>
+    <item name="CRM" value="crm"/>
+    <item name="NSRM" value="nsrm"/>
+    <item name="Test" value="cntlrtest"/>
+    <item name="Utility L3 Extensions" value="utill3ext"/>
+    <item name="Nicira Extensions" value="niciraext"/>
+    <item name="Bind Object" value="bindobj"/>
+    <item name="ARP Application" value="arpapp"/>
+    <item name="IPv4 Forward" value="ipv4fwd"/>
+    <item name="IPv4 Multicast Forward" value="ipv4mcastfwd"/>
+    <item name="TSC" value="tsc"/>
+    <item name="QoS Application" value="qosapp"/>
+    <item name="QoS NF" value="qosnf"/>
+    <item name="QoS" value="qos"/>
+    <item name="QoS - Table Type Pattern" value="qossubttp"/>
+  </list>
+ </obj>
+ <obj oid="790" name="level" lbl="Log Level" type="STR">
+  <list>
+    <item name="All" value="all"/>
+    <item name="Info" value="info"/>
+    <item name="Notice" value="notice"/>
+    <item name="Debug" value="debug"/>
+    <item name="Warning" value="warn"/>
+    <item name="Error" value="error"/>
+    <item name="Critical" value="critical"/>
+    <item name="None" value="none"/>
+  </list>
+ </obj>
+ <obj oid="791" name="ipsec_redside_frag" lbl="" type="STR">
+  <list>
+    <item name="Enable" value="enable"/>
+    <item name="Disable" value="disable"/>
+  </list>
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** --><!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form frmType="grpscalar" >
+  <field oid="789" name="lstgrp-1" type="list">
+  </field>
+  <field oid="790" name="lstgrp-2" type="list">
+  </field>
+  <btn lbl="Apply" type="submit" mtpath="trace_MetaData.xml" spg="frm_meta.xsl" fpg="frm_meta.xsl"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

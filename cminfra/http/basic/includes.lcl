@@ -1,0 +1,15 @@
+
+#/************************************************************************ */
+#/*   File            : includes.lcl                                       */
+#/*   Purpose         :                                                    */
+#/*   Date            :                                                    */   
+#/*------------------------------------------------------------------------*/
+
+#CM_DIR = ../..
+CM_DIR =$(cminfra_dir)
+
+LOCAL_INCLUDES +=  -I$(CM_DIR)/http/include 
+LOCAL_INCLUDES += -I$(CM_DIR)/http/include/lx
+LOCAL_INCLUDES += -I$(CM_DIR)/http/include/httpscrt
+#									$(UCM_DIR)/$(PROD_DIR)/mgmteng/http
+

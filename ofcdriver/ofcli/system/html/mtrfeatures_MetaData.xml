@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.meters.features</dmpath>
+ <breadcrumb>Not Available &gt; Meter Features</breadcrumb>
+ <help src="ucmmtrfeatures.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="410" name="max_meter" lbl="Maximum Meters" type="UINT">
+ </obj>
+ <obj oid="411" name="band_types" lbl="Band Types" type="UINT">
+ </obj>
+ <obj oid="412" name="capabilities" lbl="Capabilities" type="UINT">
+ </obj>
+ <obj oid="413" name="max_bands" lbl="Maximum Bands" type="STR">
+ </obj>
+ <obj oid="414" name="max_color" lbl="Maximum Color" type="STR">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** --><!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form frmType="grpscalar" >
+   <field     oid="410"/>
+   <field     oid="411"/>
+   <field     oid="412"/>
+   <field     oid="413"/>
+   <field     oid="414"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

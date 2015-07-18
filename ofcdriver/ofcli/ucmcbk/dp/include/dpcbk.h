@@ -1,0 +1,73 @@
+/**
+ * Copyright (c) 2012, 2013  Freescale.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **/
+#ifndef CM_DPCBK_H
+#define CM_DPCBK_H
+
+#define CM_CBK_DEBUG
+#ifdef CM_CBK_DEBUG
+#define CM_CBK_DEBUG_PRINT printf("\n%35s(%4d): ",__FUNCTION__,__LINE__),\
+	                          printf 
+#else
+#define CM_CBK_DEBUG_PRINT(format,args...)
+#endif
+
+void *UCMDP_BeginConfigTransaction(uint32_t app_id,struct cm_array_of_iv_pairs * arr_p,
+			uint32_t cmd_id,
+			struct cm_app_result ** result_p);
+
+int32_t UCMDP_EndConfigTransaction(uint32_t app_id,void * config_trans_p,
+			uint32_t cmd_id
+			,struct cm_app_result ** result_p);
+int32_t UCMDP_AddRecord(uint32_t app_id,
+			void * config_trans_p,
+			struct cm_array_of_iv_pairs * keys_arr_p,
+			struct cm_array_of_iv_pairs * member_arr_p,
+			struct cm_app_result ** result_p);
+
+int32_t UCMDP_SetRecord(uint32_t app_id,void * config_trans_p,
+			struct cm_array_of_iv_pairs * keys_arr_p,
+			struct cm_array_of_iv_pairs * member_arr_p,
+			struct cm_app_result ** result_p);
+
+int32_t UCMDP_DelRecord(uint32_t app_id,void * config_transaction_p,
+			struct cm_array_of_iv_pairs * keys_arr_p,
+			struct cm_app_result ** result_p);
+
+
+/* Information retrieval Callback functions */
+int32_t UCMDP_GetFirstNRecs(uint32_t app_id,struct cm_array_of_iv_pairs *
+			keys_arr_p,
+			uint32_t * count_p,
+			struct cm_array_of_iv_pairs **
+			first_n_record_data_p);
+int32_t UCMDP_GetNextNRecs(uint32_t app_id,struct cm_array_of_iv_pairs *
+			keys_arr_p,
+			struct cm_array_of_iv_pairs *
+			prev_record_key_p,
+			uint32_t * count_p,
+			struct cm_array_of_iv_pairs **
+			next_n_record_data_p);
+int32_t UCMDP_GetExactRec(uint32_t app_id,struct cm_array_of_iv_pairs *
+			keys_arr_p,
+			struct cm_array_of_iv_pairs **
+			record_data_p);
+
+int32_t UCMDP_VerifyConfig(uint32_t app_id,struct cm_array_of_iv_pairs * keys_arr_p,
+			uint32_t cmd_id,
+			struct cm_app_result ** result_p);
+
+
+#endif /* CM_CNTRLR_H */

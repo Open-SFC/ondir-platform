@@ -1,0 +1,2 @@
+include includes.mk
+INCLUDES += -I $(switch_dir)/include

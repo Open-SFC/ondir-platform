@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataModel ModuleName="matchField" Version="3.4" schemaVersion="3.0">
+ 
+	 <InstallPath>on_director.datapath.flowmod.matchField</InstallPath>
+
+         <DataModelNode>
+			<InstallPath>fieldId</InstallPath>
+			<Name>fieldId</Name>
+			<FriendlyName>Match Field Identifier</FriendlyName>
+			<NodeID/>
+			<Description>Match Field Identifier</Description>
+			<SaveDirName>CM_CONFIG_DIR</SaveDirName>
+			<StorageFileName>NULL</StorageFileName>
+			<NodeAttributes>
+				 <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+				 <Visible>TRUE</Visible>
+				 <IsKey>TRUE</IsKey>
+				 <Mandatory>TRUE</Mandatory>
+				 <OrderedTable>FALSE</OrderedTable>
+				 <PriorityNode>FALSE</PriorityNode>
+				 <NotifyChange>FALSE</NotifyChange>
+				 <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+				 <RebootOnChange>FALSE</RebootOnChange>
+				 <StickyToParent>FALSE</StickyToParent>
+				 <SaveInParentDir>TRUE</SaveInParentDir>
+				 <NonConfigLeafNode>FALSE</NonConfigLeafNode>
+				 <AccessControl>CM_ACCESS_ALL</AccessControl>
+				 <GroupedScalar>FALSE</GroupedScalar>
+				 <GlobalTrans>FALSE</GlobalTrans>
+				 <UseParentTrans>TRUE</UseParentTrans>
+			</NodeAttributes>
+			<DataAttributes>
+				 <DataType>CM_DATA_TYPE_UINT</DataType>
+				 <Type>CM_DATA_ATTRIB_NONE</Type>
+				 <DataAttrib/>
+			</DataAttributes>
+	 </DataModelNode>
+
+         <DataModelNode>
+			<InstallPath>matchFieldType</InstallPath>
+			<Name>matchFieldType</Name>
+			<FriendlyName>Match Field</FriendlyName>
+			<NodeID/>
+			<Description>Match Field SRCIP or SRCPORT etc.</Description>
+			<SaveDirName>CM_CONFIG_DIR</SaveDirName>
+			<StorageFileName>NULL</StorageFileName>
+			<NodeAttributes>
+				 <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+				 <Visible>TRUE</Visible>
+				 <IsKey>FALSE</IsKey>
+				 <Mandatory>TRUE</Mandatory>
+				 <OrderedTable>FALSE</OrderedTable>
+				 <PriorityNode>FALSE</PriorityNode>
+				 <NotifyChange>FALSE</NotifyChange>
+				 <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+				 <RebootOnChange>FALSE</RebootOnChange>
+				 <StickyToParent>FALSE</StickyToParent>
+				 <SaveInParentDir>TRUE</SaveInParentDir>
+				 <NonConfigLeafNode>FALSE</NonConfigLeafNode>
+				 <AccessControl>CM_ACCESS_ALL</AccessControl>
+				 <GroupedScalar>FALSE</GroupedScalar>
+				 <GlobalTrans>FALSE</GlobalTrans>
+				 <UseParentTrans>FALSE</UseParentTrans>
+			</NodeAttributes>
+                        <DataAttributes>
+                           <DataType>CM_DATA_TYPE_STRING</DataType>
+                           <Type>CM_DATA_ATTRIB_STR_ENUM</Type>
+                           <DataAttrib>
+                           <StrEnum>
+                           <Value friendlyName="Switch Input Port">inPort</Value>
+                           <Value friendlyName="Switch Physical Input Port">inPhyPort</Value>
+                           <Value friendlyName="Metadata Passed Between Tables">tableMetaData</Value>
+                           <Value friendlyName="IPv4 Source Address">srcIpV4Addr</Value>
+                           <Value friendlyName="IPv4 Destination Address">dstIpV4Addr</Value>
+                           <Value friendlyName="UDP Source Port">udpSrcPort</Value>
+                           <Value friendlyName="UDP Destination Port">udpDstPort</Value>
+                           <Value friendlyName="TCP Source Port">tcpSrcPort</Value>
+                           <Value friendlyName="TCP Destination Port">tcpDstPort</Value>
+                           <Value friendlyName="SCTP Source Port">sctpSrcPort</Value>
+                           <Value friendlyName="SCTP Destination Port">sctpDstPort</Value>
+                           <Value friendlyName="IP Protocol">protocol</Value>
+                           <Value friendlyName="ICMP Type">icmpType</Value>
+                           <Value friendlyName="ICMP Code">icmpCode</Value>
+                           <Value friendlyName="Ethernet Frame Type">ethType</Value>
+                           <Value friendlyName="Source MAC Address">srcMacAddr</Value>
+                           <Value friendlyName="Destination MAC Address">dstMacAddr</Value>
+                           <Value friendlyName="MPLS Label">mplsLabel</Value>
+                           <Value friendlyName="MPLS TC">mplsTC</Value>
+                           <Value friendlyName="MPLS BoS Bit">mplsBos</Value>
+                           <Value friendlyName="PBB I-SID">pbbIsid</Value>
+                           <Value friendlyName="Tunnel Id">tunnelId</Value>
+                           <Value friendlyName="VLAN Id">VlanId</Value>
+                           <Value friendlyName="VLAN Priority">VlanPriority</Value>
+                           <Value friendlyName="ARP Source IPv4 Address">arpSrcIpv4Addr</Value>
+                           <Value friendlyName="ARP Destination IPv4 Address">arpDstIpv4Addr</Value>
+                           <Value friendlyName="ARP Source MAC Address">arpSrcMacAddr</Value>
+                           <Value friendlyName="ARP Destination MAC Address">arpDstMacAddr</Value>       
+                           <Value friendlyName="ARP Opcode">arpOpcode</Value>       
+			   <Value friendlyName="IP DSCP Bits">IpDiffServCodePointBits</Value>	 
+			   <Value friendlyName="IP ECN Bits">IpECNBits</Value>	 
+			   <Value friendlyName="IPv6 Source Address">srcIpv6Addr</Value>	 
+			   <Value friendlyName="IPv6 Destination Address">dstIpv6Addr</Value>	 
+			   <Value friendlyName="IPv6 Flow Label">Ipv6flowlabel</Value>	 
+                           <Value friendlyName="ICMPv6 Type">icmpv6Type</Value>
+                           <Value friendlyName="ICMPv6 Code">icmpv6Code</Value>
+                           <Value friendlyName="Target Address for ND">ipv6NDTarget</Value>
+                           <Value friendlyName="Source Link-layer for ND">ipv6NDSrcLinkLayerAddr</Value>
+                           <Value friendlyName="Target Link-layer for ND">ipv6NDTargetLinkLayerAddr</Value>
+                           <Value friendlyName="IPv6 Extension Header">ipv6ExtnHdr</Value>
+                           </StrEnum>
+                           </DataAttrib>
+                           <DefaultValue></DefaultValue>
+                        </DataAttributes>
+	 </DataModelNode>
+
+         <DataModelNode>
+			<InstallPath>matchFieldData</InstallPath>
+			<Name>matchFieldData</Name>
+			<FriendlyName>Match Field Data</FriendlyName>
+			<NodeID/>
+			<Description>Match Field Value</Description>
+			<SaveDirName>CM_CONFIG_DIR</SaveDirName>
+			<StorageFileName>NULL</StorageFileName>
+			<NodeAttributes>
+				 <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+				 <Visible>TRUE</Visible>
+				 <IsKey>FALSE</IsKey>
+				 <Mandatory>TRUE</Mandatory>
+				 <OrderedTable>FALSE</OrderedTable>
+				 <PriorityNode>FALSE</PriorityNode>
+				 <NotifyChange>FALSE</NotifyChange>
+				 <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+				 <RebootOnChange>FALSE</RebootOnChange>
+				 <StickyToParent>FALSE</StickyToParent>
+				 <SaveInParentDir>TRUE</SaveInParentDir>
+				 <NonConfigLeafNode>FALSE</NonConfigLeafNode>
+				 <AccessControl>CM_ACCESS_ALL</AccessControl>
+				 <GroupedScalar>FALSE</GroupedScalar>
+				 <GlobalTrans>FALSE</GlobalTrans>
+				 <UseParentTrans>FALSE</UseParentTrans>
+			</NodeAttributes>
+                        <DataAttributes>
+                                <DataType>CM_DATA_TYPE_STRING</DataType>
+                                <Type>CM_DATA_ATTRIB_NONE</Type>
+				 <DataAttrib/>
+                                <DefaultValue>
+                                   <DefaultString></DefaultString>
+                                </DefaultValue>
+                        </DataAttributes>
+	 </DataModelNode>
+
+         <DataModelNode>
+			<InstallPath>isMaskSet</InstallPath>
+			<Name>isMaskSet</Name>
+			<FriendlyName>Is Mask Set</FriendlyName>
+			<NodeID/>
+			<Description>Boolean to indicate whether mask is set or not</Description>
+			<SaveDirName>CM_CONFIG_DIR</SaveDirName>
+			<StorageFileName>NULL</StorageFileName>
+			<NodeAttributes>
+				 <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+				 <Visible>TRUE</Visible>
+				 <IsKey>FALSE</IsKey>
+				 <Mandatory>FALSE</Mandatory>
+				 <OrderedTable>FALSE</OrderedTable>
+				 <PriorityNode>FALSE</PriorityNode>
+				 <NotifyChange>FALSE</NotifyChange>
+				 <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+				 <RebootOnChange>FALSE</RebootOnChange>
+				 <StickyToParent>FALSE</StickyToParent>
+				 <SaveInParentDir>TRUE</SaveInParentDir>
+				 <NonConfigLeafNode>FALSE</NonConfigLeafNode>
+				 <AccessControl>CM_ACCESS_ALL</AccessControl>
+				 <GroupedScalar>FALSE</GroupedScalar>
+				 <GlobalTrans>FALSE</GlobalTrans>
+				 <UseParentTrans>FALSE</UseParentTrans>
+			</NodeAttributes>
+			<DataAttributes>
+                        <DataType>CM_DATA_TYPE_UINT</DataType>
+	                <Type>CM_DATA_ATTRIB_UINT_ENUM</Type>
+                        <DataAttrib>
+		        <IntEnum>
+		        <Value friendlyName="False">0</Value>
+		        <Value friendlyName="True">1</Value>
+		        </IntEnum>
+                        </DataAttrib>
+			</DataAttributes>
+	 </DataModelNode>
+
+         <DataModelNode>
+			<InstallPath>mask</InstallPath>
+			<Name>mask</Name>
+			<FriendlyName>Match Field Mask</FriendlyName>
+			<NodeID/>
+			<Description>Match Field Mask</Description>
+			<SaveDirName>CM_CONFIG_DIR</SaveDirName>
+			<StorageFileName>NULL</StorageFileName>
+			<NodeAttributes>
+				 <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+				 <Visible>TRUE</Visible>
+				 <IsKey>FALSE</IsKey>
+				 <Mandatory>FALSE</Mandatory>
+				 <OrderedTable>FALSE</OrderedTable>
+				 <PriorityNode>FALSE</PriorityNode>
+				 <NotifyChange>FALSE</NotifyChange>
+				 <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+				 <RebootOnChange>FALSE</RebootOnChange>
+				 <StickyToParent>FALSE</StickyToParent>
+				 <SaveInParentDir>TRUE</SaveInParentDir>
+				 <NonConfigLeafNode>FALSE</NonConfigLeafNode>
+				 <AccessControl>CM_ACCESS_ALL</AccessControl>
+				 <GroupedScalar>FALSE</GroupedScalar>
+				 <GlobalTrans>FALSE</GlobalTrans>
+				 <UseParentTrans>FALSE</UseParentTrans>
+			</NodeAttributes>
+			<DataAttributes>
+				 <DataType>CM_DATA_TYPE_STRING</DataType>
+				 <Type>CM_DATA_ATTRIB_NONE</Type>
+				 <DataAttrib/>
+			</DataAttributes>
+	 </DataModelNode>
+
+</DataModel>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>Service Chain</title>
+  <DMPath>on_director.nsrm.chain</DMPath>
+
+  <Component type="TABLE" title="Service Chain">
+    <GroupNodes name="name" title="Chain Name" type="coloumn">
+        <DMNode path="name" label="Chain Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="tenant" title="Tenant Name" type="coloumn">
+        <DMNode path="tenant" label="Tenant Name" type="STR"/>   
+    </GroupNodes>  
+    <GroupNodes name="type" title="Chain Type" type="coloumn">
+        <DMNode path="type" label="Chain Type" type="STR"/>   
+    </GroupNodes> 
+    <GroupNodes name="loadsharealg" title="Load Sharing Algorithm" type="coloumn">
+        <DMNode path="loadsharealg" label="Load Sharing Algorithm" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="loadindication" title="Load Indication Type" type="coloumn">
+        <DMNode path="loadindication" label="Load Indication Type" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="highthreshold" title="High Threshold" type="coloumn">
+        <DMNode path="highthreshold" label="High Threshold" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="lowthreshold" title="Low Threshold" type="coloumn">
+        <DMNode path="lowthreshold" label="Low Threshold" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="enabled" title="Enabled" type="coloumn">
+        <DMNode path="enabled" label="Enabled" type="STR"/>   
+    </GroupNodes>
+
+    <GroupNodes name="lnkGrp" title="Configuration" type="column">
+      <link name="Attributes" spg ="tbl_meta.xsl" mtpath="chainattribute_MetaData.xml" instancekey="chainattribute" target="new"/>      
+    </GroupNodes>
+       
+    <GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+      <!--Button name="Roles" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/-->
+    </GroupNodes>
+    <link name="Add"/>
+    <link name="Next"/>
+    <link name="Previous"/>
+  </Component>
+  
+  <Component type="Form" title="Service Chain"> 
+    <DMNode path="name" label="Chain Name"/>  
+    <Component type="list" path="tenant" name="lstgrp-1" label="Tenant Name" depends="name" file="tenantsm.xml"/> 
+    <Component type="list" path="type" name="lstgrp-2" label="Chain Type"/>
+    <Component type="list" path="loadsharealg" name="lstgrp-3" label="Load Sharing Algorithm"/>
+    <Component type="list" path="loadindication" name="lstgrp-4" label="Load Indication Type"/>
+    <DMNode path="highthreshold" label="High Threshold"/>
+    <DMNode path="lowthreshold" label="Low Threshold"/>
+    <Component type="checkbox" path="enabled" label="Enabled"/>
+    <Component type="selcrtl" path="services" label="Services attached to the chain" depends="name" file="servicesm.xml" action="multiReq"/>
+    
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/>
+  </Component> 
+
+</UIModel>
+

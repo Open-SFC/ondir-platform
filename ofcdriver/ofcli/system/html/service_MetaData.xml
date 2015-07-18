@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.nsrm.service</dmpath>
+ <breadcrumb>Not Available &gt; Network Service</breadcrumb>
+ <help src="ucmservice.htm" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="622" name="name" lbl="Service Name" type="STR" key="yes" mand="yes">
+ </obj>
+ <obj oid="623" name="tenant" lbl="Tenant Name" type="STR" key="yes" mand="yes">
+ </obj>
+ <obj oid="624" name="formfactortype" lbl="Form Factor Type" type="STR">
+  <list>
+    <item name="Physical" value="Physical"/>
+    <item name="Virtual" value="Virtual"/>
+  </list>
+ </obj>
+ <obj oid="625" name="loadsharealg" lbl="" type="STR" mand="yes">
+  <list>
+    <item name="Hash_Based" value="Hash_Based"/>
+    <item name="Round_Robin" value="Round_Robin"/>
+    <item name="Least_Connections" value="Least_Connections"/>
+  </list>
+ </obj>
+ <obj oid="626" name="type" lbl="Form Factor Type" type="STR" mand="yes">
+  <list>
+    <item name="L2" value="L2"/>
+    <item name="L3" value="L3"/>
+  </list>
+ </obj>
+ <obj oid="627" name="loadindication" lbl="" type="STR" mand="yes">
+  <list>
+    <item name="Connection_Based" value="Connection_Based"/>
+    <item name="Traffic_Based" value="Traffic_Based"/>
+  </list>
+ </obj>
+ <obj oid="628" name="highthreshold" lbl="" type="INT">
+ </obj>
+ <obj oid="629" name="lowthreshold" lbl="" type="INT">
+ </obj>
+ <obj oid="630" name="enabled" lbl="Enabled" type="BOOL">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Service Name">
+     <objref oid="622"/>
+   </col>
+   <col name="Tenant Name">
+     <objref oid="623"/>
+   </col>
+   <col name="Form Factor Type">
+     <objref oid="626"/>
+   </col>
+   <col name="Enabled">
+     <objref oid="630"/>
+   </col>
+   <col name="Configuration">
+     <link name="Attributes" mtpath="serviceattribute_MetaData.xml" instancekey="serviceattribute" target="new" spg="tbl_meta.xsl"/>
+   </col>
+   <col name="">
+     <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+     <btn name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+   </col>
+   <link name="Add Record" opcode="ADD" spg="frm_meta.xsl" mtpath="service_MetaData.xml"/>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="service_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="service_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="622"/>
+  <field oid="623" dmpath="on_director.crm.tenant" depends="name+STR" name="lstgrp-1" type="list">
+  </field>
+  <field oid="624" name="lstgrp-2" type="list">
+  </field>
+  <field oid="630" name="" type="checkbox">
+  </field>
+  <btn lbl="Apply" type="submit" mtpath="service_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

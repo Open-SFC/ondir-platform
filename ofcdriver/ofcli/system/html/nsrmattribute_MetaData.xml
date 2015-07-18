@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.nsrm.nsrmattribute</dmpath>
+ <breadcrumb>Not Available &gt; NSRM Attributes</breadcrumb>
+ <help src="ucmnsrmattribute.htm" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="620" name="name" lbl="Attribute Name" type="STR" key="yes" mand="yes" defVal="">
+   <range>1-64</range>
+ </obj>
+ <obj oid="621" name="value" lbl="Attribute Value" type="STR" mand="yes" defVal="">
+   <range>1-64</range>
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Attribute Name">
+     <objref oid="620"/>
+   </col>
+   <col name="Attribute Value">
+     <objref oid="621"/>
+   </col>
+   <col name="">
+     <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+     <btn name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+   </col>
+   <link name="Add Record" opcode="ADD" spg="frm_meta.xsl" mtpath="nsrmattribute_MetaData.xml"/>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="nsrmattribute_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="nsrmattribute_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="620"/>
+   <field     oid="621"/>
+  <btn lbl="Apply" type="submit" mtpath="nsrmattribute_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

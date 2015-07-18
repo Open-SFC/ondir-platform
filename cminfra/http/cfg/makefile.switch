@@ -1,0 +1,38 @@
+#/************************************************************************ */
+#/*   File            : makefile                                           */
+#/*   Purpose         : Project for compiling files of Management Engines  */
+#/*   Date            :                                                    */   
+#/*------------------------------------------------------------------------*/
+CM_DIR = ../..
+
+include $(CM_DIR)/rules.mod.switch
+
+HTTP_DIR = $(CM_DIR)/http
+HTTPCFG_DIR = $(CM_DIR)/http/cfg
+
+HTTPCFG_OBJ_DIR = $(switch_cminfra_obj_dir)
+OBJDIR  = $(HTTPCFG_OBJ_DIR)
+
+include $(HTTPCFG_DIR)/includes.lcl
+
+TARGET = $(switch_cminfra_obj_dir)/httpcfg.o
+
+$(HTTPCFG_OBJ_DIR)/%.o: %.c 
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+HTTPCFG_OBJS = httpdcfg.o  httpmcfg.o 
+
+OBJDIR = $(HTTPCFG_OBJ_DIR)
+
+OBJS = $(HTTPCFG_OBJS:%=$(OBJDIR)/%)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(LD) $(LDOPTS) $(OBJS) -o $(TARGET)
+
+.PHONY: clean
+
+clean:
+	$(RM) $(OBJS) $(TARGET) 
+

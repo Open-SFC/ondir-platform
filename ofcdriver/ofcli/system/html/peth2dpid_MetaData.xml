@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.nem.peth2dpid</dmpath>
+ <breadcrumb>Not Available &gt; PETH to Datapath ID</breadcrumb>
+ <help src="ucmpeth2dpid.htm" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="784" name="portname" lbl="Port Name" type="STR">
+ </obj>
+ <obj oid="785" name="pethname" lbl="PETH Interface Name" type="STR" key="yes" mand="yes">
+ </obj>
+ <obj oid="786" name="nsid" lbl="Namespace ID" type="INT" key="yes" mand="yes">
+ </obj>
+ <obj oid="787" name="dpid" lbl="Datapath ID" type="INT">
+ </obj>
+ <obj oid="788" name="portid" lbl="Port ID" type="INT" key="yes" mand="yes">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="PETH Interface Name">
+     <objref oid="785"/>
+   </col>
+   <col name="Datapath ID">
+     <objref oid="787"/>
+   </col>
+   <col name="Port Name">
+     <objref oid="784"/>
+   </col>
+   <col name="Port ID">
+     <objref oid="788"/>
+   </col>
+   <col name="Namespace ID">
+     <objref oid="786"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="peth2dpid_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="peth2dpid_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataModel ModuleName="nem" Version="3.4" schemaVersion="3.0">
+ 
+	 <InstallPath>on_director.nem</InstallPath>
+
+
+	<DataModelNode>
+		 <InstallPath>ns2nsid</InstallPath>
+		 <Name>ns2nsid</Name>
+		 <NodeID />
+		 <Description>ns to nsid mapping table</Description>
+		 <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+		 <StorageFileName>OFSDN_PORT</StorageFileName>
+		 <NodeAttributes>
+				<NodeType>CM_DMNODE_TYPE_TABLE</NodeType>
+				<Visible>TRUE</Visible>
+				<IsKey>FALSE</IsKey>
+				<Mandatory>FALSE</Mandatory>
+				<OrderedTable>FALSE</OrderedTable>
+				<PriorityNode>FALSE</PriorityNode>
+				<NotifyChange>FALSE</NotifyChange>
+				<NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+				<RebootOnChange>FALSE</RebootOnChange>
+				<StickyToParent>FALSE</StickyToParent>
+				<SaveInParentDir>TRUE</SaveInParentDir>
+				<NonConfigLeafNode>TRUE</NonConfigLeafNode>
+				<AccessControl>CM_ACCESS_ALL</AccessControl>
+				<GroupedScalar>FALSE</GroupedScalar>
+				<GlobalTrans>FALSE</GlobalTrans>
+				<UseParentTrans>FALSE</UseParentTrans>
+		 </NodeAttributes>
+		 <DataAttributes>
+				<DataType>CM_DATA_TYPE_UNKNOWN</DataType>
+				<Type>CM_DATA_ATTRIB_NONE</Type>
+				<DataAttrib/>
+		 </DataAttributes>
+	</DataModelNode>
+
+
+ <DataModelNode>
+                 <InstallPath>nsid2ns</InstallPath>
+                 <Name>nsid2ns</Name>
+                 <NodeID />
+                 <Description>nsid to ns mapping table</Description>
+                 <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+                 <StorageFileName>OFSDN_PORT</StorageFileName>
+                 <NodeAttributes>
+                                <NodeType>CM_DMNODE_TYPE_TABLE</NodeType>
+                                <Visible>TRUE</Visible>
+                                <IsKey>FALSE</IsKey>
+                                <Mandatory>FALSE</Mandatory>
+                                <OrderedTable>FALSE</OrderedTable>
+                                <PriorityNode>FALSE</PriorityNode>
+                                <NotifyChange>FALSE</NotifyChange>
+                                <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+                                <RebootOnChange>FALSE</RebootOnChange>
+                                <StickyToParent>FALSE</StickyToParent>
+                                <SaveInParentDir>TRUE</SaveInParentDir>
+                                <NonConfigLeafNode>TRUE</NonConfigLeafNode>
+                                <AccessControl>CM_ACCESS_ALL</AccessControl>
+                                <GroupedScalar>FALSE</GroupedScalar>
+                                <GlobalTrans>FALSE</GlobalTrans>
+                                <UseParentTrans>FALSE</UseParentTrans>
+                 </NodeAttributes>
+                 <DataAttributes>
+                                <DataType>CM_DATA_TYPE_UNKNOWN</DataType>
+                                <Type>CM_DATA_ATTRIB_NONE</Type>
+                                <DataAttrib/>
+                 </DataAttributes>
+        </DataModelNode>
+
+ <DataModelNode>
+                 <InstallPath>dpid2nsid</InstallPath>
+                 <Name>dpid2nsid</Name>
+                 <NodeID />
+                 <Description>dpid to nsid mapping table</Description>
+                 <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+                 <StorageFileName>OFSDN_PORT</StorageFileName>
+                 <NodeAttributes>
+                                <NodeType>CM_DMNODE_TYPE_TABLE</NodeType>
+                                <Visible>TRUE</Visible>
+                                <IsKey>FALSE</IsKey>
+                                <Mandatory>FALSE</Mandatory>
+                                <OrderedTable>FALSE</OrderedTable>
+                                <PriorityNode>FALSE</PriorityNode>
+                                <NotifyChange>FALSE</NotifyChange>
+                                <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+                                <RebootOnChange>FALSE</RebootOnChange>
+                                <StickyToParent>FALSE</StickyToParent>
+                                <SaveInParentDir>TRUE</SaveInParentDir>
+                                <NonConfigLeafNode>TRUE</NonConfigLeafNode>
+                                <AccessControl>CM_ACCESS_ALL</AccessControl>
+                                <GroupedScalar>FALSE</GroupedScalar>
+                                <GlobalTrans>FALSE</GlobalTrans>
+                                <UseParentTrans>FALSE</UseParentTrans>
+                 </NodeAttributes>
+                 <DataAttributes>
+                                <DataType>CM_DATA_TYPE_UNKNOWN</DataType>
+                                <Type>CM_DATA_ATTRIB_NONE</Type>
+                                <DataAttrib/>
+                 </DataAttributes>
+        </DataModelNode>
+
+
+ <DataModelNode>
+                 <InstallPath>nsid2dpid</InstallPath>
+                 <Name>nsid2dpid</Name>
+                 <NodeID />
+                 <Description>nsid to dpid mapping table</Description>
+                 <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+                 <StorageFileName>OFSDN_PORT</StorageFileName>
+                 <NodeAttributes>
+                                <NodeType>CM_DMNODE_TYPE_TABLE</NodeType>
+                                <Visible>TRUE</Visible>
+                                <IsKey>FALSE</IsKey>
+                                <Mandatory>FALSE</Mandatory>
+                                <OrderedTable>FALSE</OrderedTable>
+                                <PriorityNode>FALSE</PriorityNode>
+                                <NotifyChange>FALSE</NotifyChange>
+                                <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+                                <RebootOnChange>FALSE</RebootOnChange>
+                                <StickyToParent>FALSE</StickyToParent>
+                                <SaveInParentDir>TRUE</SaveInParentDir>
+                                <NonConfigLeafNode>TRUE</NonConfigLeafNode>
+                                <AccessControl>CM_ACCESS_ALL</AccessControl>
+                                <GroupedScalar>FALSE</GroupedScalar>
+                                <GlobalTrans>FALSE</GlobalTrans>
+                                <UseParentTrans>FALSE</UseParentTrans>
+                 </NodeAttributes>
+                 <DataAttributes>
+                                <DataType>CM_DATA_TYPE_UNKNOWN</DataType>
+                                <Type>CM_DATA_ATTRIB_NONE</Type>
+                                <DataAttrib/>
+                 </DataAttributes>
+        </DataModelNode>
+
+
+
+<DataModelNode>
+                 <InstallPath>dpid2peth</InstallPath>
+                 <Name>dpid2peth</Name>
+                 <NodeID />
+                 <Description>dpid to peth mapping table</Description>
+                 <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+                 <StorageFileName>OFSDN_PORT</StorageFileName>
+                 <NodeAttributes>
+                                <NodeType>CM_DMNODE_TYPE_TABLE</NodeType>
+                                <Visible>TRUE</Visible>
+                                <IsKey>FALSE</IsKey>
+                                <Mandatory>FALSE</Mandatory>
+                                <OrderedTable>FALSE</OrderedTable>
+                                <PriorityNode>FALSE</PriorityNode>
+                                <NotifyChange>FALSE</NotifyChange>
+                                <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+                                <RebootOnChange>FALSE</RebootOnChange>
+                                <StickyToParent>FALSE</StickyToParent>
+                                <SaveInParentDir>TRUE</SaveInParentDir>
+                                <NonConfigLeafNode>TRUE</NonConfigLeafNode>
+                                <AccessControl>CM_ACCESS_ALL</AccessControl>
+                                <GroupedScalar>FALSE</GroupedScalar>
+                                <GlobalTrans>FALSE</GlobalTrans>
+                                <UseParentTrans>FALSE</UseParentTrans>
+                 </NodeAttributes>
+                 <DataAttributes>
+                                <DataType>CM_DATA_TYPE_UNKNOWN</DataType>
+                                <Type>CM_DATA_ATTRIB_NONE</Type>
+                                <DataAttrib/>
+                 </DataAttributes>
+        </DataModelNode>
+
+<DataModelNode>
+                 <InstallPath>peth2dpid</InstallPath>
+                 <Name>peth2dpid</Name>
+                 <NodeID />
+                 <Description>peth to dpid mapping table</Description>
+                 <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+                 <StorageFileName>OFSDN_PORT</StorageFileName>
+                 <NodeAttributes>
+                                <NodeType>CM_DMNODE_TYPE_TABLE</NodeType>
+                                <Visible>TRUE</Visible>
+                                <IsKey>FALSE</IsKey>
+                                <Mandatory>FALSE</Mandatory>
+                                <OrderedTable>FALSE</OrderedTable>
+                                <PriorityNode>FALSE</PriorityNode>
+                                <NotifyChange>FALSE</NotifyChange>
+                                <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+                                <RebootOnChange>FALSE</RebootOnChange>
+                                <StickyToParent>FALSE</StickyToParent>
+                                <SaveInParentDir>TRUE</SaveInParentDir>
+                                <NonConfigLeafNode>TRUE</NonConfigLeafNode>
+                                <AccessControl>CM_ACCESS_ALL</AccessControl>
+                                <GroupedScalar>FALSE</GroupedScalar>
+                                <GlobalTrans>FALSE</GlobalTrans>
+                                <UseParentTrans>FALSE</UseParentTrans>
+                 </NodeAttributes>
+                 <DataAttributes>
+                                <DataType>CM_DATA_TYPE_UNKNOWN</DataType>
+                                <Type>CM_DATA_ATTRIB_NONE</Type>
+                                <DataAttrib/>
+                 </DataAttributes>
+        </DataModelNode>
+
+
+
+</DataModel>

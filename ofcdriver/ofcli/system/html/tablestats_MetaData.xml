@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.stats.tablestats</dmpath>
+ <breadcrumb>Not Available &gt; Table Statistics</breadcrumb>
+ <help src="ucmtablestats.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="446" name="tableid" lbl="Table ID" type="UINT" key="yes" mand="yes">
+ </obj>
+ <obj oid="447" name="activecount" lbl="Active Entries" type="UINT">
+ </obj>
+ <obj oid="448" name="lookupcount" lbl="Packets Look-up" type="UINT64">
+ </obj>
+ <obj oid="449" name="matchedcount" lbl="Packets Hit" type="UINT64">
+ </obj>
+ <obj oid="450" name="total_flows_received" lbl="" type="UINT64">
+ </obj>
+ <obj oid="451" name="flow_fail_count" lbl="" type="UINT64">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Table ID">
+     <objref oid="446"/>
+   </col>
+   <col name="Active Entries">
+     <objref oid="447"/>
+   </col>
+   <col name="Packets Look-up">
+     <objref oid="448"/>
+   </col>
+   <col name="Packets Hit">
+     <objref oid="449"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="tablestats_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="tablestats_MetaData.xml"/>
+     <btn name="refresh" lbl="Refresh" type="refresh"   mtpath="tablestats_MetaData.xml" spg="tbl_meta.xsl"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

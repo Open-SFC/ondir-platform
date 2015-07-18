@@ -1,0 +1,191 @@
+<html>
+<body>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>
+         Help :: Chain Selection Rule</title>
+</head>
+<table border="0" cellspacing="0" cellpadding="0" class="pagetitle" width="100%">
+<tr class="toolbar">
+<td width="85%"><span id="appln" class="titlefont">&nbsp;&nbsp;&nbsp;&nbsp;Module Name: Chain Selection Rule<br>&nbsp;&nbsp;&nbsp;&nbsp;Data Model Path: <I>on_director.nsrm.chainset.chainselrule</I></span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;         
+       </td>
+</tr>
+</table>
+<hr>
+<table border="1" cellspacing="0" cellpadding="4" class="pagetitle" width="100%">
+<tr class="subhead">
+<th>Name</th><th>Node Type</th><th>Data Type</th><th>Mandatory</th><th>R/W</th><th>Details</th><th>Defaults</th>
+</tr>
+<tr>
+<td>Chain Selection Rule Name</td><td>Scalar Variable</td><td>String</td><td>yes</td><td>RW</td><td><b>Description: </b>Chain Selection Rule Name<br>
+<b>Range: </b> - 0 - 128<br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Rule Location</td><td>Scalar Variable</td><td>String</td><td>yes</td><td>RW</td><td><b>Description: </b>location at which rule is to be put<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br> - FIRST<br> - LAST<br> - BEFORE<br> - AFTER<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Relative Name</td><td>Scalar Variable</td><td>String</td><td>No</td><td>RW</td><td><b>Description: </b>Name of the relative selection rule.<br>
+<b>Range: </b> - 0 - 128<br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Source MAC Type</td><td>Scalar Variable</td><td>String</td><td>No</td><td>RW</td><td><b>Description: </b>Source MAC Address Type<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br> - Any<br> - Single<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Source MAC</td><td>Scalar Variable</td><td>String</td><td>No</td><td>RW</td><td><b>Description: </b>Source MAC Address<br>
+<b>Range: </b> - 11 - 17<br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Destination MAC Type</td><td>Scalar Variable</td><td>String</td><td>No</td><td>RW</td><td><b>Description: </b>Destination MAC Address Type<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br> - Any<br> - Single<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Destination MAC</td><td>Scalar Variable</td><td>String</td><td>No</td><td>RW</td><td><b>Description: </b>Destination MAC Address<br>
+<b>Range: </b> - 11 - 17<br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Ethernet Type</td><td>Scalar Variable</td><td>String</td><td>No</td><td>RW</td><td><b>Description: </b>Ethernet Type<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br> - Any<br> - Single<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Ethernet Type Value</td><td>Scalar Variable</td><td>String</td><td>No</td><td>RW</td><td><b>Description: </b>Ethernet Type Value<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Source IP Type</td><td>Scalar Variable</td><td>String</td><td>No</td><td>RW</td><td><b>Description: </b>Source IP Address Type<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br> - Any<br> - Single<br> - Range<br> - Subnet<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Source IP Start</td><td>Scalar Variable</td><td>IP Address</td><td>No</td><td>RW</td><td><b>Description: </b>Source IP Start<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Source IP End</td><td>Scalar Variable</td><td>IP Address</td><td>No</td><td>RW</td><td><b>Description: </b>Source IP End<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Destination IP Type</td><td>Scalar Variable</td><td>String</td><td>No</td><td>RW</td><td><b>Description: </b>Destination IP Address Type<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br> - Any<br> - Single<br> - Range<br> - Subnet<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Destination IP Start</td><td>Scalar Variable</td><td>IP Address</td><td>No</td><td>RW</td><td><b>Description: </b>Destination IP Start<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Destination IP End</td><td>Scalar Variable</td><td>IP Address</td><td>No</td><td>RW</td><td><b>Description: </b>Destination IP End<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Source Port Type</td><td>Scalar Variable</td><td>String</td><td>No</td><td>RW</td><td><b>Description: </b>Source Port Type<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br> - Any<br> - Single<br> - Range<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Source Port Start</td><td>Scalar Variable</td><td>Unsigned Integer</td><td>No</td><td>RW</td><td><b>Description: </b>Source Port Start<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Source Port End</td><td>Scalar Variable</td><td>Unsigned Integer</td><td>No</td><td>RW</td><td><b>Description: </b>Source Port End<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Destination Port Type</td><td>Scalar Variable</td><td>String</td><td>No</td><td>RW</td><td><b>Description: </b>Destination Port Type<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br> - Any<br> - Single<br> - Range<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Destination Port Start</td><td>Scalar Variable</td><td>Unsigned Integer</td><td>No</td><td>RW</td><td><b>Description: </b>Destination Port Start<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Destination Port End</td><td>Scalar Variable</td><td>Unsigned Integer</td><td>No</td><td>RW</td><td><b>Description: </b>Destination Port End<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Protocol</td><td>Scalar Variable</td><td>Unsigned Integer</td><td>No</td><td>RW</td><td><b>Description: </b>Protocol<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Chain Name</td><td>Scalar Variable</td><td>String</td><td>yes</td><td>RW</td><td><b>Description: </b>Network Service Chain Name<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>Enabled</td><td>Scalar Variable</td><td>Boolean</td><td>No</td><td>RW</td><td><b>Description: </b>Enable Status<br>
+<b>Range: </b> -  - <br>
+<b>Enum: </b>
+<br>
+</td><td> - </td>
+</tr>
+</table>
+</body>
+</html>

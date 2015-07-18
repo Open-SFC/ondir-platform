@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/* 
+ *
+ * Copyright  2012, 2013  Freescale Semiconductor
+ *
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+*/
+
+/*
+ *
+ * File name: mcastdm.xml
+ * Author: Freescale Semiconductor
+ * Date:   19/05/2014
+ * Description: 
+ * 
+ */
+-->
+<DataModel ModuleName="mcast" Version="3.4" schemaVersion="3.0">
+     <InstallPath>on_director.namespace.apps.mcast</InstallPath>
+	 <DataModelNode>
+                 <InstallPath>mcastgroup</InstallPath>
+                 <Name>mcastgroup</Name>
+                 <FriendlyName>Multicast Group Address</FriendlyName>
+                 <NodeID />
+                 <Description>Muticast IP Address.</Description>
+                 <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+                 <StorageFileName>NULL</StorageFileName>
+                 <NodeAttributes>
+                                <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+                                <Visible>TRUE</Visible>
+                                <IsKey>TRUE</IsKey>
+                                <Mandatory>TRUE</Mandatory>
+                                <OrderedTable>FALSE</OrderedTable>
+                                <PriorityNode>FALSE</PriorityNode>
+                                <NotifyChange>TRUE</NotifyChange>
+                                <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+                                <RebootOnChange>FALSE</RebootOnChange>
+                                <StickyToParent>FALSE</StickyToParent>
+                                <SaveInParentDir>TRUE</SaveInParentDir>
+                                <NonConfigLeafNode>FALSE</NonConfigLeafNode>
+                                <AccessControl>CM_ACCESS_ALL</AccessControl>
+                                <GroupedScalar>FALSE</GroupedScalar>
+                                <GlobalTrans>FALSE</GlobalTrans>
+                                <UseParentTrans>FALSE</UseParentTrans>
+                 </NodeAttributes>
+                 <DataAttributes>
+                                <DataType>CM_DATA_TYPE_STRING</DataType>
+                                <Type>CM_DATA_ATTRIB_NONE</Type>
+                                <DataAttrib/>
+                 </DataAttributes>
+        </DataModelNode>
+
+     <DataModelNode>
+         <InstallPath>srcipaddress</InstallPath>
+         <Name>srcipaddress</Name>
+         <FriendlyName>Source IP Address</FriendlyName>
+         <NodeID/>
+         <Description>Source IP Address</Description>
+         <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+         <StorageFileName>NULL</StorageFileName>
+         <NodeAttributes>
+             <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+             <Visible>TRUE</Visible>
+             <IsKey>FALSE</IsKey>
+             <Mandatory>TRUE</Mandatory>
+             <OrderedTable>FALSE</OrderedTable>
+             <PriorityNode>FALSE</PriorityNode>
+             <NotifyChange>TRUE</NotifyChange> 
+             <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+             <RebootOnChange>FALSE</RebootOnChange>
+             <StickyToParent>FALSE</StickyToParent>
+             <SaveInParentDir>FALSE</SaveInParentDir>
+             <NonConfigLeafNode>FALSE</NonConfigLeafNode>
+             <AccessControl>CM_ACCESS_ALL</AccessControl>
+             <GroupedScalar>FALSE</GroupedScalar>
+             <GlobalTrans>FALSE</GlobalTrans>
+             <UseParentTrans>FALSE</UseParentTrans>
+         </NodeAttributes>
+         <DataAttributes>
+             <DataType>CM_DATA_TYPE_STRING</DataType>
+                                <Type>CM_DATA_ATTRIB_NONE</Type>
+                                <DataAttrib/>
+         </DataAttributes>
+    </DataModelNode>
+
+    <DataModelNode>
+                 <InstallPath>viface</InstallPath>
+                 <Name>viface</Name>
+                 <FriendlyName>In Interface</FriendlyName>
+                 <NodeID />
+                 <Description>In Interface name</Description>
+                 <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+                 <StorageFileName>NULL</StorageFileName>
+                 <NodeAttributes>
+                                <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+                                <Visible>TRUE</Visible>
+                                <IsKey>FALSE</IsKey>
+                                <Mandatory>FALSE</Mandatory>
+                                <OrderedTable>FALSE</OrderedTable>
+                                <PriorityNode>FALSE</PriorityNode>
+                                <NotifyChange>TRUE</NotifyChange>
+                                <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+                                <RebootOnChange>FALSE</RebootOnChange>
+                                <StickyToParent>FALSE</StickyToParent>
+                                <SaveInParentDir>TRUE</SaveInParentDir>
+                                <NonConfigLeafNode>FALSE</NonConfigLeafNode>
+                                <AccessControl>CM_ACCESS_ALL</AccessControl>
+                                <GroupedScalar>FALSE</GroupedScalar>
+                                <GlobalTrans>FALSE</GlobalTrans>
+                                <UseParentTrans>FALSE</UseParentTrans>
+                 </NodeAttributes>
+                 <DataAttributes>
+                                <DataType>CM_DATA_TYPE_STRING</DataType>
+                                <Type>CM_DATA_ATTRIB_NONE</Type>
+                                <DataAttrib/>
+                 </DataAttributes>
+     </DataModelNode>
+  
+     <DataModelNode>
+                 <InstallPath>out_ifaces</InstallPath>
+                 <Name>out_ifaces</Name>
+                 <FriendlyName>Out Interfaces</FriendlyName>
+                 <NodeID />
+                 <Description>Out Interface names</Description>
+                 <SaveDirName>CM_CONFIG_DIR</SaveDirName>
+                 <StorageFileName>NULL</StorageFileName>
+                 <NodeAttributes>
+                                <NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+                                <Visible>TRUE</Visible>
+                                <IsKey>FALSE</IsKey>
+                                <Mandatory>FALSE</Mandatory>
+                                <OrderedTable>FALSE</OrderedTable>
+                                <PriorityNode>FALSE</PriorityNode>
+                                <NotifyChange>TRUE</NotifyChange>
+                                <NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+                                <RebootOnChange>FALSE</RebootOnChange>
+                                <StickyToParent>FALSE</StickyToParent>
+                                <SaveInParentDir>TRUE</SaveInParentDir>
+                                <NonConfigLeafNode>FALSE</NonConfigLeafNode>
+                                <AccessControl>CM_ACCESS_ALL</AccessControl>
+                                <GroupedScalar>FALSE</GroupedScalar>
+                                <GlobalTrans>FALSE</GlobalTrans>
+                                <UseParentTrans>FALSE</UseParentTrans>
+                 </NodeAttributes>
+                 <DataAttributes>
+                                <DataType>CM_DATA_TYPE_STRING</DataType>
+                                <Type>CM_DATA_ATTRIB_NONE</Type>
+                                <DataAttrib/>
+                 </DataAttributes>
+        </DataModelNode>
+
+ </DataModel>

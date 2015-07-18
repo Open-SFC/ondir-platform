@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.groups.group</dmpath>
+ <breadcrumb>Not Available &gt; Groups</breadcrumb>
+ <help src="ucmgroup.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="365" name="type" lbl="Group Type" type="STR" mand="yes">
+  <list>
+    <item name="All" value="all"/>
+    <item name="Select" value="select"/>
+    <item name="Indirect" value="indirect"/>
+    <item name="Fast fail over" value="fastfailover"/>
+  </list>
+ </obj>
+ <obj oid="366" name="group_id" lbl="Group ID" type="UINT" key="yes" mand="yes">
+ </obj>
+ <obj oid="368" name="bucket_count" lbl="Number of Buckets" type="UINT">
+ </obj>
+ <obj oid="369" name="bucketinfo" lbl="Bucket Information" type="STR" defVal="">
+ </obj>
+ <obj oid="370" name="action_count" lbl="Number of Actions" type="UINT">
+ </obj>
+ <obj oid="371" name="actioninfo" lbl="Action Information" type="STR" defVal="">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Group ID">
+     <objref oid="366"/>
+   </col>
+   <col name="Group Type">
+     <objref oid="365"/>
+   </col>
+   <col name="Number of Buckets">
+     <objref oid="368"/>
+   </col>
+   <col name="Bucket Information">
+     <objref oid="369"/>
+   </col>
+   <col name="Number of Actions">
+     <objref oid="370"/>
+   </col>
+   <col name="Action Information">
+     <objref oid="371"/>
+   </col>
+   <col name="">
+     <btn name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+   </col>
+   <link name="Add Record" ptx="y" opcode="ADD" spg="frm_meta.xsl"   mtpath="group_MetaData.xml"  pkeys="datapathid+UINT64$$215,|" />
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="group_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="group_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="366"/>
+  <field oid="365" name="lstgrp-1" type="list">
+  </field>
+  <grp  name="bucket"  style="portrait"  act="expcol"  clr="no"  showMore="yes"  title="Bucket"   mtpath="bucket_MetaData.xml"  pkeys="datapathid+UINT64$$215,|group_id+UINT$$366,|"  dmpath="on_director.datapath{0}.groups.group{0}.bucket" >
+  </grp>
+  <btn lbl="Apply" type="submit" mtpath="group_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl" action="COMMIT"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

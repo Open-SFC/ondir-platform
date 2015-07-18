@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIModel schemaVersion="3.0">
+  <title>Namespace ID to Datapath ID</title>
+  <DMPath>on_director.nem.nsid2dpid</DMPath>
+
+  <Component type="TABLE" title="Namespace ID to Datapath ID">
+    <GroupNodes name="nsid" title="Namespace ID" type="coloumn">
+        <DMNode path="nsid" label="Namespace ID" type="INT"/>   
+    </GroupNodes>
+    <GroupNodes name="dpnsid" title="Datapath Namespace ID" type="coloumn">
+        <DMNode path="dpnsid" label="Datapath Namespace ID" type="INT"/>   
+    </GroupNodes>
+    <GroupNodes name="dpid" title="Datapath ID" type="coloumn">
+        <DMNode path="dpid" label="Datapath ID" type="UINT64"/>   
+    </GroupNodes>
+       
+    <!--GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Roles" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+    </GroupNodes>
+    <link name="Add"/-->
+    <link name="Next"/>
+    <link name="Previous"/>
+  </Component>
+  
+  <Component type="Form" title="Namespace ID to Datapath ID"> 
+    <!--DMNode path="nsid" label="Namespace ID"/>
+    <DMNode path="dpnsid" label="Datapath Namespace ID"/>
+    <DMNode path="dpid" label="Datapath ID"/>     
+    
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/-->
+  </Component> 
+
+</UIModel>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>Log Settings</title>
+  <DMPath>on_director.trace</DMPath>
+  
+  <Component type="Form" frmType="grpscalar" title="Log Settings"> 
+    <Component type="list" path="module" name="lstgrp-1" label="Module"/>
+    <Component type="list" path="level" name="lstgrp-2" label="Log Level"/>
+    <!--Component type="checkbox" path="ipsec_redside_frag" name="lstgrp-3" label="IPSEC Redside Fragmentation"/-->
+
+    <Button name="EDIT" label="Apply" sredirect="frm_meta.xsl" fredirect ="frm_meta.xsl" action=""/>
+  </Component> 
+</UIModel>
+

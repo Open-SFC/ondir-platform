@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.auxchannels</dmpath>
+ <breadcrumb>Not Available &gt; Auxiliary Channels</breadcrumb>
+ <help src="ucmauxchannels.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="321" name="auxliaryid" lbl="Auxiliary Channel ID" type="INT" key="yes" mand="yes">
+ </obj>
+ <obj oid="322" name="peerip" lbl="Peer IP Address" type="IPADDR">
+   <range>0-0</range>
+ </obj>
+ <obj oid="323" name="localip" lbl="Local IP Address" type="IPADDR">
+   <range>0-0</range>
+ </obj>
+ <obj oid="324" name="peerport" lbl="Peer Port" type="INT">
+ </obj>
+ <obj oid="325" name="localport" lbl="Local Port" type="INT">
+ </obj>
+ <obj oid="326" name="rxbytes" lbl="Received Bytes" type="UINT64">
+ </obj>
+ <obj oid="327" name="txbytes" lbl="Transmitted Bytes" type="UINT64">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Auxiliary Channel ID">
+     <objref oid="321"/>
+   </col>
+   <col name="Peer IP Address">
+     <objref oid="322"/>
+   </col>
+   <col name="Local IP Address">
+     <objref oid="323"/>
+   </col>
+   <col name="Peer Port">
+     <objref oid="324"/>
+   </col>
+   <col name="Local Port">
+     <objref oid="325"/>
+   </col>
+   <col name="Received Bytes">
+     <objref oid="326"/>
+   </col>
+   <col name="Transmitted Bytes">
+     <objref oid="327"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="auxchannels_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="auxchannels_MetaData.xml"/>
+     <btn name="refresh" lbl="Refresh" type="refresh"   mtpath="auxchannels_MetaData.xml" spg="tbl_meta.xsl"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="321"/>
+   <field     oid="322"/>
+   <field     oid="323"/>
+   <field     oid="324"/>
+   <field     oid="325"/>
+   <field     oid="326"/>
+   <field     oid="327"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

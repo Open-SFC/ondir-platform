@@ -1,0 +1,59 @@
+#/************************************************************************ */
+#/*   File            : makefile                                           */
+#/*   Purpose         : Project for files to compile HTTPD for             */
+#/*                     Processors.                                        */
+#/*   Date            :                                                    */   
+#/*------------------------------------------------------------------------*/
+
+CM_DIR = ../../../..
+
+include $(CM_DIR)/rules.mod.switch
+
+HTTP_DIR = $(cminfra_dir)/http
+
+HTTPD_PORT_LX_DIR = $(HTTP_DIR)/porting/lx
+HTTPD_BASIC_DIR = ../../../basic
+HTTPD_PORT_LX_US_DIR = $(HTTPD_PORT_LX_DIR)/uspace
+#OPENSRC_DIR = $(CM_DIR)/modules/include/openssl
+OPENSRC_DIR = $(ext_dir)/openssl-1.0.0/include/openssl
+HTTP_OBJ_DIR  = $(switch_cminfra_obj_dir)
+OBJDIR  = $(HTTP_OBJ_DIR)
+
+include $(HTTP_DIR)/basic/includes.lcl
+HTTP_USPACE_TARGET = $(HTTP_OBJ_DIR)/htpuspace.o
+HTTP_WRAP_TARGET = $(HTTP_OBJ_DIR)/httpwrap.o
+
+#LOCAL_INCLUDES += -I $(INC_UCFALGS) 
+#LOCAL_INCLUDES += -I $(USRFLAGS) $(INC_UCFLAGS) 
+
+LOCAL_INCLUDES += -I $(OPENSRC_DIR) \
+	-I $(HTTPD_BASIC_DIR)/include
+
+#SOURCE = $(wildcard *.c)
+#OBJS  = $(SOURCE:%.c=$(HTTP_OBJ_DIR)/%.o) 
+
+$(HTTP_OBJ_DIR)/%.o: %.c 
+	$(CC) -c -o $@ $< $(CFLAGS)
+HTTP_WRAP_OBJS = basic_httphref.o basic_httpinit.o httpswrp.o httpwrp.o
+OBJDIR = $(HTTP_OBJ_DIR)
+OBJS = $(HTTP_WRAP_OBJS:%=$(OBJDIR)/%)
+
+HTTPUSPACE_OBJS=$(HTTP_OBJ_DIR)/basic_httpinit.o
+HTTPUSPACE_OBJS += $(HTTP_OBJ_DIR)/basic_httphref.o
+HTTPWRP_OBJS=$(HTTP_OBJ_DIR)/httpwrp.o\
+	$(HTTP_OBJ_DIR)/httpswrp.o
+
+all: $(HTTP_USPACE_TARGET) $(HTTP_WRAP_TARGET)
+
+$(HTTP_WRAP_TARGET): $(HTTPWRP_OBJS)
+	  $(LD) $(LDOPTS) $(HTTPWRP_OBJS) -o $(HTTP_WRAP_TARGET)
+		 
+$(HTTP_USPACE_TARGET): $(HTTPUSPACE_OBJS)
+	  $(LD) $(LDOPTS) $(HTTPUSPACE_OBJS) -o $(HTTP_USPACE_TARGET)
+
+clean:
+	$(RM) $(HTTP_USPACE_TARGET)
+	$(RM) $(HTTP_WRAP_TARGET)
+	$(RM) $(OBJS)
+
+#include $(CM_DIR)/$(PROD_DIR)/rules.inc

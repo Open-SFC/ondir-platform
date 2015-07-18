@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.crm.nwsideports</dmpath>
+ <breadcrumb>Not Available &gt; Network Ports</breadcrumb>
+ <help src="ucmnwsideports.htm" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="602" name="portname" lbl="Port Name" type="STR" key="yes" mand="yes" defVal="">
+   <range>1-16</range>
+ </obj>
+ <obj oid="603" name="porttype" lbl="Port Type" type="STR">
+ </obj>
+ <obj oid="604" name="portid" lbl="Port Id" type="INT">
+ </obj>
+ <obj oid="605" name="nwtype" lbl="Network Type" type="STR" mand="yes">
+  <list>
+    <item name="Vx LAN" value="VXLAN_TYPE"/>
+  </list>
+ </obj>
+ <obj oid="606" name="switchname" lbl="Switch Name" type="STR" mand="yes">
+ </obj>
+ <obj oid="607" name="bridgename" lbl="Bridge Name" type="STR" mand="yes">
+ </obj>
+ <obj oid="608" name="vxlan_vni" lbl="Vx LAN Id" type="UINT" mand="yes">
+ </obj>
+ <obj oid="609" name="vxlan_serviceport" lbl="Vx LAN Service Port" type="UINT" mand="yes">
+ </obj>
+ <obj oid="610" name="remoteip" lbl="Remote IP" type="IPADDR" mand="yes">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Port Name">
+     <objref oid="602"/>
+   </col>
+   <col name="Port Type">
+     <objref oid="603"/>
+   </col>
+   <col name="Port Id">
+     <objref oid="604"/>
+   </col>
+   <col name="Network Type">
+     <objref oid="605"/>
+   </col>
+   <col name="Switch Name">
+     <objref oid="606"/>
+   </col>
+   <col name="Bridge Name">
+     <objref oid="607"/>
+   </col>
+   <col name="Vx LAN Id">
+     <objref oid="608"/>
+   </col>
+   <col name="Vx LAN Service Port">
+     <objref oid="609"/>
+   </col>
+   <col name="Remote IP">
+     <objref oid="610"/>
+   </col>
+   <col name="">
+     <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+     <btn name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+   </col>
+   <link name="Add Record" opcode="ADD" spg="frm_meta.xsl" mtpath="nwsideports_MetaData.xml"/>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="nwsideports_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="nwsideports_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="602"/>
+   <field     oid="603"/>
+   <field     oid="604"/>
+  <field oid="605" name="lstgrp-1" type="list">
+  </field>
+   <field     oid="606"/>
+   <field     oid="607"/>
+   <field     oid="608"/>
+   <field     oid="609"/>
+   <field     oid="610"/>
+  <btn lbl="Apply" type="submit" mtpath="nwsideports_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

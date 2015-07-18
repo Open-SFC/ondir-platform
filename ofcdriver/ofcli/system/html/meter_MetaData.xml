@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.meters.meter</dmpath>
+ <breadcrumb>Not Available &gt; Meter</breadcrumb>
+ <help src="ucmmeter.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="400" name="meterid" lbl="Meter ID" type="UINT" key="yes" mand="yes">
+ </obj>
+ <obj oid="401" name="metertype" lbl="Meter Type" type="STR" mand="yes">
+  <list>
+    <item name="Rate Kilo Bit Per Second" value="OFPMF_KBPS"/>
+    <item name="Rate Packet Per Second" value="OFPMF_PKTPS"/>
+    <item name="Do Burst Size" value="OFPMF_BURST"/>
+    <item name="Collect Statistics" value="OFPMF_STATS"/>
+  </list>
+ </obj>
+ <obj oid="403" name="bandtype" lbl="" type="STR">
+ </obj>
+ <obj oid="404" name="bandinfo" lbl="" type="STR">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Meter ID">
+     <objref oid="400"/>
+   </col>
+   <col name="Meter Type">
+     <objref oid="401"/>
+   </col>
+   <col name="Bands">
+     <link name="Meter Bands" mtpath="mtrbands_MetaData.xml" instancekey="mtrbands" target="new" spg="tbl_meta.xsl"/>
+   </col>
+   <col name="">
+     <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+     <btn name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+   </col>
+   <link name="Add Record" ptx="y" opcode="ADD" spg="frm_meta.xsl"   mtpath="meter_MetaData.xml"  pkeys="datapathid+UINT64$$215,|" />
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="meter_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="meter_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="400"/>
+  <field oid="401" name="lstgrp-1" type="list">
+  </field>
+  <grp  name="mtrbands"  style="portrait"  act="expcol"  clr="no"  showMore="yes"  title="Bands"   mtpath="mtrbands_MetaData.xml"  pkeys="datapathid+UINT64$$215,|meterid+UINT$$400,|"  dmpath="on_director.datapath{0}.meters.meter{0}.bands" >
+  </grp>
+  <btn lbl="Apply" type="submit" mtpath="meter_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl" action="COMMIT"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

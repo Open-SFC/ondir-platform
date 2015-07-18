@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.queue_config</dmpath>
+ <breadcrumb>Not Available &gt; Queue Configuration</breadcrumb>
+ <help src="ucmqueue_config.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="357" name="port" lbl="Port ID" type="UINT" key="yes" mand="yes">
+ </obj>
+ <obj oid="358" name="portproperty" lbl="Port Property" type="STR">
+ </obj>
+ <obj oid="359" name="queue_count" lbl="Number of Queues" type="UINT">
+ </obj>
+ <obj oid="360" name="openflow_queue" lbl="Open Flow Queue ID" type="UINT">
+ </obj>
+ <obj oid="361" name="class_queue" lbl="Class Queue ID" type="UINT">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Port ID">
+     <objref oid="357"/>
+   </col>
+   <col name="Port Property">
+     <objref oid="358"/>
+   </col>
+   <col name="Number of Queues">
+     <objref oid="359"/>
+   </col>
+   <col name="Open Flow Queue ID">
+     <objref oid="360"/>
+   </col>
+   <col name="Class Queue ID">
+     <objref oid="361"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="queue_config_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="queue_config_MetaData.xml"/>
+     <btn name="refresh" lbl="Refresh" type="refresh"   mtpath="queue_config_MetaData.xml" spg="tbl_meta.xsl"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

@@ -1,0 +1,15 @@
+
+
+Install:
+ 1. make
+ 2. make install (if image to be run on same machine)
+	   cd /ofp
+		 sh ofp-start.sh 
+ 3. make image (if image to be run on other machine) 
+    copy OFP-Image.tgz to the machine, where image to be run.
+    untar  OFP-Image.tgz
+    cd ofp
+    sh ofp-install.sh
+    cd /ofp
+     sh ofp-start.sh 
+

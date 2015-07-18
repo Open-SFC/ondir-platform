@@ -1,0 +1,167 @@
+
+1. run ./ofcli
+################################################################################
+
+2. Device IP Address :
+   If controller system is local machine enter IP address as 0.
+   if configuring controller from remote machine enter controller's IP Address.
+	 user name = root
+	 password = root
+
+@intoto-desktop:/ofp/bin# ./ofcli 
+
+Device IP Address : 0
+
+UserName : root
+Password: 
+
+	     	*****************************************************
+				*             WELCOME TO Openflow SDN CLI        *
+				*****************************************************
+				* 				 Use 'help' command for commands help
+				*****************************************************
+			
+
+
+################################################################################
+3. Adding a Switch
+ofpsdn/>switch switch-100
+		   Entered into ADD context    
+ofpsdn/switch switch-100/>set type 1
+ofpsdn/switch switch-100/>set baddr 0
+ofpsdn/switch switch-100/>set fqdn mydomian.com
+ofpsdn/switch switch-100/>commit
+
+Session Committed successfully.
+
+
+
+################################################################################
+4. show switch
+ofpsdn/>show switch
+
+	{
+		 	name : switch-100
+			fqdn : mydomian.com			
+		 	type : 1
+			baddr : 0
+	}
+
+
+################################################################################
+5. adding a Domain
+ofpsdn/>domain domain-100
+   Entered into ADD context    
+ofpsdn/domain domain-100/>set subjectname ssss
+ofpsdn/domain domain-100/>commit
+
+	 Session Committed successfully.
+
+
+################################################################################
+6. Show Domain
+ofpsdn/>show domain
+	{
+	 	name : domain-100
+		subjectname : ssss
+		numoftables : 0
+	}No records exists for domaintable table
+
+
+
+################################################################################
+7. Adding a Domain Table
+ofpsdn/>cd domain{domain-100}
+ofpsdn/domain{domain-100}/>domaintable arpin
+									   Entered into ADD context    
+ofpsdn/domain{domain-100}/domaintable arpin/>set tableid 0
+ofpsdn/domain{domain-100}/domaintable arpin/>set numofmatchfields 1
+ofpsdn/domain{domain-100}/domaintable arpin/>commit
+
+										 Session Committed successfully.
+
+ofpsdn/domain{domain-100}/>domaintable session
+										   Entered into ADD context    
+ofpsdn/domain{domain-100}/domaintable session/>set tableid 1
+ofpsdn/domain{domain-100}/domaintable session/>set numofmatchfields 7
+ofpsdn/domain{domain-100}/domaintable session/>commit
+
+													 Session Committed successfully.
+															
+ofpsdn/domain{domain-100}/>domaintable routing
+									   Entered into ADD context    
+ofpsdn/domain{domain-100}/domaintable routing/>set tableid 2
+ofpsdn/domain{domain-100}/domaintable routing/>set numofmatchfields 2
+ofpsdn/domain{domain-100}/domaintable routing/>commit
+
+ofpsdn/domain{domain-100}/>domaintable arpout
+						   Entered into ADD context    
+ofpsdn/domain{domain-100}/domaintable arpout/>set tableid 3
+ofpsdn/domain{domain-100}/domaintable arpout/>set numofmatchfields 1
+ofpsdn/domain{domain-100}/domaintable arpout/>commit
+ Session Committed successfully.
+
+
+################################################################################
+7. Show  Domain Tables
+ofpsdn/domain{domain-100}/>show domaintable 
+
+	{
+	 	tablename : arpin
+	 	tableid : 0
+    numofmatchfields : 1
+	}
+Press Enter to continue ...
+
+	{
+		 	tablename : session
+		 	tableid : 1
+			numofmatchfields : 7
+	}
+	{
+		 	tablename : arpout
+			 	tableid : 3
+			numofmatchfields : 1
+	}
+	{
+		 	tablename : routing
+		 	tableid : 2
+  		numofmatchfields : 2
+	}
+Press Enter to continue ...
+
+
+################################################################################
+8. Adding a Datapath
+ofpsdn/>datapath 1
+    Entered into ADD context    
+ofpsdn/datapath 1/>set subjectname dddd
+ofpsdn/datapath 1/>set switch switch-100
+ofpsdn/datapath 1/>set domain domain-100
+ofpsdn/datapath 1/>commit
+
+Session Committed successfully.
+
+################################################################################
+9. Show Datapath
+
+ofpsdn/>show datapath 
+	{
+     subjectname : dddd
+		 datapathid : 1
+	}No records exists for port table
+
+
+################################################################################
+10. Getting Statistics (multipart )
+
+ofpsdn/>cd datapath{1}/
+ofpsdn/>datapath{1}/cd stats/
+ofpsdn/>datapath{1}/stats/show tablestats
+ofpsdn/>datapath{1}/stats/show portstats
+ofpsdn/>datapath{1}/stats/show flowstats
+ofpsdn/>datapath{1}/stats/show aggregatestats
+
+   This will display all  statistics.
+
+################################################################################

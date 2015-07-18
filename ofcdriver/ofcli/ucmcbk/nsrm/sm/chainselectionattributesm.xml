@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>Chain Selection Attributes</title>
+  <DMPath>on_director.nsrm.chainset{0}.chainselrule{0}.chainselectionattribute</DMPath>
+  <depends vrtlInst="name" filename="chainset.xml">Chainset</depends>
+  <useparenttx parentsm="chainselectionsm.xml" ppath="chainselrule"/>
+
+  <Component type="TABLE" title="Chain Selection Attributes">
+    <GroupNodes name="name" title="Attribute Name" type="coloumn">
+    	<DMNode path="name" label="Attribute Name" type="STR"/>
+    </GroupNodes>
+
+    <GroupNodes name="value" title="Attribute Value" type="coloumn">
+    	<DMNode path="value" label="Attribute Value" type="STR"/>
+    </GroupNodes>   
+        
+    <GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+    </GroupNodes>
+    <link name="Add"/>
+    <link name="Next"/>
+    <link name="Previous"/>
+  </Component>
+  
+  <Component type="Form" title="Chain Selection Attribute"> 
+    <DMNode path="name" label="Attribute Name"/>
+    <DMNode path="value" label="Attribute Value"/>   
+       
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/>
+  </Component> 
+
+</UIModel>
+

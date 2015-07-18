@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.channels</dmpath>
+ <breadcrumb>Not Available &gt; Channels</breadcrumb>
+ <help src="ucmchannels.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="315" name="peerip" lbl="Peer IP Address" type="IPADDR">
+   <range>0-0</range>
+ </obj>
+ <obj oid="316" name="localip" lbl="Local IP Address" type="IPADDR">
+   <range>0-0</range>
+ </obj>
+ <obj oid="317" name="peerport" lbl="Peer Port" type="INT">
+ </obj>
+ <obj oid="318" name="localport" lbl="Local Port" type="INT">
+ </obj>
+ <obj oid="319" name="rxbytes" lbl="Received Bytes" type="UINT64">
+ </obj>
+ <obj oid="320" name="txbytes" lbl="Transmitted Bytes" type="UINT64">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Local IP Address">
+     <objref oid="316"/>
+   </col>
+   <col name="Local Port">
+     <objref oid="318"/>
+   </col>
+   <col name="Received Bytes">
+     <objref oid="319"/>
+   </col>
+   <col name="Transmitted Bytes">
+     <objref oid="320"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="channels_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="channels_MetaData.xml"/>
+     <btn name="refresh" lbl="Refresh" type="refresh"   mtpath="channels_MetaData.xml" spg="tbl_meta.xsl"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="315"/>
+   <field     oid="316"/>
+   <field     oid="317"/>
+   <field     oid="318"/>
+   <field     oid="319"/>
+   <field     oid="320"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

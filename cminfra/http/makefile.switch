@@ -1,0 +1,39 @@
+#/************************************************************************ */
+#/*   File            : makefile                                           */
+#/*   Purpose         :                                                    */
+#/*   Date            :                                                    */   
+#/*------------------------------------------------------------------------*/
+
+#UCM_DIR = ../../..
+#include $(UCM_DIR)/$(PROD_DIR)/rules.mod
+
+#CM_DIR = ..
+CM_DIR = $(cminfra_dir)
+include $(CM_DIR)/rules.mod.switch
+
+HTTP_DIR        =  $(CM_DIR)/http
+HTTP_OBJ_DIR    =  $(HTTP_DIR)/obj
+
+all: makebasic makeporting makecfg
+
+makebasic:
+	make -C basic -f makefile.switch
+	make -C basic/httpscrt -f makefile.switch
+
+makeporting:
+	make -C porting/lx -f makefile.switch
+        
+makecfg:
+	make -C cfg -f makefile.switch
+
+clean: cleanbasic cleanporting cleancfg
+
+cleanbasic:
+	make -C basic -f makefile.switch clean
+	make -C basic/httpscrt -f makefile.switch clean
+
+cleanporting:
+	make -C porting/lx -f makefile.switch clean
+
+cleancfg:
+	make -C cfg -f makefile.switch clean

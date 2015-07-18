@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>Chainset</title>
+  <DMPath>on_director.nsrm.chainset</DMPath>
+
+  <Component type="TABLE" title="Chainset">
+    <GroupNodes name="name" title="Chainset Name" type="coloumn">
+        <DMNode path="name" label="Chainset Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="tenant" title="Tenant Name" type="coloumn">
+        <DMNode path="tenant" label="Tenant Name" type="STR"/>   
+    </GroupNodes>  
+    <GroupNodes name="type" title="Chainset Type" type="coloumn">
+        <DMNode path="type" label="Chainset Type" type="STR"/>   
+    </GroupNodes>       
+    <GroupNodes name="enabled" title="Enabled" type="coloumn">
+        <DMNode path="enabled" label="Enabled" type="STR"/>   
+    </GroupNodes>
+
+    <GroupNodes name="lnkGrp" title="Configuration" type="column">
+      <link name="Chain Selection Rules" spg ="tbl_meta.xsl" mtpath="chainselrule_MetaData.xml" instancekey="chainselrule" target="new"/>
+      <link name="Attributes" spg ="tbl_meta.xsl" mtpath="chainsetattribute_MetaData.xml" instancekey="chainsetattribute" target="new"/>      
+    </GroupNodes>
+       
+    <GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+      <!--Button name="Roles" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/-->
+    </GroupNodes>
+    <link name="Add"/>
+    <link name="Next"/>
+    <link name="Previous"/>
+  </Component>
+  
+  <Component type="Form" title="Chainset"> 
+    <DMNode path="name" label="Chainset Name"/>  
+    <Component type="list" path="tenant" name="lstgrp-1" label="Tenant Name" depends="name" file="tenantsm.xml"/> 
+    <Component type="list" path="type" name="lstgrp-2" label="Chainset Type"/>       
+    <Component type="checkbox" path="enabled" label="Enabled"/>    
+    
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/>
+  </Component> 
+
+</UIModel>
+

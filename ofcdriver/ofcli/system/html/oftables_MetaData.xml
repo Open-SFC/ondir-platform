@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.ttp{0}.oftables</dmpath>
+ <breadcrumb>Not Available &gt; OF Tables</breadcrumb>
+ <help src="ucmoftables.htm" />
+ <depends vrtlInst="ttpname" mtpath="ttp_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="538" name="tableid" lbl="" type="UINT" mand="yes">
+ </obj>
+ <obj oid="539" name="tablename" lbl="Table Name" type="STR" key="yes" mand="yes" defVal="">
+   <range>1-256</range>
+ </obj>
+ <obj oid="540" name="maxrows" lbl="Maximum Rows" type="UINT">
+ </obj>
+ <obj oid="541" name="maxcols" lbl="Maximum Columns" type="UINT">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Table Name">
+     <objref oid="539"/>
+   </col>
+   <col name="Maximum Rows">
+     <objref oid="540"/>
+   </col>
+   <col name="Maximum Columns">
+     <objref oid="541"/>
+   </col>
+   <col name="Configuration">
+     <link name="Match Fields" mtpath="matchfields_MetaData.xml" instancekey="matchfields" target="new" spg="tbl_meta.xsl"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="oftables_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="oftables_MetaData.xml"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

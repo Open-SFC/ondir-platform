@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.firewall.filterforward</dmpath>
+ <breadcrumb>Not Available &gt; Forward Filter</breadcrumb>
+ <help src="ucmfilterforward.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="303" name="tablename" lbl="Table Name" type="STR" key="yes" mand="yes" defVal="">
+   <range>1-1024</range>
+ </obj>
+ <obj oid="304" name="chainname" lbl="Chain Name" type="STR" defVal="">
+   <range>1-1024</range>
+ </obj>
+ <obj oid="305" name="sourceip" lbl="Source IP Address" type="IPADDR" key="yes">
+ </obj>
+ <obj oid="306" name="destip" lbl="Destination IP Address" type="IPADDR">
+ </obj>
+ <obj oid="307" name="protocol" lbl="Protocol" type="INT">
+ </obj>
+ <obj oid="308" name="sourceport" lbl="Source Port" type="INT">
+ </obj>
+ <obj oid="309" name="destport" lbl="Destination Port" type="INT">
+ </obj>
+ <obj oid="310" name="inifacename" lbl="In Interface" type="STR" defVal="">
+   <range>1-1024</range>
+ </obj>
+ <obj oid="311" name="outifacename" lbl="Out Interface" type="STR" defVal="">
+   <range>1-1024</range>
+ </obj>
+ <obj oid="312" name="action" lbl="Action Name" type="STR" defVal="">
+   <range>1-1024</range>
+ </obj>
+ <obj oid="313" name="rulePosition" lbl="Rule Position" type="INT">
+ </obj>
+ <obj oid="314" name="flow_priority" lbl="Flow Priority" type="INT">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Table Name">
+     <objref oid="303"/>
+   </col>
+   <col name="Chain Name">
+     <objref oid="304"/>
+   </col>
+   <col name="Source IP Address">
+     <objref oid="305"/>
+   </col>
+   <col name="Destination IP Address">
+     <objref oid="306"/>
+   </col>
+   <col name="Protocol">
+     <objref oid="307"/>
+   </col>
+   <col name="Source Port">
+     <objref oid="308"/>
+   </col>
+   <col name="Destination Port">
+     <objref oid="309"/>
+   </col>
+   <col name="In Interface">
+     <objref oid="310"/>
+   </col>
+   <col name="Out Interface">
+     <objref oid="311"/>
+   </col>
+   <col name="Action Name">
+     <objref oid="312"/>
+   </col>
+   <col name="Rule Position">
+     <objref oid="313"/>
+   </col>
+   <col name="Flow Priority">
+     <objref oid="314"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="filterforward_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="filterforward_MetaData.xml"/>
+     <btn name="refresh" lbl="Refresh" type="refresh"   mtpath="filterforward_MetaData.xml" spg="tbl_meta.xsl"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

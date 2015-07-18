@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.ttp</dmpath>
+ <breadcrumb>Not Available &gt; Table Type Pattern</breadcrumb>
+ <help src="ucmttp.htm" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="533" name="ttpname" lbl="Table Type Pattern Name" type="STR" key="yes" mand="yes" defVal="">
+   <range>1-256</range>
+ </obj>
+ <obj oid="534" name="numoftables" lbl="Number of Tables" type="UINT">
+ </obj>
+ <obj oid="535" name="numofdomains" lbl="Number of Domains" type="UINT">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Table Type Pattern Name">
+     <objref oid="533"/>
+   </col>
+   <col name="Number of Tables">
+     <objref oid="534"/>
+   </col>
+   <col name="Number of Domains">
+     <objref oid="535"/>
+   </col>
+   <col name="Configuration">
+     <link name="OF Tables" mtpath="oftables_MetaData.xml" instancekey="oftables" target="new" spg="tbl_meta.xsl"/>
+     <link name="Domains" mtpath="domains_MetaData.xml" instancekey="domains" target="new" spg="tbl_meta.xsl"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="ttp_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="ttp_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

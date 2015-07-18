@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIModel schemaVersion="3.0">
+  <title>Datapath ID to PETH</title>
+  <DMPath>on_director.nem.dpid2peth</DMPath>
+
+  <Component type="TABLE" title="Datapath ID to PETH">
+    <GroupNodes name="dpid" title="Datapath ID" type="coloumn">
+        <DMNode path="dpid" label="Datapath ID" type="INT"/>   
+    </GroupNodes>
+    <GroupNodes name="pethname" title="PETH Interface Name" type="coloumn">
+        <DMNode path="pethname" label="PETH Interface Name" type="INT"/>   
+    </GroupNodes>
+    <GroupNodes name="portname" title="Port Name" type="coloumn">
+        <DMNode path="portname" label="Port Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="portid" title="Port ID" type="coloumn">
+        <DMNode path="portid" label="Port ID" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="nsid" title="Namespace ID" type="coloumn">
+        <DMNode path="nsid" label="Namespace ID" type="STR"/>   
+    </GroupNodes>
+       
+    <!--GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Roles" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+    </GroupNodes>
+    <link name="Add"/-->
+    <link name="Next"/>
+    <link name="Previous"/>
+  </Component>
+  
+  <Component type="Form" title="Datapath ID to PETH">
+    <!--DMNode path="dpid" label="Datapath ID"/> 
+    <DMNode path="pethname" label="PETH Interface Name"/>
+    <DMNode path="portname" label="Port Name"/> 
+    <DMNode path="portid" label="Port ID"/>
+    <DMNode path="nsid" label="Namespace ID"/>    
+    
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/-->
+  </Component> 
+
+</UIModel>
+

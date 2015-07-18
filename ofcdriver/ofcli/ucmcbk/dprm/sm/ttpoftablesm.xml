@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>OF Tables</title>
+  <DMPath>on_director.ttp{0}.oftables</DMPath>
+  <depends vrtlInst="ttpname" filename="ttpdm.xml">ttp</depends>
+
+  <Component type="TABLE" title="OF Tables">
+    <!--GroupNodes name="tableid" title="Table ID" type="coloumn">
+        <DMNode path="tableid" label="Table ID" type="UINT"/>   
+    </GroupNodes-->
+    <GroupNodes name="tablename" title="Table Name" type="coloumn">
+        <DMNode path="tablename" label="Table Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="maxrows" title="Maximum Rows" type="coloumn">
+       <DMNode path="maxrows" label="Maximum Rows" type="UINT"/>
+    </GroupNodes>
+    <GroupNodes name="maxcols" title="Maximum Columns" type="coloumn"> 
+        <DMNode path="maxcols" label="Maximum Columns" type="UINT"/> 
+    </GroupNodes>  
+      
+    <GroupNodes name="lnkGrp" title="Configuration" type="column">
+      <link name="Match Fields" spg ="tbl_meta.xsl" mtpath="matchfields_MetaData.xml" instancekey="matchfields" target="new"/>      
+    </GroupNodes>
+
+    <!--GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/-->
+      <!--Button name="Roles" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/-->
+    <!--/GroupNodes-->
+    <!--link name="Add"/-->
+    <link name="Next"/>
+    <link name="Previous"/>
+    <Button type="close" name="close" label="Close"/>
+  </Component>
+  
+  <Component type="Form" title="OF Tables"> 
+    <!--DMNode path="tableid" label="Table ID"/>         
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/-->
+  </Component> 
+
+</UIModel>
+

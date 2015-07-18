@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.ttp{0}.domains</dmpath>
+ <breadcrumb>Not Available &gt; Domains</breadcrumb>
+ <help src="ucmdomains.htm" />
+ <depends vrtlInst="ttpname" mtpath="ttp_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="542" name="domainname" lbl="Domain Name" type="STR" key="yes" mand="yes" defVal="">
+   <range>1-256</range>
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Domain Name">
+     <objref oid="542"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="domains_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="domains_MetaData.xml"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

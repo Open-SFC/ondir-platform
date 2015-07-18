@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.stats.tablefeatures</dmpath>
+ <breadcrumb>Not Available &gt; Table Features</breadcrumb>
+ <help src="ucmtablefeatures.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="471" name="length" lbl="" type="UINT">
+ </obj>
+ <obj oid="472" name="id" lbl="Table ID" type="UINT">
+ </obj>
+ <obj oid="473" name="name" lbl="Table Name" type="STR" key="yes" mand="yes" defVal="">
+   <range>1-32</range>
+ </obj>
+ <obj oid="474" name="metadata_match" lbl="Metadata Match" type="UINT64">
+ </obj>
+ <obj oid="475" name="metadata_write" lbl="Metadata Write" type="UINT64">
+ </obj>
+ <obj oid="476" name="config" lbl="Config" type="UINT">
+ </obj>
+ <obj oid="477" name="max_entries" lbl="Maximum Entries" type="UINT64">
+ </obj>
+ <obj oid="478" name="no_of_flow_inst" lbl="Number of flow instructions" type="UINT">
+ </obj>
+ <obj oid="479" name="flow_instructions" lbl="Flow instructions" type="UINT">
+ </obj>
+ <obj oid="480" name="no_of_miss_inst" lbl="Number of miss instructions" type="UINT">
+ </obj>
+ <obj oid="481" name="miss_entry_instructions" lbl="Miss instructions" type="UINT">
+ </obj>
+ <obj oid="482" name="no_of_next_tbl" lbl="Number of next tables" type="UINT">
+ </obj>
+ <obj oid="483" name="next_tbl" lbl="Next tables" type="UINT">
+ </obj>
+ <obj oid="484" name="no_of_next_tbls_for_miss" lbl="Number of next miss tables" type="UINT">
+ </obj>
+ <obj oid="485" name="next_tbl_for_flow_miss" lbl="Next miss tables" type="UINT">
+ </obj>
+ <obj oid="486" name="no_of_write_actns" lbl="Number of write actions" type="UINT">
+ </obj>
+ <obj oid="487" name="flow_entry_write_actns" lbl="Write actions" type="UINT">
+ </obj>
+ <obj oid="488" name="no_of_write_actns_4_miss" lbl="Number of write actions missed" type="UINT">
+ </obj>
+ <obj oid="489" name="miss_entry_write_actns" lbl="Write actions missed" type="UINT">
+ </obj>
+ <obj oid="490" name="no_of_apply_actns" lbl="Number of apply actions" type="UINT">
+ </obj>
+ <obj oid="491" name="flow_entry_apply_actns" lbl="flow entry apply actions" type="UINT">
+ </obj>
+ <obj oid="492" name="no_of_apply_actns_4_miss" lbl="Number of apply actions miss" type="UINT">
+ </obj>
+ <obj oid="493" name="miss_entry_apply_actns" lbl="Apply actions missed" type="UINT">
+ </obj>
+ <obj oid="494" name="no_of_match_fields" lbl="Number of match fields" type="UINT">
+ </obj>
+ <obj oid="495" name="match_field_info" lbl="Match fields info" type="UINT">
+ </obj>
+ <obj oid="496" name="no_of_wildcard_fields" lbl="Number of wildcard fields info" type="UINT">
+ </obj>
+ <obj oid="497" name="wildcard_field_info" lbl="Wildcard fields info" type="UINT">
+ </obj>
+ <obj oid="498" name="no_of_wr_set_fields" lbl="Number of set fields for write action" type="UINT">
+ </obj>
+ <obj oid="499" name="flow_wr_set_field_info" lbl="Set field info for write action" type="UINT">
+ </obj>
+ <obj oid="500" name="no_of_wr_set_fields_miss" lbl="Number of set fields for write actions missed" type="UINT">
+ </obj>
+ <obj oid="501" name="miss_wr_entry_set_field_info" lbl="Set field info for write action missed" type="UINT">
+ </obj>
+ <obj oid="502" name="no_of_ap_set_fields" lbl="Number of set fields supported for apply action" type="UINT">
+ </obj>
+ <obj oid="503" name="flow_ap_set_field_info" lbl="Info for set fields supported for apply action" type="UINT">
+ </obj>
+ <obj oid="504" name="no_of_ap_set_fields_miss" lbl="Number of set fields supported for apply actions missed" type="UINT">
+ </obj>
+ <obj oid="505" name="miss_ap_entry_set_field_info" lbl="Info for set fields supported for apply actions missed" type="UINT">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Table ID">
+     <objref oid="472"/>
+   </col>
+   <col name="Table Name">
+     <objref oid="473"/>
+   </col>
+   <col name="Metadata Match">
+     <objref oid="474"/>
+   </col>
+   <col name="Metadata Write">
+     <objref oid="475"/>
+   </col>
+   <col name="Config">
+     <objref oid="476"/>
+   </col>
+   <col name="Maximum Entries">
+     <objref oid="477"/>
+   </col>
+   <col name="Number of flow instructions">
+     <objref oid="478"/>
+   </col>
+   <col name="Flow instructions">
+     <objref oid="479"/>
+   </col>
+   <col name="Number of miss instructions">
+     <objref oid="480"/>
+   </col>
+   <col name="Miss instructions">
+     <objref oid="481"/>
+   </col>
+   <col name="Number of next tables">
+     <objref oid="482"/>
+   </col>
+   <col name="Next tables">
+     <objref oid="483"/>
+   </col>
+   <col name="Number of next miss tables">
+     <objref oid="484"/>
+   </col>
+   <col name="Next miss tables">
+     <objref oid="485"/>
+   </col>
+   <col name="Number of write actions">
+     <objref oid="486"/>
+   </col>
+   <col name="Write actions">
+     <objref oid="487"/>
+   </col>
+   <col name="Number of write actions missed">
+     <objref oid="488"/>
+   </col>
+   <col name="Write actions missed">
+     <objref oid="489"/>
+   </col>
+   <col name="Number of apply actions">
+     <objref oid="490"/>
+   </col>
+   <col name="flow entry apply actions">
+     <objref oid="491"/>
+   </col>
+   <col name="Number of apply actions miss">
+     <objref oid="492"/>
+   </col>
+   <col name="Apply actions missed">
+     <objref oid="493"/>
+   </col>
+   <col name="Number of match fields">
+     <objref oid="494"/>
+   </col>
+   <col name="Match fields info">
+     <objref oid="495"/>
+   </col>
+   <col name="Number of wildcard fields info">
+     <objref oid="496"/>
+   </col>
+   <col name="Wildcard fields info">
+     <objref oid="497"/>
+   </col>
+   <col name="Number of set fields for write action">
+     <objref oid="498"/>
+   </col>
+   <col name="Set field info for write action">
+     <objref oid="499"/>
+   </col>
+   <col name="Number of set fields for write actions missed">
+     <objref oid="500"/>
+   </col>
+   <col name="Set field info for write action missed">
+     <objref oid="501"/>
+   </col>
+   <col name="Number of set fields supported for apply action">
+     <objref oid="502"/>
+   </col>
+   <col name="Info for set fields supported for apply action">
+     <objref oid="503"/>
+   </col>
+   <col name="Number of set fields supported for apply actions missed">
+     <objref oid="504"/>
+   </col>
+   <col name="Info for set fields supported for apply actions missed">
+     <objref oid="505"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="tablefeatures_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="tablefeatures_MetaData.xml"/>
+     <btn name="refresh" lbl="Refresh" type="refresh"   mtpath="tablefeatures_MetaData.xml" spg="tbl_meta.xsl"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

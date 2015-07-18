@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.nsrm.chainset</dmpath>
+ <breadcrumb>Not Available &gt; Chainset</breadcrumb>
+ <help src="ucmchainset.htm" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="677" name="name" lbl="Chainset Name" type="STR" key="yes" mand="yes">
+ </obj>
+ <obj oid="678" name="tenant" lbl="Tenant Name" type="STR" key="yes" mand="yes">
+ </obj>
+ <obj oid="679" name="enabled" lbl="Enabled" type="BOOL">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Chainset Name">
+     <objref oid="677"/>
+   </col>
+   <col name="Tenant Name">
+     <objref oid="678"/>
+   </col>
+   <col name="Chainset Type">
+     <objref oid=""/>
+   </col>
+   <col name="Enabled">
+     <objref oid="679"/>
+   </col>
+   <col name="Configuration">
+     <link name="Chain Selection Rules" mtpath="chainselrule_MetaData.xml" instancekey="chainselrule" target="new" spg="tbl_meta.xsl"/>
+     <link name="Attributes" mtpath="chainsetattribute_MetaData.xml" instancekey="chainsetattribute" target="new" spg="tbl_meta.xsl"/>
+   </col>
+   <col name="">
+     <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+     <btn name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+   </col>
+   <link name="Add Record" opcode="ADD" spg="frm_meta.xsl" mtpath="chainset_MetaData.xml"/>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="chainset_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="chainset_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="677"/>
+  <field oid="678" dmpath="on_director.crm.tenant" depends="name+STR" name="lstgrp-1" type="list">
+  </field>
+  <field oid="" name="lstgrp-2" type="list">
+  </field>
+  <field oid="679" name="" type="checkbox">
+  </field>
+  <btn lbl="Apply" type="submit" mtpath="chainset_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

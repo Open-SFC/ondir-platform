@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.groups.group{0}.bucket</dmpath>
+ <breadcrumb>Not Available &gt; Bucket</breadcrumb>
+ <help src="ucmbucket.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+ <useparenttx mtpath="group_MetaData.xml" ppath="group" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="372" name="bucketid" lbl="Bucket ID" type="UINT" key="yes" mand="yes">
+ </obj>
+ <obj oid="373" name="numofactions" lbl="Number of Actions" type="UINT">
+ </obj>
+ <obj oid="374" name="weight" lbl="Relative weight of bucket" type="UINT">
+ </obj>
+ <obj oid="375" name="watch_port" lbl="Watch Port" type="UINT">
+ </obj>
+ <obj oid="376" name="watch_group" lbl="Watch Group" type="UINT">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Bucket ID">
+     <objref oid="372"/>
+   </col>
+   <col name="Number of Actions">
+     <objref oid="373"/>
+   </col>
+   <col name="Relative weight of bucket">
+     <objref oid="374"/>
+   </col>
+   <col name="Watch Port">
+     <objref oid="375"/>
+   </col>
+   <col name="Watch Group">
+     <objref oid="376"/>
+   </col>
+   <col name="Actions">
+     <link name="Actions" mtpath="action_MetaData.xml" instancekey="action" target="new" spg="tbl_meta.xsl"/>
+   </col>
+   <col name="">
+     <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+     <btn name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+   </col>
+   <link name="Add Record" ptx="y" opcode="ADD" spg="frm_meta.xsl"   mtpath="bucket_MetaData.xml"  pkeys="datapathid+UINT64$$215,|group_id+UINT$$366,|" />
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="bucket_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="bucket_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="372"/>
+   <field     oid="374"/>
+   <field     oid="375"/>
+   <field     oid="376"/>
+  <grp  name="action"  style="portrait"  act="expcol"  clr="no"  showMore="yes"  title="Action"   mtpath="action_MetaData.xml"  pkeys="datapathid+UINT64$$215,|group_id+UINT$$366,|bucketid+UINT$$372,|"  dmpath="on_director.datapath{0}.groups.group{0}.bucket{0}.action" >
+  </grp>
+  <btn lbl="Apply" type="submit" mtpath="bucket_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl" action="DONE"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.flowmod{0}.instruction{0}.actionList</dmpath>
+ <breadcrumb>Not Available &gt; Action List</breadcrumb>
+ <help src="ucmactionlist.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+ <useparenttx mtpath="flowmod_MetaData.xml" ppath="flowmod" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="284" name="actionListId" lbl="Action Identifier" type="UINT" key="yes" mand="yes">
+ </obj>
+ <obj oid="285" name="actionListType" lbl="Action Type" type="STR" mand="yes">
+  <list>
+    <item name="Output" value="output"/>
+    <item name="Copy TTL Out" value="copyTTLout"/>
+    <item name="Copy TTL In" value="copyTTLin"/>
+    <item name="Set MPLS TTL" value="setMPLSTTL"/>
+    <item name="Decrement MPLS TTL" value="decMPLSTTL"/>
+    <item name="Push VLAN" value="pushVLAN"/>
+    <item name="Pop VLAN" value="popVLAN"/>
+    <item name="Push MPLS" value="pushMPLS"/>
+    <item name="Pop MPLS" value="popMPLS"/>
+    <item name="Set Queue" value="setQueue"/>
+    <item name="Apply Group" value="applyGroup"/>
+    <item name="Set TTL" value="setTTL"/>
+    <item name="Decrement TTL" value="decTTL"/>
+    <item name="Set Field" value="setField"/>
+    <item name="Push PBB" value="pushPBB"/>
+    <item name="Pop PBB" value="popPBB"/>
+  </list>
+ </obj>
+ <obj oid="286" name="actionListData" lbl="Action data" type="STR">
+ </obj>
+ <obj oid="287" name="setFieldType" lbl="Set Field Type" type="STR">
+  <list>
+    <item name="In Port" value="inPort"/>
+    <item name="In Physical Port" value="inPhyPort"/>
+    <item name="Source IPv4 Address" value="srcIpV4Addr"/>
+    <item name="Destination IPv4 Address" value="dstIpV4Addr"/>
+    <item name="UDP Source Port" value="udpSrcPort"/>
+    <item name="UDP Destination Port" value="udpDstPort"/>
+    <item name="TCP Source Port" value="tcpSrcPort"/>
+    <item name="TCP Destination Port" value="tcpDstPort"/>
+    <item name="SCTP Source Port" value="sctpSrcPort"/>
+    <item name="SCTP Destination Port" value="sctpDstPort"/>
+    <item name="Protocol" value="protocol"/>
+    <item name="ICMP Type" value="icmpType"/>
+    <item name="ICMP Code" value="icmpCode"/>
+    <item name="Eth Type" value="ethType"/>
+    <item name="Source MAC Address" value="srcMacAddr"/>
+    <item name="Destination MAC Address" value="dstMacAddr"/>
+    <item name="MPLS Label" value="mplsLabel"/>
+    <item name="MPLS TC" value="mplsTC"/>
+    <item name="MPLS Bos" value="mplsBos"/>
+    <item name="pbbIsid" value="pbbIsid"/>
+    <item name="Tunnel ID" value="tunnelId"/>
+    <item name="VLAN ID" value="VlanId"/>
+    <item name="VLAN Priority" value="VlanPriority"/>
+    <item name="ARP Source IPv4 Address" value="arpSrcIpv4Addr"/>
+    <item name="ARP Destination IPv4 Address" value="arpDstIpv4Addr"/>
+    <item name="ARP Source MAC Address" value="arpSrcMacAddr"/>
+    <item name="ARP Destination MAC Address" value="arpDstMacAddr"/>
+    <item name="ARP Opcode" value="arpOpcode"/>
+    <item name="IP Diff Serv Code Point Bits" value="IpDiffServCodePointBits"/>
+    <item name="IP ECN Bits" value="IpECNBits"/>
+    <item name="Source IPv6 Address" value="srcIpv6Addr"/>
+    <item name="Destination IPv6 Address" value="dstIpv6Addr"/>
+    <item name="IPv6 Flow Label" value="Ipv6flowlabel"/>
+    <item name="ICMPv6 Type" value="icmpv6Type"/>
+    <item name="ICMPv6 Code" value="icmpv6Code"/>
+    <item name="IPv6 ND Target" value="ipv6NDTarget"/>
+    <item name="IPv6 ND Source Link Layer Address" value="ipv6NDSrcLinkLayerAddr"/>
+    <item name="IPv6 ND Target Link Layer Address" value="ipv6NDTargetLinkLayerAddr"/>
+    <item name="IPv6 Extension Header" value="ipv6ExtnHdr"/>
+  </list>
+ </obj>
+ <obj oid="288" name="setFieldVal" lbl="Set Field Value" type="STR">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Action Identifier">
+     <objref oid="284"/>
+   </col>
+   <col name="Action Type">
+     <objref oid="285"/>
+   </col>
+   <col name="Action data">
+     <objref oid="286"/>
+   </col>
+   <col name="Set Field Type">
+     <objref oid="287"/>
+   </col>
+   <col name="Set Field Value">
+     <objref oid="288"/>
+   </col>
+   <col name="">
+     <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+     <btn name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+   </col>
+   <link name="Add Record" ptx="y" opcode="ADD" spg="frm_meta.xsl"   mtpath="actionList_MetaData.xml"  pkeys="datapathid+UINT64$$215,|flowId+UINT$$255,|instructionId+UINT$$278,|" />
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="actionList_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="actionList_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="284"/>
+  <field oid="285" name="lstgrp-1" type="list">
+  </field>
+   <field     oid="286"/>
+  <field oid="287" name="lstgrp-2" type="list">
+  </field>
+   <field     oid="288"/>
+  <btn lbl="Apply" type="submit" mtpath="actionList_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl" action="DONE"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

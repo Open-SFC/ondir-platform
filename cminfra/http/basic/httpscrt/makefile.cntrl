@@ -1,0 +1,36 @@
+#/************************************************************************ */
+#/*   File            : makefile                                           */
+#/*   Purpose         :                                                    */
+#/*   Date            :                                                    */   
+#/*------------------------------------------------------------------------*/
+
+CM_DIR=../../..
+include $(CM_DIR)/rules.mod.cntrl
+
+HTTP_DIR = $(CM_DIR)/http
+HTTP_OBJ_DIR  = $(cntrl_cminfra_obj_dir)
+OBJDIR  = $(HTTP_OBJ_DIR)
+
+include $(HTTP_DIR)/basic/includes.lcl
+
+HTTPS_TARGET=$(HTTP_OBJ_DIR)/httpsbasic.o
+
+#SOURCE = $(wildcard *.c)
+#OBJS  = $(SOURCE:%.c=$(HTTP_OBJ_DIR)/%.o)
+
+$(HTTP_OBJ_DIR)/%.o: %.c 
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+HTTP_BASIC_OBJS = httpsapi.o httpsmbl.o httpsmsc.o httpsutl.o htpsfacd.o httpslds.o httpsmgr.o httpsreq.o 
+OBJDIR = $(HTTP_OBJ_DIR)
+OBJS = $(HTTP_BASIC_OBJS:%=$(OBJDIR)/%)
+
+all: $(HTTPS_TARGET)
+
+$(HTTPS_TARGET): $(OBJS)
+	$(LD) $(LDOPTS) $(OBJS) -o $(HTTPS_TARGET)
+
+clean:
+	$(RM) $(HTTP_OBJ_DIR)/*.o
+	$(RM) $(HTTPS_TARGET)
+

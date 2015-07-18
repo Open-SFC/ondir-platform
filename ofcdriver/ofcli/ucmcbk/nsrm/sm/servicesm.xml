@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>Network Service</title>
+  <DMPath>on_director.nsrm.service</DMPath>
+
+  <Component type="TABLE" title="Network Service">
+    <GroupNodes name="name" title="Service Name" type="coloumn">
+        <DMNode path="name" label="Service Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="tenant" title="Tenant Name" type="coloumn">
+        <DMNode path="tenant" label="Tenant Name" type="STR"/>   
+    </GroupNodes>  
+    <GroupNodes name="type" title="Form Factor Type" type="coloumn">
+        <DMNode path="type" label="Form Factor Type" type="STR"/>   
+    </GroupNodes> 
+    <GroupNodes name="enabled" title="Enabled" type="coloumn">
+        <DMNode path="enabled" label="Enabled" type="STR"/>   
+    </GroupNodes>
+
+    <GroupNodes name="lnkGrp" title="Configuration" type="column">
+      <link name="Attributes" spg ="tbl_meta.xsl" mtpath="serviceattribute_MetaData.xml" instancekey="serviceattribute" target="new"/>      
+    </GroupNodes>
+       
+    <GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+      <!--Button name="Roles" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/-->
+    </GroupNodes>
+    <link name="Add"/>
+    <link name="Next"/>
+    <link name="Previous"/>
+  </Component>
+  
+  <Component type="Form" title="Network Service"> 
+    <DMNode path="name" label="Service Name"/>  
+    <Component type="list" path="tenant" name="lstgrp-1" label="Tenant Name" depends="name" file="tenantsm.xml"/> 
+    <Component type="list" path="formfactortype" name="lstgrp-2" label="Form Factor Type"/>
+    <Component type="checkbox" path="enabled" label="Enabled"/>
+    
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/>
+  </Component> 
+
+</UIModel>
+

@@ -1,0 +1,63 @@
+include rules.mod.switch
+include defs.system
+
+
+LDFLAGS += --sysroot=$(SYSROOT_PATH)
+
+all: build
+
+makeinfra: 
+	make -C infra -f makefile.switch
+
+makemgmt: 
+	make -C http -f makefile.switch
+	make -C ldsv -f makefile.switch
+	make -C cli -f makefile.switch
+
+makeutils: 
+	make -C utils -f makefile.switch
+	make -C lxos -f makefile.switch
+
+maketargets: $(LXOSLIB) $(UTILSLIB) $(TRANSLIB) $(SWCLIDMN) $(SWUCMD) $(SWLDSVD) $(HTTPD)
+
+$(LXOSLIB): $(LXOS_OBJ) 
+	$(CCLD) $(LXOS_OBJ) -shared -o $(LXOSLIB) 
+
+$(UTILSLIB): $(DSLIB_OBJ) $(NETUTIL_OBJ) $(TIMER_OBJ) $(USRAUTH_OBJ)
+	$(CCLD) -shared -o $(UTILSLIB) $(DSLIB_OBJ) $(NETUTIL_OBJ) $(TIMER_OBJ) $(USRAUTH_OBJ) -o $@
+
+$(TRANSLIB): $(TRCHNL_BASIC_OBJ) $(JE_WRAP_OBJ) $(DM_WRAP_OBJ) 
+	$(CCLD) -shared -o $(TRANSLIB) $(TRCHNL_BASIC_OBJ) $(JE_WRAP_OBJ) $(DM_WRAP_OBJ) -o $@
+
+$(SWCLIDMN):$(CLI_BASIC_OBJ) $(CLI_PORT_OBJ)
+	$(CC) $(LDFLAGS) $(DYNAMICFLAG) $(CLI_BASIC_OBJ) $(CLI_PORT_OBJ) $(OF_NCURSES_LIB) $(LDSV_WRAP_OBJ) -L$(switch_cminfra_lib_dir) -ledit -lm -ldl -llxos -lutils -lucmtrchl -lpthread -o $(SWCLIDMN) -ldl 
+
+$(SWUCMD):$(JE_BASIC_OBJ) $(JE_USPACE_OBJ) $(DM_BASIC_OBJ) $(JE_SYS_OBJ) $(SWITCHCBKTARGET)
+	$(CC) $(LDFLAGS) -rdynamic $(JE_BASIC_OBJ) $(JE_USPACE_OBJ) $(DM_BASIC_OBJ) $(JE_SYS_OBJ) $(SWITCHCBKTARGET) -lm -ldl -L$(switch_cminfra_lib_dir) -llxos -lutils -lucmtrchl -lpthread -o $(SWUCMD) -ldl
+
+$(SWLDSVD):$(LDSV_BASIC_OBJ) $(LDSV_PORT_OBJ)
+	$(CC) $(LDFLAGS) $(DYNAMICFLAG) $(DM_BASIC_OBJ) $(UTIL_CMN_OBJ) $(LDSV_BASIC_OBJ) $(LDSV_PORT_OBJ) -L$(switch_cminfra_lib_dir) -llxos -lutils -lucmtrchl -lpthread -lm -o $(SWLDSVD) -ldl 
+
+$(HTTPD): $(HTTP_CFG_OBJ) $(HTTP_WRAP_OBJ) $(HTTP_USPACE_OBJ) $(HTTPS_BASIC_OBJ) $(HTTP_BASIC_OBJ) $(TIMER_LIB_PORT_OBJ) $(DM_BASIC_OBJ) 
+	$(CC) $(LDFLAGS) $(DYNAMICFLAG) $(UCMHTTPOPENSRC) $(HTTP_CFG_OBJ) $(HTTP_WRAP_OBJ) $(HTTP_USPACE_OBJ) $(HTTPS_BASIC_OBJ) $(HTTP_BASIC_OBJ) $(LDSV_WRAP_OBJ) $(TIMER_LIB_PORT_OBJ) $(DM_BASIC_OBJ) -L$(switch_cminfra_lib_dir) -llxos -lutils -lucmtrchl  -lpthread -lm $(OPENSSL_LIBRARIES) -o $(HTTPD) -ldl 
+copytargets: 
+	$(CP) $(SWUCMD) $(OSPKG_BIN_DIR)/
+	$(CP) $(SWCLIDMN) $(OSPKG_BIN_DIR)/
+	$(CP) $(SWLDSVD) $(OSPKG_BIN_DIR)/
+	$(CP) $(HTTPD) $(OSPKG_BIN_DIR)/
+
+build: makeinfra makemgmt makeutils maketargets copytargets  
+
+clean: cleanothers
+cleanothers:
+	$(RM) $(switch_cminfra_obj_dir)/*.o
+	$(RM) $(SWUCMD)
+	$(RM) $(SWCLIDMN)
+	$(RM) $(SWLDSVD)
+	$(RM) $(HTTPD)
+	$(RM) $(switch_cminfra_lib_dir)/*.so
+	$(RM) $(OSPKG_BIN_DIR)/switch-cli
+	$(RM) $(OSPKG_BIN_DIR)/switch-ucmd
+	$(RM) $(OSPKG_BIN_DIR)/switch-ldsvd
+	$(RM) $(OSPKG_BIN_DIR)/httpd
+

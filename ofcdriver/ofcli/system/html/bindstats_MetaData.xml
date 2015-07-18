@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.stats.bindstats</dmpath>
+ <breadcrumb>Not Available &gt; Bind Statistics</breadcrumb>
+ <help src="ucmbindstats.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="506" name="bind_obj_id" lbl="Bind Object Identifier" type="UINT">
+ </obj>
+ <obj oid="507" name="application_type" lbl="Application Type" type="UINT">
+ </obj>
+ <obj oid="508" name="packetcount" lbl="Packet Count" type="UINT">
+ </obj>
+ <obj oid="509" name="bytecount" lbl="Byte Count" type="UINT">
+ </obj>
+ <obj oid="510" name="errorcount" lbl="Error Count" type="UINT">
+ </obj>
+ <obj oid="511" name="instruction_count" lbl="Number of Instructions" type="UINT">
+ </obj>
+ <obj oid="512" name="instructioninfo" lbl="Instruction Information" type="STR" defVal="">
+ </obj>
+ <obj oid="513" name="action_count" lbl="Number of Actions" type="UINT">
+ </obj>
+ <obj oid="514" name="actioninfo" lbl="Action Information" type="STR" defVal="">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Bind Object Identifier">
+     <objref oid="506"/>
+   </col>
+   <col name="Application Type">
+     <objref oid="507"/>
+   </col>
+   <col name="Packet Count">
+     <objref oid="508"/>
+   </col>
+   <col name="Byte Count">
+     <objref oid="509"/>
+   </col>
+   <col name="Error Count">
+     <objref oid="510"/>
+   </col>
+   <col name="Number of Instructions">
+     <objref oid="511"/>
+   </col>
+   <col name="Instruction Information">
+     <objref oid="512"/>
+   </col>
+   <col name="Number of Actions">
+     <objref oid="513"/>
+   </col>
+   <col name="Action Information">
+     <objref oid="514"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="bindstats_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="bindstats_MetaData.xml"/>
+     <btn name="refresh" lbl="Refresh" type="refresh"   mtpath="bindstats_MetaData.xml" spg="tbl_meta.xsl"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

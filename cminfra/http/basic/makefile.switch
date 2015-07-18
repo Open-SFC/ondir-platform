@@ -1,0 +1,36 @@
+#/************************************************************************ */
+#/*   File            : makefile                                           */
+#/*   Purpose         :                                                    */
+#/*   Date            :                                                    */   
+#/*------------------------------------------------------------------------*/
+
+#CM_DIR = ../..
+CM_DIR =$(cminfra_dir)
+include $(CM_DIR)/rules.mod.switch
+
+HTTP_DIR = $(CM_DIR)/http
+HTTP_OBJ_DIR  = $(switch_cminfra_obj_dir)
+OBJDIR  = $(HTTP_OBJ_DIR)
+
+include $(HTTP_DIR)/basic/includes.lcl
+
+TARGET = $(HTTP_OBJ_DIR)/httpdbasic.o
+
+#SOURCE = $(wildcard *.c)
+#OBJS  = $(SOURCE:%.c=$(HTTP_OBJ_DIR)/%.o)
+
+$(HTTP_OBJ_DIR)/%.o: %.c 
+	$(CC) -c -o $@ $< $(CFLAGS)
+HTTP_BASIC_OBJS = httpdapi.o httperr.o httpmapi.o httputil.o ucmhtglu.o htmlserv.o httpd.o httphttp.o https.o ucmhtp.o htptrchl.o httpdtmr.o httpkuki.o ucmhtses.o
+
+OBJS = $(HTTP_BASIC_OBJS:%=$(OBJDIR)/%)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(LD) $(LDOPTS) $(OBJS) -o $(TARGET)
+
+clean:
+	$(RM) $(OBJS)
+	$(RM) $(TARGET)
+

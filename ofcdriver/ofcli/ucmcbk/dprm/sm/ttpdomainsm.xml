@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIModel schemaVersion="3.0">
+  <title>Domains</title>
+  <DMPath>on_director.ttp{0}.domains</DMPath>
+  <depends vrtlInst="ttpname" filename="ttpdm.xml">ttp</depends>
+
+  <Component type="TABLE" title="Domains">
+    <GroupNodes name="domainname" title="Domain Name" type="coloumn">
+        <DMNode path="domainname" label="Domain Name" type="STR"/>   
+    </GroupNodes>    
+
+    <!--GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/-->
+      <!--Button name="Roles" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/-->
+    <!--/GroupNodes-->
+    <!--link name="Add"/-->
+    <link name="Next"/>
+    <link name="Previous"/>
+    <Button type="close" name="close" label="Close"/>
+  </Component>
+  
+  <Component type="Form" title="Domains"> 
+    <!--DMNode path="domainname" label="Domain Name"/>         
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/-->
+  </Component> 
+</UIModel>
+

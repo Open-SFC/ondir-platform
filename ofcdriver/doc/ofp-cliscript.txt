@@ -1,0 +1,67 @@
+Update this file with your configuration, copy and paste once you login into ofCLI.
+#####################################################################
+
+
+cd /ofp/bin
+./ofcli 
+
+Device IP Address : 0
+
+UserName : root
+Password: 
+
+	     	*****************************************************
+				*             WELCOME TO Openflow SDN CLI        *
+				*****************************************************
+				* 				 Use 'help' command for commands help
+				*****************************************************
+			
+
+
+switch switch-100
+    
+set type 1
+set baddr 0
+set fqdn mydomian.com
+commit
+
+show switch
+
+domain domain-100
+set subjectname ssss
+commit
+
+show domain
+
+cd domain{domain-100}
+domaintable arpin
+set tableid 0
+set numofmatchfields 1
+commit
+
+domaintable session
+set tableid 1
+set numofmatchfields 7
+commit
+															
+domaintable routing
+set tableid 2
+set numofmatchfields 2
+commit
+
+domaintable arpout
+set tableid 3
+set numofmatchfields 1
+commit
+
+show domaintable
+cd ..
+
+datapath 1
+set subjectname dddd
+set switch switch-100
+set domain domain-100
+commit
+
+show datapath
+

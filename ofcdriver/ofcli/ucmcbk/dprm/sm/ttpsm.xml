@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIModel schemaVersion="3.0">
+  <title>Table Type Pattern</title>
+  <DMPath>on_director.ttp</DMPath>
+
+  <Component type="TABLE" title="Switch">
+    <GroupNodes name="ttpname" title="Table Type Pattern Name" type="coloumn">
+        <DMNode path="ttpname" label="Table Type Pattern Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="numoftables" title="Number of Tables" type="coloumn">
+       <DMNode path="numoftables" label="Number of Tables" type="UINT"/>
+    </GroupNodes>
+    <GroupNodes name="numofdomains" title="Number of Domains" type="coloumn"> 
+        <DMNode path="numofdomains" label="Number of Domains" type="UINT"/> 
+    </GroupNodes>  
+      
+    <GroupNodes name="lnkGrp" title="Configuration" type="column">
+      <link name="OF Tables" spg ="tbl_meta.xsl" mtpath="oftables_MetaData.xml" instancekey="oftables" target="new"/>
+      <link name="Domains" spg ="tbl_meta.xsl" mtpath="domains_MetaData.xml" instancekey="domains" target="new"/>
+    </GroupNodes>
+    <!--GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/-->
+      <!--Button name="Roles" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/-->
+    <!--/GroupNodes-->
+    <!--link name="Add"/-->
+    <link name="Next"/>
+    <link name="Previous"/>
+  </Component>
+  
+  <Component type="Form" title="Table Type Pattern"> 
+    <!--DMNode path="ttpname" label="Table Type Pattern Name"/>        
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/-->
+  </Component> 
+
+</UIModel>
+

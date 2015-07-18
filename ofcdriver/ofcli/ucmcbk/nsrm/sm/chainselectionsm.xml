@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>Chain Selection Rule</title>
+  <DMPath>on_director.nsrm.chainset{0}.chainselrule</DMPath>
+  <depends vrtlInst="name" filename="chainset.xml">Chainset</depends>
+
+  <Component type="TABLE" title="Chain Selection Rules">
+    <GroupNodes name="selname" title="Chain Selection Rule Name" type="coloumn">
+        <DMNode path="selname" label="Chain Selection Rule Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="location" title="Rule Location" type="coloumn">
+        <DMNode path="location" label="Rule Location" type="STR"/>   
+    </GroupNodes> 
+    <GroupNodes name="relativename" title="Relative Name" type="coloumn">
+        <DMNode path="relativename" label="Relative Name" type="STR"/>   
+    </GroupNodes> 
+    <GroupNodes name="chain" title="Chain Name" type="coloumn">
+        <DMNode path="chain" label="Chain Name" type="STR"/>   
+    </GroupNodes>       
+    <GroupNodes name="enabled" title="Enabled" type="coloumn">
+        <DMNode path="enabled" label="Enabled" type="STR"/>   
+    </GroupNodes>
+
+    <GroupNodes name="lnkGrp" title="Configuration" type="column">      
+      <link name="Attributes" spg ="tbl_meta.xsl" mtpath="chainselectionattribute_MetaData.xml" instancekey="chainselectionattribute" target="new"/>      
+    </GroupNodes>
+       
+    <GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+      <!--Button name="Roles" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/-->
+    </GroupNodes>
+    <link name="Add"/>
+    <link name="Next"/>
+    <link name="Previous"/>
+  </Component>
+  
+  <Component type="Form" title="Chain Selection Rule"> 
+    <DMNode path="selname" label="Chain Selection Rule Name"/>  
+    <Component type="list" path="location" name="lstgrp-1" label="Rule Location"/>
+    <DMNode path="relativename" label="Relative Name"/>
+
+    <Component type="list" path="srcmactype" name="lstgrp-2" label="Source MAC Type"/>
+    <DMNode path="srcmac" label="Source MAC"/>
+
+    <Component type="list" path="dstmactype" name="lstgrp-3" label="Destination MAC Type"/>
+    <DMNode path="dstmac" label="Destination MAC"/>
+
+    <Component type="list" path="ethtype" name="lstgrp-4" label="Ethernet Type"/>
+    <DMNode path="ethtypevalue" label="Ethernet Type Value"/>
+
+    <Component type="list" path="siptype" name="lstgrp-5" label="Source IP Type"/>
+    <DMNode path="sipstart" label="Source IP Start"/>
+    <DMNode path="sipend" label="Source IP End"/> 
+
+    <Component type="list" path="diptype" name="lstgrp-6" label="Destination IP Type"/>
+    <DMNode path="dipstart" label="Destination IP Start"/>
+    <DMNode path="dipend" label="Destination IP End"/>
+
+    <Component type="list" path="sptype" name="lstgrp-7" label="Source Port Type"/>
+    <DMNode path="spstart" label="Source Port Start"/>
+    <DMNode path="spend" label="Source Port End"/>
+
+    <Component type="list" path="dptype" name="lstgrp-8" label="Destination Port Type"/>
+    <DMNode path="dpstart" label="Destination Port Start"/>
+    <DMNode path="dpend" label="Destination Port End"/>
+
+    <DMNode path="protocol" label="Protocol"/>
+
+ 
+    <Component type="list" path="chain" name="lstgrp-9" label="Chain Name" depends="name" file="chainsm.xml"/>       
+    <Component type="checkbox" path="enabled" label="Enabled"/>    
+    
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/>
+  </Component> 
+
+</UIModel>
+

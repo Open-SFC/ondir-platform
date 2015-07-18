@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UIModel schemaVersion="3.0">
+  <title>ARP</title>
+  <DMPath>on_director.namespace.apps.arp</DMPath>
+
+  <Component type="TABLE" title="ARP">
+    <GroupNodes name="ipaddress" title="IP Address" type="coloumn">
+        <DMNode path="ipaddress" label="IP Address" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="hwaddress" title="Hardware Address" type="coloumn">
+        <DMNode path="hwaddress" label="Hardware Address" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="flags" title="ARP Type Flag" type="coloumn">
+        <DMNode path="flags" label="ARP Type Flag" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="iface" title="Interface Name" type="coloumn">
+        <DMNode path="iface" label="Interface Name" type="STR"/>   
+    </GroupNodes>
+    <GroupNodes name="state" title="ARP State" type="coloumn">
+        <DMNode path="state" label="ARP State" type="STR"/>   
+    </GroupNodes>
+    
+    <!--GroupNodes name="btnGrp" title="" type="coloumn">
+      <Button name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+      <Button name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+    </GroupNodes>
+    <link name="Add"/-->
+    <link name="Next"/>
+    <link name="Previous"/>
+
+    <Button type="refresh" name="refresh" label="Refresh" screenModel="arpsm.xml" spg="tbl_meta.xsl"/>   
+    <Button type="close" name="close" label="Close"/>
+  </Component>
+  
+  <Component type="Form" title="ARP"> 
+    <!--DMNode path="ipaddress" label="IP Address"/>
+    <DMNode path="hwaddress" label="Hardware Address"/>
+    <DMNode path="flags" label="ARP Type Flag"/>
+    <DMNode path="iface" label="Interface Name"/>
+    <DMNode path="state" label="ARP State"/> 
+    
+    <Button name="Add" label="Apply" sredirect="tbl_meta.xsl" fredirect ="frm_meta.xsl" action=""/-->
+  </Component> 
+
+</UIModel>
+

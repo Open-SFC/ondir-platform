@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.nem.nsid2ns</dmpath>
+ <breadcrumb>Not Available &gt; Namespace ID to Namespace Name</breadcrumb>
+ <help src="ucmnsid2ns.htm" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="771" name="nsname" lbl="Namespace Name" type="STR" mand="yes">
+ </obj>
+ <obj oid="772" name="nsid" lbl="Namespace ID" type="INT" key="yes" mand="yes">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Namespace ID">
+     <objref oid="772"/>
+   </col>
+   <col name="Namespace Name">
+     <objref oid="771"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="nsid2ns_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="nsid2ns_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

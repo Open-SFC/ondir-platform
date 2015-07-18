@@ -1,0 +1,63 @@
+
+include $(cminfra_dir)/rules.mod.cntrl
+include $(cminfra_dir)/defs.system
+
+
+all: build
+
+makeinfra: 
+	make -C infra -f makefile.cntrl
+
+makemgmt: 
+	make -C http -f makefile.cntrl
+	make -C ldsv -f makefile.cntrl
+	make -C cli -f makefile.cntrl
+
+makeutils: 
+	make -C utils -f makefile.cntrl
+	make -C lxos -f makefile.cntrl
+
+maketargets: $(LXOSLIB) $(UTILSLIB) $(TRANSLIB) $(CLIDMN) $(UCMD) $(UCMLDSVD) $(HTTPD) 
+$(LXOSLIB): $(LXOS_OBJ) 
+	$(CC) $(LXOS_OBJ) -shared -o $(LXOSLIB) -ldl
+
+$(UTILSLIB): $(DSLIB_OBJ) $(NETUTIL_OBJ) $(TIMER_OBJ) $(USRAUTH_OBJ)
+	$(CC) -shared -o $(UTILSLIB) $(DSLIB_OBJ) $(NETUTIL_OBJ) $(TIMER_OBJ) $(USRAUTH_OBJ) -o $@
+
+$(TRANSLIB): $(TRCHNL_BASIC_OBJ) $(JE_WRAP_OBJ) $(DM_WRAP_OBJ) 
+	$(CC) -shared -o $(TRANSLIB) $(TRCHNL_BASIC_OBJ) $(JE_WRAP_OBJ) $(DM_WRAP_OBJ) -o $@
+
+$(CLIDMN):$(CLI_BASIC_OBJ) $(CLI_PORT_OBJ)
+	$(CC) $(LDFLAGS) $(DYNAMICFLAG) $(CLI_BASIC_OBJ) $(CLI_PORT_OBJ) $(OF_NCURSES_LIB) $(LDSV_WRAP_OBJ) -L/lib/i386-linux-gnu -ledit -lm -ldl -lpthread -L$(cntrl_cminfra_lib_dir) -llxos -lutils -lucmtrchl -lpthread -o $(CLIDMN) 
+
+$(UCMD):$(JE_BASIC_OBJ) $(JE_USPACE_OBJ) $(DM_BASIC_OBJ) $(JE_SYS_OBJ) $(CTLRCBKTARGET) 
+	$(CC) $(LDFLAGS) -rdynamic $(JE_BASIC_OBJ) $(JE_USPACE_OBJ) $(DM_BASIC_OBJ) $(JE_SYS_OBJ) $(CTLRCBKTARGET)  -lm -ldl -L$(cntrl_cminfra_lib_dir) -llxos -lutils -lucmtrchl -lpthread -o $(UCMD) -ldl
+
+$(UCMLDSVD):$(LDSV_BASIC_OBJ) $(LDSV_PORT_OBJ)
+	$(CC) $(LDFLAGS) $(DYNAMICFLAG) $(DM_BASIC_OBJ) $(UTIL_CMN_OBJ) $(LDSV_BASIC_OBJ) $(LDSV_PORT_OBJ) -L$(cntrl_cminfra_lib_dir) -llxos -lutils -lucmtrchl -lpthread -lm -o $(UCMLDSVD) -ldl 
+
+$(HTTPD): $(HTTP_CFG_OBJ) $(HTTP_WRAP_OBJ) $(HTTP_USPACE_OBJ) $(HTTPS_BASIC_OBJ) $(HTTP_BASIC_OBJ) $(TIMER_LIB_PORT_OBJ) $(DM_BASIC_OBJ) 
+	$(CC) $(LDFLAGS) $(DYNAMICFLAG) $(UCMHTTPOPENSRC) $(HTTP_CFG_OBJ) $(HTTP_WRAP_OBJ) $(HTTP_USPACE_OBJ) $(HTTPS_BASIC_OBJ) $(HTTP_BASIC_OBJ) $(LDSV_WRAP_OBJ) $(TIMER_LIB_PORT_OBJ) $(DM_BASIC_OBJ) -L$(cntrl_cminfra_lib_dir) -llxos -lutils -lucmtrchl  -lpthread -lm $(OPENSSL_LIBRARIES) -o $(HTTPD) -ldl 
+
+
+copytargets: 
+	$(CP) $(UCMD) $(OSPKG_BIN_DIR)/
+	$(CP) $(CLIDMN) $(OSPKG_BIN_DIR)/
+	$(CP) $(UCMLDSVD) $(OSPKG_BIN_DIR)/
+	$(CP) $(HTTPD) $(OSPKG_BIN_DIR)/
+
+build:  makeinfra makemgmt makeutils maketargets copytargets  
+
+clean: cleanothers
+cleanothers:
+	$(RM) $(cntrl_cminfra_obj_dir)/*.o
+	$(RM) $(UCMD)
+	$(RM) $(CLIDMN)
+	$(RM) $(UCMLDSVD)
+	$(RM) $(HTTPD)
+	$(RM) $(cntrl_cminfra_lib_dir)/*.so
+	$(RM) $(OSPKG_BIN_DIR)/ofcli
+	$(RM) $(OSPKG_BIN_DIR)/ofucmd
+	$(RM) $(OSPKG_BIN_DIR)/ofldsvd
+	$(RM) $(OSPKG_BIN_DIR)/httpd
+

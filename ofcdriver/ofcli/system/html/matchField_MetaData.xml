@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.flowmod{0}.matchField</dmpath>
+ <breadcrumb>Not Available &gt; Match Fields</breadcrumb>
+ <help src="ucmmatchfield.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+ <useparenttx mtpath="flowmod_MetaData.xml" ppath="flowmod" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="270" name="fieldId" lbl="Match Field Identifier" type="UINT" key="yes" mand="yes">
+ </obj>
+ <obj oid="271" name="matchFieldType" lbl="Match Field Type" type="STR" mand="yes">
+  <list>
+    <item name="Switch Input Port" value="inPort"/>
+    <item name="Switch Physical Input Port" value="inPhyPort"/>
+    <item name="Metadata Passed Between Tables" value="tableMetaData"/>
+    <item name="IPv4 Source Address" value="srcIpV4Addr"/>
+    <item name="IPv4 Destination Address" value="dstIpV4Addr"/>
+    <item name="UDP Source Port" value="udpSrcPort"/>
+    <item name="UDP Destination Port" value="udpDstPort"/>
+    <item name="TCP Source Port" value="tcpSrcPort"/>
+    <item name="TCP Destination Port" value="tcpDstPort"/>
+    <item name="SCTP Source Port" value="sctpSrcPort"/>
+    <item name="SCTP Destination Port" value="sctpDstPort"/>
+    <item name="IP Protocol" value="protocol"/>
+    <item name="ICMP Type" value="icmpType"/>
+    <item name="ICMP Code" value="icmpCode"/>
+    <item name="Ethernet Frame Type" value="ethType"/>
+    <item name="Source MAC Address" value="srcMacAddr"/>
+    <item name="Destination MAC Address" value="dstMacAddr"/>
+    <item name="MPLS Label" value="mplsLabel"/>
+    <item name="MPLS TC" value="mplsTC"/>
+    <item name="MPLS BoS Bit" value="mplsBos"/>
+    <item name="PBB I-SID" value="pbbIsid"/>
+    <item name="Tunnel Id" value="tunnelId"/>
+    <item name="VLAN Id" value="VlanId"/>
+    <item name="VLAN Priority" value="VlanPriority"/>
+    <item name="ARP Source IPv4 Address" value="arpSrcIpv4Addr"/>
+    <item name="ARP Destination IPv4 Address" value="arpDstIpv4Addr"/>
+    <item name="ARP Source MAC Address" value="arpSrcMacAddr"/>
+    <item name="ARP Destination MAC Address" value="arpDstMacAddr"/>
+    <item name="ARP Opcode" value="arpOpcode"/>
+    <item name="IP DSCP Bits" value="IpDiffServCodePointBits"/>
+    <item name="IP ECN Bits" value="IpECNBits"/>
+    <item name="IPv6 Source Address" value="srcIpv6Addr"/>
+    <item name="IPv6 Destination Address" value="dstIpv6Addr"/>
+    <item name="IPv6 Flow Label" value="Ipv6flowlabel"/>
+    <item name="ICMPv6 Type" value="icmpv6Type"/>
+    <item name="ICMPv6 Code" value="icmpv6Code"/>
+    <item name="Target Address for ND" value="ipv6NDTarget"/>
+    <item name="Source Link-layer for ND" value="ipv6NDSrcLinkLayerAddr"/>
+    <item name="Target Link-layer for ND" value="ipv6NDTargetLinkLayerAddr"/>
+    <item name="IPv6 Extension Header" value="ipv6ExtnHdr"/>
+  </list>
+ </obj>
+ <obj oid="272" name="matchFieldData" lbl="Match Field Data" type="STR" mand="yes">
+ </obj>
+ <obj oid="273" name="isMaskSet" lbl="Is Mask Set" type="UINT">
+  <list>
+    <item name="False" value="0"/>
+    <item name="True" value="1"/>
+  </list>
+ </obj>
+ <obj oid="274" name="mask" lbl="Mask" type="STR">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Match Field Identifier">
+     <objref oid="270"/>
+   </col>
+   <col name="Match Field Type">
+     <objref oid="271"/>
+   </col>
+   <col name="Match Field Data">
+     <objref oid="272"/>
+   </col>
+   <col name="Is Mask Set">
+     <objref oid="273"/>
+   </col>
+   <col name="Mask">
+     <objref oid="274"/>
+   </col>
+   <col name="">
+     <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
+     <btn name="Delete" spg="tbl_meta.xsl" fpg="resp_meta.xsl"/>
+   </col>
+   <link name="Add Record" ptx="y" opcode="ADD" spg="frm_meta.xsl"   mtpath="matchField_MetaData.xml"  pkeys="datapathid+UINT64$$215,|flowId+UINT$$255,|" />
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="matchField_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="matchField_MetaData.xml"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+   <field     oid="270"/>
+  <field oid="271" name="lstgrp-1" type="list">
+  </field>
+   <field     oid="272"/>
+   <field     oid="273"/>
+   <field     oid="274"/>
+  <btn lbl="Apply" type="submit" mtpath="matchField_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl" action="DONE"/>
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>

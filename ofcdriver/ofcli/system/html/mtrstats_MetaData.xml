@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <dmpath>on_director.datapath{0}.meters.stats</dmpath>
+ <breadcrumb>Not Available &gt; Meter Statistics</breadcrumb>
+ <help src="ucmmtrstats.htm" />
+ <depends vrtlInst="datapathid" mtpath="datapath_MetaData.xml" />
+<!-- ***** METADATA OBJECTS START ***** -->
+ <obj oid="415" name="meter_id" lbl="Meter ID" type="UINT" key="yes" mand="yes">
+ </obj>
+ <obj oid="416" name="flow_count" lbl="Flow Count" type="UINT">
+ </obj>
+ <obj oid="417" name="packet_in_count" lbl="Packet-In Count" type="UINT64">
+ </obj>
+ <obj oid="418" name="byte_in_count" lbl="Byte-In Count" type="UINT64">
+ </obj>
+ <obj oid="419" name="duration_sec" lbl="Alive duration Seconds" type="UINT">
+ </obj>
+ <obj oid="420" name="duration_nsec" lbl="Alive duration Nano Seconds" type="UINT">
+ </obj>
+ <obj oid="421" name="noofbands" lbl="Number of Bands" type="UINT">
+ </obj>
+ <obj oid="422" name="bandstats" lbl="" type="STR">
+ </obj>
+<!-- ***** METADATA OBJECTS END ***** -->
+<!-- ***** TABLE DATA START ***** -->
+ <tbl>
+   <col name="Meter ID">
+     <objref oid="415"/>
+   </col>
+   <col name="Flow Count">
+     <objref oid="416"/>
+   </col>
+   <col name="Packet-In Count">
+     <objref oid="417"/>
+   </col>
+   <col name="Byte-In Count">
+     <objref oid="418"/>
+   </col>
+   <col name="Alive duration Seconds">
+     <objref oid="419"/>
+   </col>
+   <col name="Alive duration Nano Seconds">
+     <objref oid="420"/>
+   </col>
+   <col name="Number of Bands">
+     <objref oid="421"/>
+   </col>
+   <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="mtrstats_MetaData.xml"/>
+   <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="mtrstats_MetaData.xml"/>
+     <btn name="refresh" lbl="Refresh" type="refresh"   mtpath="mtrstats_MetaData.xml" spg="tbl_meta.xsl"/>
+     <btn name="close" lbl="Close" type="close"/>
+ </tbl>
+<!-- ***** TABLE DATA END ***** -->
+<!-- ***** FORM DATA START ***** -->
+ <form >
+ </form>
+<!-- ***** FORM DATA END ***** -->
+</root>
