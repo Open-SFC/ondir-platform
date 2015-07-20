@@ -6386,8 +6386,11 @@ int32_t dprm_clean_ports_from_datapath(uint64_t datapath_handle)
    if(datapath_handle == 0)
       return OF_FAILURE;
 
+#if defined (__x86_64__)
    printf("\r\n dprm_clean_ports_from_datapath dp_handle = %lx",datapath_handle);
-   
+#elif defined (__i386__)
+   printf("\r\n dprm_clean_ports_from_datapath dp_handle = %llx",datapath_handle);
+#endif    
    do{
       /*get first port*/
       CNTLR_RCU_READ_LOCK_TAKE();

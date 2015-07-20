@@ -22,8 +22,9 @@ struct futex
 #include "ppc.h"
 #elif defined(__i386__)
 #include "i386.h"
-#endif
+#elif defined(__x86_64__)
 #include "i386.h"
+#endif
 #define FUTEX_PASSED (-(1024 * 1024 * 1024))
 
 /* Down and up operations */

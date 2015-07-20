@@ -104,6 +104,7 @@ imageinstall:
 	#mkdir $(cntrl_image_name)/ipt-lx
 	cp ond-of-start.sh $(cntrl_image_name)/
 	cp ond-of-stop.sh $(cntrl_image_name)/
+	cp ofcleanup.sh $(cntrl_image_name)/
 	cp -rf build/bin/*  $(cntrl_image_name)/bin/
 	cp -rf $(OF_LIB_DIR)/*  $(cntrl_image_name)/bin/lib
 #	cp -rf $(OF_IPT_LX_DIR)/ipt-lx/*  $(cntrl_image_name)/ipt-lx
@@ -208,3 +209,4 @@ hdrinstall:
 	sudo mkdir -p $(ondir_platform_inst_dir)/include/third_party_opensrc/futex
 	sudo cp -f ext/futex/usersem.h  $(ondir_platform_inst_dir)/include/third_party_opensrc/futex
 	sudo cp -f ext/futex/i386.h  $(ondir_platform_inst_dir)/include/third_party_opensrc/futex
+	sudo cp -rf ext/urcu  $(ondir_platform_inst_dir)/include/third_party_opensrc/
