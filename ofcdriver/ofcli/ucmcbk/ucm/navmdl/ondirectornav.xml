@@ -230,6 +230,7 @@
   <node name="chainattribute" label="Chain Attributes" file="chainattribute.xml" screen="chainattributesm.xml" showMenu="no"/>
 </node>
 <node name="chainset" label="Chainset" file="chainset.xml" screen="chainsetsm.xml">
+    <node name="chainsetzone" label="Chainset Zone" file="chainsetzone.xml"></node>
   <node name="chainselrule" label="Chain Selection Rule" file="chainselection.xml" screen="chainselectionsm.xml" showMenu="no">
      <node name="selection_rule_attributes" label="Chain Selection Attributes" file="chainselectionattribute.xml" screen="chainselectionattributesm.xml" showMenu="no"/>
   </node>

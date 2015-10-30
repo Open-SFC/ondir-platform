@@ -4,20 +4,20 @@
  <breadcrumb>Not Available &gt; Service Chain</breadcrumb>
  <help src="ucmchain.htm" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="634" name="name" lbl="Chain Name" type="STR" key="yes" mand="yes">
+ <obj oid="636" name="name" lbl="Chain Name" type="STR" key="yes" mand="yes">
  </obj>
- <obj oid="635" name="tenant" lbl="Tenant Name" type="STR" key="yes" mand="yes">
+ <obj oid="637" name="tenant" lbl="Tenant Name" type="STR" key="yes" mand="yes">
  </obj>
- <obj oid="636" name="enabled" lbl="Enabled" type="BOOL">
+ <obj oid="638" name="enabled" lbl="Enabled" type="BOOL">
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
    <col name="Chain Name">
-     <objref oid="634"/>
+     <objref oid="636"/>
    </col>
    <col name="Tenant Name">
-     <objref oid="635"/>
+     <objref oid="637"/>
    </col>
    <col name="Chain Type">
      <objref oid=""/>
@@ -35,7 +35,7 @@
      <objref oid=""/>
    </col>
    <col name="Enabled">
-     <objref oid="636"/>
+     <objref oid="638"/>
    </col>
    <col name="Configuration">
      <link name="Attributes" mtpath="chainattribute_MetaData.xml" instancekey="chainattribute" target="new" spg="tbl_meta.xsl"/>
@@ -51,8 +51,8 @@
 <!-- ***** TABLE DATA END ***** -->
 <!-- ***** FORM DATA START ***** -->
  <form >
-   <field     oid="634"/>
-  <field oid="635" dmpath="on_director.crm.tenant" depends="name+STR" name="lstgrp-1" type="list">
+   <field     oid="636"/>
+  <field oid="637" dmpath="on_director.crm.tenant" depends="name+STR" name="lstgrp-1" type="list">
   </field>
   <field oid="" name="lstgrp-2" type="list">
   </field>
@@ -62,9 +62,9 @@
   </field>
    <field     oid=""/>
    <field     oid=""/>
-  <field oid="636" name="" type="checkbox">
+  <field oid="638" name="" type="checkbox">
   </field>
-  <field oid="637" dmpath="on_director.nsrm.service" depends="name+STR" name="" type="selcrtl" action="multiReq">
+  <field oid="639" dmpath="on_director.nsrm.service" depends="name+STR" name="" type="selcrtl" action="multiReq">
   </field>
   <btn lbl="Apply" type="submit" mtpath="chain_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
  </form>

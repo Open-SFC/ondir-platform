@@ -339,7 +339,7 @@ int32_t crm_vm_ucm_getparams (struct crm_vm_config_info *vm_info,
          uint32_t uindex_i = 0;
          char buf[128] = "";
          CM_CBK_DEBUG_PRINT ("Entered");
-#define CM_VM_CHILD_COUNT 5
+#define CM_VM_CHILD_COUNT 6
 
          result_iv_pairs_p->iv_pairs =
                         (struct cm_iv_pair *) of_calloc (CM_VM_CHILD_COUNT, sizeof (struct cm_iv_pair));
@@ -380,6 +380,12 @@ int32_t crm_vm_ucm_getparams (struct crm_vm_config_info *vm_info,
 
          sprintf(buf,"%s",vm_info->vm_desc);
          FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i],CM_DM_VIRTUALMACHINE_DESCRIPTION_ID,
+                                 CM_DATA_TYPE_STRING, buf);
+         uindex_i++;
+
+
+         sprintf(buf,"%s",vm_info->zone);
+         FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i],CM_DM_VIRTUALMACHINE_ZONE_ID,
                                  CM_DATA_TYPE_STRING, buf);
          uindex_i++;
 
@@ -433,6 +439,14 @@ int32_t crm_vm_ucm_setmandparams (struct cm_array_of_iv_pairs *pMandParams,
         of_strncpy (vm_info->switch_name, 
 		   (char *) pMandParams->iv_pairs[uiMandParamCnt].value_p,
 	           pMandParams->iv_pairs[uiMandParamCnt].value_length);
+        break;
+
+
+       case CM_DM_VIRTUALMACHINE_ZONE_ID:
+        CM_CBK_DEBUG_PRINT ("zone name:%s",(char *) pMandParams->iv_pairs[uiMandParamCnt].value_p);
+        of_strncpy (vm_info->zone, (char *) pMandParams->iv_pairs[uiMandParamCnt].value_p,
+               pMandParams->iv_pairs[uiMandParamCnt].value_length);
+
         break;
 
       default:

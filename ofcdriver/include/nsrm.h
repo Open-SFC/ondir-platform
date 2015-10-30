@@ -71,6 +71,8 @@
 #define NSRM_ERROR_INVALID_ATTRIBUTE_VALUE_LEN                  -37
 #define NSRM_ERROR_NO_MEM                                       -38
 #define NSRM_ERROR_INVALID_NAME                                 -39
+#define NSRM_ERROR_INVALID_ZONE_RECORD_NAME                     -40
+#define NSRM_ZONE_RECORD_DEL_FAIL                               -41
 /*Max name length . TO be used by the caller*/
 #define  NSRM_MAX_NAME_LENGTH                                    128
 /*
@@ -942,8 +944,12 @@ struct nsrm_nschainset_object_config_info
   uint32_t field_id;
   union
   {
-    uint8_t nschainset_type;
-    uint8_t admin_status_e;
+    uint8_t  nschainset_type;
+    uint8_t  admin_status_e;
+
+    /* new fields to support zone */
+    uint32_t zone_b; /* 0=zoneless chainset 1=zonefull chainset */
+    uint32_t zone_direction_default_e; /* ZONE_LESS = 1,ZONE_LEFT = 2, ZONE_RIGHT = 3 */ 
   }value;
 };
 
@@ -953,7 +959,7 @@ struct nsrm_nschainset_object_record
   struct nsrm_nschainset_object_config_info*  info;
 };
 
-#define NSRM_MAX_NSCHAINSET_CONFIG_PARAMETERS 2
+#define NSRM_MAX_NSCHAINSET_CONFIG_PARAMETERS 4
 
 /* Field ID's defined for this database: 
  *  0001 - nschainset_type
@@ -1293,7 +1299,9 @@ struct nsrm_l2nw_service_map_key
 {
   char*  tenant_name_p;
   char*  map_name_p;
-  char*  vn_name_p;
+  //char*  vn_name_p;
+   char* vn_name_in_p;
+   char* vn_name_out_p;
 };
 
 struct nsrm_l2nw_service_map_config_info
@@ -1312,7 +1320,7 @@ struct nsrm_l2nw_service_map_record
   struct   nsrm_l2nw_service_map_config_info*   info;
 };
 
-#define NSRM_MAX_L2NW_CONFIG_PARAMETERS 2
+#define NSRM_MAX_L2NW_CONFIG_PARAMETERS 3
 
 /* Field ID's defined for this database:  
    0001 -  nschainset_object_name 
@@ -1412,7 +1420,8 @@ struct nsrm_l2nw_service_map_notification
 {
   char*     l2nw_service_map_name_p;
   uint64_t  l2nw_service_map_handle;
-  uint64_t  vn_handle;
+  uint64_t  vn_in_handle;
+  uint64_t  vn_out_handle;
   uint64_t  nschainset_object_handle;
 };
 
@@ -1614,8 +1623,94 @@ enum l3nw_service_map_notification_type
     NSRM_L3NW_SERVICE_MAP_ATTRIBUTE_DELETED  
 };
 
+struct nsrm_zone_direction_rule_key
+{
+    char*   name_p;
+    char*   tenant_name_p;
+    char*   nschainset_object_name_p;
+};
+
+struct nsrm_zone_direction_rule_config_info
+{
+    uint32_t field_id;
+    union
+    {
+//#define   CRM_MAX_ZONE_SIZE  32         
+//      char  zone[CRM_MAX_ZONE_SIZE + 1];  /*  Examples Marketing, Engineering etc.. */
+      uint32_t   zone_direction_e;        /* ZONE_LEFT,ZONE_RIGHT,ZONE_LESS */
+    }value;
+};
+
+struct nsrm_zone_notification 
+{
+    char* zone_name_p;
+};
+
+union nsrm_zone_notification_data
+{
+  struct nsrm_zone_notification add_del;
+};
+/*Callback for notifications*/
+typedef void(*nsrm_zone_notifier)
+    (uint8_t notification_type,
+     uint64_t zone_handle,
+     union nsrm_zone_notification_data  notification_data,
+     void *callback_arg1,
+     void *callback_arg2);
+
+/* Registration API */
+int32_t nsrm_register_zone_notifications(
+        uint8_t notification_type,
+        nsrm_zone_notifier  zone_notifier,
+        void* callback_arg1,
+        void* callback_arg2);
+
+
+enum nsrm_zone_notification_type
+{
+    NSRM_ZONE_ALL,
+    NSRM_ZONE_ADDED_TO_NSCHAINSET_OBJECT,
+    NSRM_ZONE_MODIFIED_IN_NSCHAINSET_OBJECT,
+    NSRM_ZONE_DELETED_FROM_NSCHAINSET_OBJECT
+};
+
+#define NSRM_MAX_ZONE_RULE_CONFIG_PARAMETERS  2
+
+struct nsrm_zone_rule
+{
+  struct nsrm_zone_direction_rule_key            key;
+  struct nsrm_zone_direction_rule_config_info*   info;
+};
 
 
 
+int32_t nsrm_add_zone_to_nschainset(struct  nsrm_zone_direction_rule_key*  key_info_p,
+        int32_t number_of_config_params,
+        struct  nsrm_zone_direction_rule_config_info*   config_info_p);
 
+int32_t nsrm_del_zone_from_nschainset(struct  nsrm_zone_direction_rule_key*    key_info_p);
 
+int32_t nsrm_modify_zone(
+        struct  nsrm_zone_direction_rule_key*           key_info_p,
+        int32_t number_of_config_params,
+        struct  nsrm_zone_direction_rule_config_info*   config_info_p);
+
+int32_t nsrm_get_first_zone_from_nschainset_object (
+        struct   nsrm_nschainset_object_key*     nschainset_object_key_p,
+        int32_t  number_of_zones_requested,
+        int32_t* number_of_zones_returned_p,
+        struct   nsrm_zone_rule*  recs_p);
+
+int32_t nsrm_get_next_zone_from_nschainset_object (
+        struct   nsrm_nschainset_object_key*     nschainset_object_key_p,
+        struct   nsrm_zone_direction_rule_key*  relative_record_p,
+        int32_t  number_of_zone_requested,
+        int32_t* number_of_zones_returned_p,
+        struct   nsrm_zone_rule* recs_p);
+
+int32_t nsrm_get_exact_zone_from_nschainset_object(
+        struct   nsrm_nschainset_object_key*     nschainset_object_key_p,
+        struct   nsrm_zone_direction_rule_key       *key_info_p,
+        struct   nsrm_zone_rule  *recs_p);
+
+extern void tsc_reset_zone_direction_upon_modification(char* zone);

@@ -104,7 +104,7 @@ int32_t nsrm_add_l2nw_service_map_record(
    int32_t   status = NSRM_SUCCESS,ret_value;
    uchar8_t* hashobj_p = NULL;
    uint64_t  tenant_handle;
-   uint64_t  l2nw_service_map_handle , nschainset_object_handle ,vn_handle;
+   uint64_t  l2nw_service_map_handle , nschainset_object_handle ,vn_in_handle,vn_out_handle;
 
    if(nsrm_l2nw_service_map_table_g == NULL)
    {
@@ -131,22 +131,41 @@ int32_t nsrm_add_l2nw_service_map_record(
       }
    }
 
-   if(key_info_p->vn_name_p != NULL)
+   if(key_info_p->vn_name_in_p != NULL)
    {
-     ret_value = crm_get_vn_handle(key_info_p->vn_name_p,&vn_handle);
+     ret_value = crm_get_vn_handle(key_info_p->vn_name_in_p,&vn_in_handle);
      if(ret_value != NSRM_SUCCESS)
      {
         OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG, "VN doesn't exist ");
         return NSRM_FAILURE;
      } 
    
-   ret_value = crm_get_vn_byhandle(vn_handle,&crm_vn_info_p);
+   ret_value = crm_get_vn_byhandle(vn_in_handle,&crm_vn_info_p);
    if(ret_value != NSRM_SUCCESS)
    {
       OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG, "VN doesn't exist ");
       return NSRM_FAILURE;
    }
   }
+
+  if(key_info_p->vn_name_out_p != NULL)
+   {
+     ret_value = crm_get_vn_handle(key_info_p->vn_name_out_p,&vn_out_handle);
+     if(ret_value != NSRM_SUCCESS)
+     {
+        OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG, "VN doesn't exist ");
+        return NSRM_FAILURE;
+     } 
+   
+   ret_value = crm_get_vn_byhandle(vn_out_handle,&crm_vn_info_p);
+   if(ret_value != NSRM_SUCCESS)
+   {
+      OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG, "VN doesn't exist ");
+      return NSRM_FAILURE;
+   }
+  }
+
+
 
    if(config_info_p[0].value.nschainset_object_name_p != NULL) 
    { 
@@ -179,7 +198,7 @@ int32_t nsrm_add_l2nw_service_map_record(
       MCHASH_BUCKET_SCAN(nsrm_l2nw_service_map_table_g ,hashkey ,l2nw_service_map_node_scan_p,
                          struct nsrm_l2nw_service_map* ,offset)
       {
-        if((strcmp(key_info_p->map_name_p,l2nw_service_map_node_scan_p->map_name_p) ==0) || (strcmp(key_info_p->vn_name_p,l2nw_service_map_node_scan_p->vn_name_p) == 0))
+        if((strcmp(key_info_p->map_name_p,l2nw_service_map_node_scan_p->map_name_p) ==0) || (strcmp(key_info_p->vn_name_in_p,l2nw_service_map_node_scan_p->vn_name_in_p) == 0) || (strcmp(key_info_p->vn_name_out_p,l2nw_service_map_node_scan_p->vn_name_out_p) == 0) )
         {
           OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG,"Duplicate resource found");
           status = NSRM_ERROR_DUPLICATE_RESOURCE;
@@ -212,7 +231,8 @@ int32_t nsrm_add_l2nw_service_map_record(
      l2nw_service_map_p->heap_b = heap_b;
      l2nw_service_map_p->map_name_p = (char*)calloc(1,128);
      l2nw_service_map_p->tenant_name_p = (char*)calloc(1,128);
-     l2nw_service_map_p->vn_name_p = (char*)calloc(1,128);
+     l2nw_service_map_p->vn_name_in_p = (char*)calloc(1,128);
+     l2nw_service_map_p->vn_name_out_p = (char*)calloc(1,128);
      l2nw_service_map_p->nschainset_object_name_p = (char*)calloc(1,128);
      strcpy(l2nw_service_map_p->map_name_p , key_info_p->map_name_p);
      strcpy(l2nw_service_map_p->tenant_name_p , key_info_p->tenant_name_p);
@@ -221,10 +241,14 @@ int32_t nsrm_add_l2nw_service_map_record(
        strcpy(l2nw_service_map_p->nschainset_object_name_p ,config_info_p[0].value.nschainset_object_name_p);
        l2nw_service_map_p->nschainset_object_saferef = nschainset_object_node_scan_p->nschainset_object_handle;
      }
-     if(key_info_p->vn_name_p != NULL)
-       strcpy(l2nw_service_map_p->vn_name_p ,key_info_p->vn_name_p);
+     if(key_info_p->vn_name_in_p != NULL)
+       strcpy(l2nw_service_map_p->vn_name_in_p ,key_info_p->vn_name_in_p);
+     if(key_info_p->vn_name_out_p != NULL)
+       strcpy(l2nw_service_map_p->vn_name_out_p ,key_info_p->vn_name_out_p);
+
      l2nw_service_map_p->admin_status_e = config_info_p[1].value.admin_status_e;
-     l2nw_service_map_p->vn_saferef           = vn_handle ;
+     l2nw_service_map_p->vn_in_saferef           = vn_in_handle ;
+     l2nw_service_map_p->vn_out_saferef           = vn_out_handle ;
      l2nw_service_map_p->operational_status_e = OPER_DISABLE;
  
      hashobj_p = (uchar8_t *)l2nw_service_map_p + NSRM_L2NW_SERVICE_MAP_TBL_OFFSET;
@@ -244,7 +268,8 @@ int32_t nsrm_add_l2nw_service_map_record(
      notification_data.add_del.l2nw_service_map_name_p = (char*)calloc(1,(strlen(l2nw_service_map_p->map_name_p)+1));
      strcpy(notification_data.add_del.l2nw_service_map_name_p ,l2nw_service_map_p->map_name_p);
      notification_data.add_del.l2nw_service_map_handle = l2nw_service_map_p->l2nw_service_map_handle;
-     notification_data.add_del.vn_handle = vn_handle;
+     notification_data.add_del.vn_in_handle = vn_in_handle;
+     notification_data.add_del.vn_out_handle = vn_out_handle;
      notification_data.add_del.nschainset_object_handle = nschainset_object_handle;
 
      OF_LIST_SCAN(nsrm_l2nw_service_map_notifications[NSRM_L2NW_SERVICE_MAP_ADDED], 
@@ -281,7 +306,8 @@ int32_t nsrm_add_l2nw_service_map_record(
     if(status != NSRM_SUCCESS)
     {
       free(l2nw_service_map_p->map_name_p);
-      free(l2nw_service_map_p->vn_name_p);
+      free(l2nw_service_map_p->vn_name_in_p);
+      free(l2nw_service_map_p->vn_name_out_p);
       free(l2nw_service_map_p->tenant_name_p);
       free(l2nw_service_map_p->nschainset_object_name_p);
       if(l2nw_service_map_p)
@@ -347,11 +373,19 @@ int32_t nsrm_del_l2nw_service_map_record(
       CNTLR_RCU_READ_LOCK_RELEASE();
       return NSRM_FAILURE;
    }
-   ret_value = crm_get_vn_byhandle(l2nw_service_map_p->vn_saferef , &vn_info_p);
+   ret_value = crm_get_vn_byhandle(l2nw_service_map_p->vn_in_saferef , &vn_info_p);
    if(ret_value != NSRM_SUCCESS)
    {
        CNTLR_RCU_READ_LOCK_RELEASE();
-       OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_ERROR,"VN doesnt exist");
+       OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_ERROR,"VN IN doesnt exist");
+       return NSRM_FAILURE;
+   }
+
+   ret_value = crm_get_vn_byhandle(l2nw_service_map_p->vn_out_saferef , &vn_info_p);
+   if(ret_value != NSRM_SUCCESS)
+   {
+       CNTLR_RCU_READ_LOCK_RELEASE();
+       OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_ERROR,"VN OUT doesnt exist");
        return NSRM_FAILURE;
    }
 
@@ -359,6 +393,8 @@ int32_t nsrm_del_l2nw_service_map_record(
    notification_data.add_del.l2nw_service_map_name_p = (char*)calloc(1,(strlen(l2nw_service_map_p->map_name_p)+1));
    strcpy(notification_data.add_del.l2nw_service_map_name_p ,l2nw_service_map_p->map_name_p);
    notification_data.add_del.l2nw_service_map_handle = l2nw_service_map_p->l2nw_service_map_handle;
+   notification_data.add_del.vn_in_handle            = l2nw_service_map_p->vn_in_saferef;
+   notification_data.add_del.vn_out_handle           = l2nw_service_map_p->vn_out_saferef;
    OF_LIST_SCAN(nsrm_l2nw_service_map_notifications[NSRM_L2NW_SERVICE_MAP_DELETED] ,
                   app_entry_p,
                   struct nsrm_notification_app_hook_info *,
@@ -415,7 +451,7 @@ int32_t nsrm_modify_l2nw_service_map_record(
    int32_t   offset;
    uint8_t   current_entry_found_b = FALSE;
    int32_t   ret_value;
-   uint64_t  vn_handle ,nschainset_object_handle;
+   uint64_t  vn_in_handle,vn_out_handle ,nschainset_object_handle;
 
    if(nsrm_l2nw_service_map_table_g == NULL)
    {
@@ -442,7 +478,7 @@ int32_t nsrm_modify_l2nw_service_map_record(
    MCHASH_BUCKET_SCAN(nsrm_l2nw_service_map_table_g ,hashkey ,l2nw_service_map_node_scan_p,
                          struct nsrm_l2nw_service_map* ,offset)
    {
-     if((strcmp(key_info_p->map_name_p,l2nw_service_map_node_scan_p->map_name_p) == 0) && (strcmp(key_info_p->vn_name_p,l2nw_service_map_node_scan_p->vn_name_p) == 0) && (strcmp(key_info_p->tenant_name_p,l2nw_service_map_node_scan_p->tenant_name_p) == 0))
+     if((strcmp(key_info_p->map_name_p,l2nw_service_map_node_scan_p->map_name_p) == 0) && (strcmp(key_info_p->vn_name_in_p,l2nw_service_map_node_scan_p->vn_name_in_p) == 0) && (strcmp(key_info_p->vn_name_out_p,l2nw_service_map_node_scan_p->vn_name_out_p) == 0)&& (strcmp(key_info_p->tenant_name_p,l2nw_service_map_node_scan_p->tenant_name_p) == 0))
       {
           current_entry_found_b = TRUE;
       }
@@ -456,12 +492,14 @@ int32_t nsrm_modify_l2nw_service_map_record(
                
     l2nw_service_map_node_scan_p->map_name_p = (char*)calloc(1,(strlen(key_info_p->map_name_p)+1));
     l2nw_service_map_node_scan_p->tenant_name_p = (char*)calloc(1,(strlen(key_info_p->tenant_name_p)+1));
-    l2nw_service_map_node_scan_p->vn_name_p = (char*)calloc(1,(strlen(key_info_p->vn_name_p)+1));
+    l2nw_service_map_node_scan_p->vn_name_in_p = (char*)calloc(1,(strlen(key_info_p->vn_name_in_p)+1));
+    l2nw_service_map_node_scan_p->vn_name_out_p = (char*)calloc(1,(strlen(key_info_p->vn_name_out_p)+1));
     l2nw_service_map_node_scan_p->nschainset_object_name_p = (char*)calloc(1,strlen(config_info_p[0].value.nschainset_object_name_p)+1);
     strcpy(l2nw_service_map_node_scan_p->map_name_p , key_info_p->map_name_p);
     strcpy(l2nw_service_map_node_scan_p->tenant_name_p , key_info_p->tenant_name_p);
     strcpy(l2nw_service_map_node_scan_p->nschainset_object_name_p ,config_info_p[0].value.nschainset_object_name_p);
-    strcpy(l2nw_service_map_node_scan_p->vn_name_p ,key_info_p->vn_name_p);
+    strcpy(l2nw_service_map_node_scan_p->vn_name_in_p ,key_info_p->vn_name_in_p);
+    strcpy(l2nw_service_map_node_scan_p->vn_name_out_p ,key_info_p->vn_name_out_p);
     l2nw_service_map_node_scan_p->admin_status_e = config_info_p[1].value.admin_status_e;
 
     ret_value = nsrm_get_nschainset_object_handle(config_info_p[0].value.nschainset_object_name_p,&nschainset_object_handle);
@@ -482,7 +520,7 @@ int32_t nsrm_modify_l2nw_service_map_record(
      /*Put new nschainset objects saferef */ 
     l2nw_service_map_node_scan_p->nschainset_object_saferef = nschainset_object_node_scan_p->nschainset_object_handle;
 
-    ret_value = crm_get_vn_handle(key_info_p->vn_name_p,&vn_handle);
+    ret_value = crm_get_vn_handle(key_info_p->vn_name_in_p,&vn_in_handle);
     if(ret_value != NSRM_SUCCESS)
     {
        OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG, "VN doesn't exist ");
@@ -490,7 +528,7 @@ int32_t nsrm_modify_l2nw_service_map_record(
        return NSRM_FAILURE;
     }
 
-    ret_value = crm_get_vn_byhandle(vn_handle,&crm_vn_mod_info_p);
+    ret_value = crm_get_vn_byhandle(vn_in_handle,&crm_vn_mod_info_p);
     if(ret_value != NSRM_SUCCESS)
     {
        OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG, "VN doesn't exist ");
@@ -498,7 +536,25 @@ int32_t nsrm_modify_l2nw_service_map_record(
        return NSRM_FAILURE;
     }
  
-     l2nw_service_map_node_scan_p->vn_saferef           = vn_handle ;
+    ret_value = crm_get_vn_handle(key_info_p->vn_name_out_p,&vn_out_handle);
+    if(ret_value != NSRM_SUCCESS)
+    {
+       OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG, "VN doesn't exist ");
+       CNTLR_RCU_READ_LOCK_RELEASE();
+       return NSRM_FAILURE;
+    }
+
+    ret_value = crm_get_vn_byhandle(vn_out_handle,&crm_vn_mod_info_p);
+    if(ret_value != NSRM_SUCCESS)
+    {
+       OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG, "VN doesn't exist ");
+       CNTLR_RCU_READ_LOCK_RELEASE();
+       return NSRM_FAILURE;
+    }
+ 
+
+     l2nw_service_map_node_scan_p->vn_in_saferef        = vn_in_handle ;
+     l2nw_service_map_node_scan_p->vn_out_saferef       = vn_out_handle ;
      l2nw_service_map_node_scan_p->operational_status_e = OPER_DISABLE;
        
      CNTLR_RCU_READ_LOCK_RELEASE();
@@ -532,7 +588,8 @@ int32_t nsrm_get_first_l2nw_service_maps(
       {
          strcpy(recs_p[l2nw_map_returned].key.map_name_p,l2nw_service_map_node_scan_p->map_name_p);
          strcpy(recs_p[l2nw_map_returned].key.tenant_name_p,l2nw_service_map_node_scan_p->tenant_name_p);
-         strcpy(recs_p[l2nw_map_returned].key.vn_name_p , l2nw_service_map_node_scan_p->vn_name_p);
+         strcpy(recs_p[l2nw_map_returned].key.vn_name_in_p , l2nw_service_map_node_scan_p->vn_name_in_p);
+         strcpy(recs_p[l2nw_map_returned].key.vn_name_out_p , l2nw_service_map_node_scan_p->vn_name_out_p);
          strcpy(recs_p[l2nw_map_returned].info[0].value.nschainset_object_name_p , l2nw_service_map_node_scan_p->nschainset_object_name_p);
          recs_p[l2nw_map_returned].info[1].value.admin_status_e = l2nw_service_map_node_scan_p->admin_status_e;
          status = NSRM_SUCCESS;
@@ -608,7 +665,8 @@ int32_t nsrm_get_next_l2nw_service_maps(
          }
          strcpy(recs_p[l2nw_map_returned].key.map_name_p , l2nw_service_map_node_scan_p->map_name_p);
          strcpy(recs_p[l2nw_map_returned].key.tenant_name_p , l2nw_service_map_node_scan_p->tenant_name_p);
-         strcpy(recs_p[l2nw_map_returned].key.vn_name_p , l2nw_service_map_node_scan_p->vn_name_p);
+         strcpy(recs_p[l2nw_map_returned].key.vn_name_in_p , l2nw_service_map_node_scan_p->vn_name_in_p);
+         strcpy(recs_p[l2nw_map_returned].key.vn_name_out_p , l2nw_service_map_node_scan_p->vn_name_out_p);
          strcpy(recs_p[l2nw_map_returned].info[0].value.nschainset_object_name_p , l2nw_service_map_node_scan_p->nschainset_object_name_p);
          recs_p[l2nw_map_returned].info[1].value.admin_status_e = l2nw_service_map_node_scan_p->admin_status_e;
          status = NSRM_SUCCESS;
@@ -669,7 +727,8 @@ int32_t nsrm_get_exact_l2nw_service_map(
      {
         if(((strcmp(key_info_p->map_name_p , l2nw_service_map_node_scan_p->map_name_p)) == 0) &&
            (strcmp(key_info_p->tenant_name_p , l2nw_service_map_node_scan_p->tenant_name_p) == 0) &&
-            (strcmp(key_info_p->vn_name_p , l2nw_service_map_node_scan_p->vn_name_p) == 0)) 
+            (strcmp(key_info_p->vn_name_in_p , l2nw_service_map_node_scan_p->vn_name_in_p) == 0) && 
+            (strcmp(key_info_p->vn_name_out_p , l2nw_service_map_node_scan_p->vn_name_out_p) == 0)) 
         {
            OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG, "l2nw service map entry found ");
            current_entry_found_b = TRUE;
@@ -686,7 +745,8 @@ int32_t nsrm_get_exact_l2nw_service_map(
    }
     strcpy(rec_p[0].key.map_name_p , l2nw_service_map_node_scan_p->map_name_p);
     strcpy(rec_p[0].key.tenant_name_p , l2nw_service_map_node_scan_p->tenant_name_p);
-    strcpy(rec_p[0].key.vn_name_p , l2nw_service_map_node_scan_p->vn_name_p);
+    strcpy(rec_p[0].key.vn_name_in_p , l2nw_service_map_node_scan_p->vn_name_in_p);
+    strcpy(rec_p[0].key.vn_name_out_p , l2nw_service_map_node_scan_p->vn_name_out_p);
     strcpy(rec_p[0].info[0].value.nschainset_object_name_p , l2nw_service_map_node_scan_p->nschainset_object_name_p);
     rec_p[0].info[1].value.admin_status_e = l2nw_service_map_node_scan_p->admin_status_e;
 
@@ -1424,7 +1484,7 @@ int32_t nsrm_get_l2nw_map_by_view(char *view_name , char *view_value ,struct nsr
   }
   strcpy(recs_p->key.map_name_p,l2nw_service_map_p->map_name_p);
   strcpy(recs_p->key.tenant_name_p,l2nw_service_map_p->tenant_name_p);
-  strcpy(recs_p->key.vn_name_p , l2nw_service_map_p->vn_name_p);
+  strcpy(recs_p->key.vn_name_in_p , l2nw_service_map_p->vn_name_in_p);
   strcpy(recs_p->info[0].value.nschainset_object_name_p , l2nw_service_map_p->nschainset_object_name_p);
   recs_p->info[1].value.admin_status_e = l2nw_service_map_p->admin_status_e;
 

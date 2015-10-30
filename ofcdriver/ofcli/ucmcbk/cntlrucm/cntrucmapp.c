@@ -133,6 +133,7 @@ of_asyncmsgcfg_appl_ucmcbk_init();
   nsrm_l2networkmap_init();
   nsrm_l2nw_map_attribute_appl_ucmcbk_init();
   nsrm_chainselrule_init();
+  nsrm_chainsetzone_init(); /* NSMUCM */
   nsrm_bypassrule_init();
   nsrm_bypass_rule_attribute_appl_ucmcbk_init();
   nsrm_selection_rule_attribute_appl_ucmcbk_init();

@@ -126,7 +126,8 @@ int32_t nsrm_l2networkmap_addrec (void * config_trans_p,
     *result_p=nsrm_l2networkmap_result;
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
     return OF_FAILURE;
   }
@@ -140,13 +141,13 @@ int32_t nsrm_l2networkmap_addrec (void * config_trans_p,
     *result_p=nsrm_l2networkmap_result;
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
     return OF_FAILURE;
   }
 
   CM_CBK_DEBUG_PRINT ("chainset:%s",(char *) nsrm_l2networkmap_config_info->value.nschainset_object_name_p);
-  CM_CBK_DEBUG_PRINT ("vnname:%s",(char *) nsrm_l2networkmap_key_info->vn_name_p);
+  CM_CBK_DEBUG_PRINT ("vnname:%s",(char *) nsrm_l2networkmap_key_info->vn_name_in_p);
   return_value = nsrm_add_l2nw_service_map_record(2, nsrm_l2networkmap_key_info,
                                          nsrm_l2networkmap_config_info);
   if(return_value == NSRM_ERROR_DUPLICATE_RESOURCE)
@@ -157,7 +158,8 @@ int32_t nsrm_l2networkmap_addrec (void * config_trans_p,
     *result_p = nsrm_l2networkmap_result;
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
     return OF_FAILURE;
   }
@@ -169,14 +171,16 @@ int32_t nsrm_l2networkmap_addrec (void * config_trans_p,
     *result_p = nsrm_l2networkmap_result;
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
     return OF_FAILURE;
   }
   CM_CBK_DEBUG_PRINT ("NSRM l2networkmap added successfully");
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
   return OF_SUCCESS;
 }
@@ -205,7 +209,8 @@ int32_t nsrm_l2networkmap_modrec (void * config_trans_p,
      *result_p=nsrm_l2networkmap_result;
      of_free(nsrm_l2networkmap_key_info->map_name_p);
      of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-     of_free(nsrm_l2networkmap_key_info->vn_name_p);
+     of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+     of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
      of_free(nsrm_l2networkmap_key_info);
      return OF_FAILURE;
    }
@@ -217,7 +222,8 @@ int32_t nsrm_l2networkmap_modrec (void * config_trans_p,
      *result_p=nsrm_l2networkmap_result;
      of_free(nsrm_l2networkmap_key_info->map_name_p);
      of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-     of_free(nsrm_l2networkmap_key_info->vn_name_p);
+     of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+     of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
      of_free(nsrm_l2networkmap_key_info);
      return OF_FAILURE;
    }
@@ -231,14 +237,16 @@ int32_t nsrm_l2networkmap_modrec (void * config_trans_p,
      *result_p = nsrm_l2networkmap_result;
      of_free(nsrm_l2networkmap_key_info->map_name_p);
      of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-     of_free(nsrm_l2networkmap_key_info->vn_name_p);
+     of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+     of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
      of_free(nsrm_l2networkmap_key_info);
      return OF_FAILURE;
    }
    CM_CBK_DEBUG_PRINT ("NSRM l2networkmap modified successfully");
    of_free(nsrm_l2networkmap_key_info->map_name_p);
    of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-   of_free(nsrm_l2networkmap_key_info->vn_name_p);
+   of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+   of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
    of_free(nsrm_l2networkmap_key_info);
    return OF_SUCCESS;
 }
@@ -265,7 +273,8 @@ int32_t nsrm_l2networkmap_delrec (void * config_transaction_p,
     *result_p = nsrm_l2networkmap_result;
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
     return OF_FAILURE;
   }
@@ -277,14 +286,16 @@ int32_t nsrm_l2networkmap_delrec (void * config_transaction_p,
     *result_p = nsrm_l2networkmap_result;
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
     return OF_FAILURE;
   }
   CM_CBK_DEBUG_PRINT ("NSRM Appliance delete successfully");
   of_free(nsrm_l2networkmap_key_info->map_name_p);
   of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-  of_free(nsrm_l2networkmap_key_info->vn_name_p);
+  of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+  of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
   of_free(nsrm_l2networkmap_key_info);
   return OF_SUCCESS;
 
@@ -305,7 +316,8 @@ int32_t nsrm_l2networkmap_getfirstnrecs (struct cm_array_of_iv_pairs * keys_arr_
   nsrm_l2networkmap_config_info->info = (struct nsrm_l2nw_service_map_config_info *)of_calloc(NSRM_MAX_L2NW_CONFIG_PARAMETERS,sizeof(struct nsrm_l2nw_service_map_config_info));
   nsrm_l2networkmap_config_info->key.map_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
   nsrm_l2networkmap_config_info->key.tenant_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
-  nsrm_l2networkmap_config_info->key.vn_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
+  nsrm_l2networkmap_config_info->key.vn_name_in_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
+  nsrm_l2networkmap_config_info->key.vn_name_out_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
   nsrm_l2networkmap_config_info->info[0].value.nschainset_object_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
  return_value = nsrm_get_first_l2nw_service_maps(uiRequestedCount, &uiReturnedCnt, nsrm_l2networkmap_config_info);
 
@@ -351,7 +363,8 @@ int32_t nsrm_l2networkmap_getnextnrecs (struct cm_array_of_iv_pairs * keys_arr_p
   nsrm_l2networkmap_config_info->info = (struct nsrm_l2nw_service_map_config_info *)of_calloc(NSRM_MAX_L2NW_CONFIG_PARAMETERS,sizeof(struct nsrm_l2nw_service_map_config_info));
   nsrm_l2networkmap_config_info->key.map_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
   nsrm_l2networkmap_config_info->key.tenant_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
-  nsrm_l2networkmap_config_info->key.vn_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
+  nsrm_l2networkmap_config_info->key.vn_name_in_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
+  nsrm_l2networkmap_config_info->key.vn_name_out_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
   nsrm_l2networkmap_config_info->info[0].value.nschainset_object_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
 
 
@@ -362,7 +375,8 @@ int32_t nsrm_l2networkmap_getnextnrecs (struct cm_array_of_iv_pairs * keys_arr_p
      CM_CBK_DEBUG_PRINT ("Set Mandatory Parameters Failed");
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
      return OF_FAILURE;
   }
@@ -374,7 +388,8 @@ int32_t nsrm_l2networkmap_getnextnrecs (struct cm_array_of_iv_pairs * keys_arr_p
     CM_CBK_DEBUG_PRINT ("Get next record failed for NSRM appl  Table");
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
     return OF_FAILURE;
   }
@@ -385,7 +400,8 @@ int32_t nsrm_l2networkmap_getnextnrecs (struct cm_array_of_iv_pairs * keys_arr_p
     CM_CBK_DEBUG_PRINT ("Memory allocation failed for result_iv_pairs_p");
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
     return OF_FAILURE;
   }
@@ -395,7 +411,8 @@ int32_t nsrm_l2networkmap_getnextnrecs (struct cm_array_of_iv_pairs * keys_arr_p
  *count_p = uiRecCount;
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
   return OF_SUCCESS;
 }
@@ -419,7 +436,8 @@ int32_t nsrm_l2networkmap_getexactrec(struct cm_array_of_iv_pairs * key_iv_pairs
   l2networkmap_object_config_info->info = (struct nsrm_l2nw_service_map_config_info *)of_calloc(NSRM_MAX_L2NW_CONFIG_PARAMETERS,sizeof(struct nsrm_l2nw_service_map_config_info));
   l2networkmap_object_config_info->key.map_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
   l2networkmap_object_config_info->key.tenant_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
-  l2networkmap_object_config_info->key.vn_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
+  l2networkmap_object_config_info->key.vn_name_in_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
+  l2networkmap_object_config_info->key.vn_name_out_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
   l2networkmap_object_config_info->info[0].value.nschainset_object_name_p = (char*)of_calloc(1,NSRM_MAX_NAME_LENGTH);
 
   if((nsrm_l2networkmap_ucm_setmandparams(key_iv_pairs_p, nsrm_l2networkmap_key_info, 
@@ -428,7 +446,8 @@ int32_t nsrm_l2networkmap_getexactrec(struct cm_array_of_iv_pairs * key_iv_pairs
     CM_CBK_DEBUG_PRINT ("Set Mandatory Parameters Failed");
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
     return OF_FAILURE;
   }
@@ -439,7 +458,8 @@ int32_t nsrm_l2networkmap_getexactrec(struct cm_array_of_iv_pairs * key_iv_pairs
     CM_CBK_DEBUG_PRINT ("Error: Appliacne doesn't exists with name %s",nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
     return OF_FAILURE;
   }
@@ -453,7 +473,8 @@ int32_t nsrm_l2networkmap_getexactrec(struct cm_array_of_iv_pairs * key_iv_pairs
     CM_CBK_DEBUG_PRINT ("Failed to allocate memory for result_iv_pairs_p");
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
     return OF_FAILURE;
   }
@@ -462,7 +483,8 @@ int32_t nsrm_l2networkmap_getexactrec(struct cm_array_of_iv_pairs * key_iv_pairs
                                                                                        
     of_free(nsrm_l2networkmap_key_info->map_name_p);
     of_free(nsrm_l2networkmap_key_info->tenant_name_p);
-    of_free(nsrm_l2networkmap_key_info->vn_name_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_in_p);
+    of_free(nsrm_l2networkmap_key_info->vn_name_out_p);
     of_free(nsrm_l2networkmap_key_info);
   return OF_SUCCESS;
 }
@@ -473,7 +495,7 @@ int32_t nsrm_l2networkmap_ucm_getparams (struct nsrm_l2nw_service_map_record *ap
    uint32_t uindex_i = 0;
    char buf[128] = "";
    CM_CBK_DEBUG_PRINT ("Entered");
-#define CM_APPLIANCE_CHILD_COUNT 5
+#define CM_APPLIANCE_CHILD_COUNT 6
 
    result_iv_pairs_p->iv_pairs =(struct cm_iv_pair *) of_calloc (CM_APPLIANCE_CHILD_COUNT, sizeof (struct cm_iv_pair));
    if (result_iv_pairs_p->iv_pairs == NULL)
@@ -492,10 +514,16 @@ int32_t nsrm_l2networkmap_ucm_getparams (struct nsrm_l2nw_service_map_record *ap
    CM_CBK_DEBUG_PRINT("tenant_name_p : %s",result_iv_pairs_p->iv_pairs[uindex_i].value_p);
    uindex_i++;
 
-   FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i], CM_DM_NETWORKMAP_VNNAME_ID,
-		   CM_DATA_TYPE_STRING, appl_l2networkmap_info->key.vn_name_p);
-   CM_CBK_DEBUG_PRINT("vn_name_p: %s",result_iv_pairs_p->iv_pairs[uindex_i].value_p);
+   FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i], CM_DM_NETWORKMAP_VNNAME_IN_ID,
+		   CM_DATA_TYPE_STRING, appl_l2networkmap_info->key.vn_name_in_p);
+   CM_CBK_DEBUG_PRINT("vn_name_in_p: %s",result_iv_pairs_p->iv_pairs[uindex_i].value_p);
    uindex_i++;
+
+  FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i], CM_DM_NETWORKMAP_VNNAME_OUT_ID,
+		   CM_DATA_TYPE_STRING, appl_l2networkmap_info->key.vn_name_out_p);
+   CM_CBK_DEBUG_PRINT("vn_name_out_p: %s",result_iv_pairs_p->iv_pairs[uindex_i].value_p);
+   uindex_i++;
+
 
    FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i], CM_DM_NETWORKMAP_CHAINSET_ID,
 		   CM_DATA_TYPE_STRING, appl_l2networkmap_info->info[0].value.nschainset_object_name_p);
@@ -541,10 +569,16 @@ int32_t nsrm_l2networkmap_ucm_setmandparams (struct cm_array_of_iv_pairs *pMandP
       break;
 
       
-      case CM_DM_NETWORKMAP_VNNAME_ID:
-         appl_l2networkmap_info->vn_name_p = (char *) of_calloc(1, NSRM_MAX_NAME_LENGTH);
+      case CM_DM_NETWORKMAP_VNNAME_IN_ID:
+         appl_l2networkmap_info->vn_name_in_p = (char *) of_calloc(1, NSRM_MAX_NAME_LENGTH);
           CM_CBK_DEBUG_PRINT ("vnname:%s",(char *) pMandParams->iv_pairs[uiMandParamCnt].value_p);
-          of_strncpy (appl_l2networkmap_info->vn_name_p,(char *) pMandParams->iv_pairs[uiMandParamCnt].value_p,
+          of_strncpy (appl_l2networkmap_info->vn_name_in_p,(char *) pMandParams->iv_pairs[uiMandParamCnt].value_p,
+                 pMandParams->iv_pairs[uiMandParamCnt].value_length);
+      break;
+     case CM_DM_NETWORKMAP_VNNAME_OUT_ID:
+         appl_l2networkmap_info->vn_name_out_p = (char *) of_calloc(1, NSRM_MAX_NAME_LENGTH);
+          CM_CBK_DEBUG_PRINT ("vnname:%s",(char *) pMandParams->iv_pairs[uiMandParamCnt].value_p);
+          of_strncpy (appl_l2networkmap_info->vn_name_out_p,(char *) pMandParams->iv_pairs[uiMandParamCnt].value_p,
                  pMandParams->iv_pairs[uiMandParamCnt].value_length);
       break;
 
@@ -637,7 +671,7 @@ int32_t nsrm_l2networkmap_ucm_validatemandparams(struct cm_array_of_iv_pairs *ma
         }
         break;
 
-      case CM_DM_NETWORKMAP_VNNAME_ID:
+      case CM_DM_NETWORKMAP_VNNAME_IN_ID:
         if (mand_iv_pairs_p->iv_pairs[count].value_p == NULL)
         {
           CM_CBK_DEBUG_PRINT ("Appl category name is NULL");

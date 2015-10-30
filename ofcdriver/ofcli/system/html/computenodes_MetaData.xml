@@ -5,18 +5,18 @@
  <help src="ucmcomputenodes.htm" />
  <depends vrtlInst="name" mtpath="VN_MetaData.xml" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="590" name="computenodename" lbl="Compute Node Name" type="STR" key="yes" mand="yes">
+ <obj oid="591" name="computenodename" lbl="Compute Node Name" type="STR" key="yes" mand="yes">
  </obj>
- <obj oid="591" name="bridgename" lbl="Bridge Name" type="STR" mand="yes">
+ <obj oid="592" name="bridgename" lbl="Bridge Name" type="STR" mand="yes">
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
    <col name="Compute Node Name">
-     <objref oid="590"/>
+     <objref oid="591"/>
    </col>
    <col name="Bridge Name">
-     <objref oid="591"/>
+     <objref oid="592"/>
    </col>
    <col name="Configuration">
      <link name="VM Side Ports" mtpath="vmsideports_MetaData.xml" instancekey="vmsideports" target="new" spg="tbl_meta.xsl"/>
@@ -32,8 +32,8 @@
 <!-- ***** TABLE DATA END ***** -->
 <!-- ***** FORM DATA START ***** -->
  <form >
-   <field     oid="590"/>
    <field     oid="591"/>
+   <field     oid="592"/>
   <btn lbl="Apply" type="submit" mtpath="computenodes_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
  </form>
 <!-- ***** FORM DATA END ***** -->

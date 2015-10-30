@@ -6,10 +6,10 @@
  <depends vrtlInst="name" mtpath="Chainset_MetaData.xml" />
  <useparenttx mtpath="chainselrule_MetaData.xml" ppath="chainselrule" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="707" name="attributeName" lbl="" type="STR" key="yes" mand="yes" defVal="">
+ <obj oid="714" name="attributeName" lbl="" type="STR" key="yes" mand="yes" defVal="">
    <range>1-64</range>
  </obj>
- <obj oid="708" name="attributeValue" lbl="" type="STR" mand="yes" defVal="">
+ <obj oid="715" name="attributeValue" lbl="" type="STR" mand="yes" defVal="">
    <range>1-64</range>
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->

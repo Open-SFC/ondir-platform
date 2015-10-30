@@ -129,7 +129,7 @@ int32_t nsrm_chain_addrec (void * config_trans_p,
   }
 
    
-  CM_CBK_DEBUG_PRINT ("type : %d",nsrm_chain_config_info[0].value.nschain_type);
+  //CM_CBK_DEBUG_PRINT ("type : %d",nsrm_chain_config_info[0].value.nschain_type);
 
     if ((nsrm_chain_ucm_setoptparams (pOptParams, nsrm_chain_config_info)) != OF_SUCCESS)
   {
@@ -143,8 +143,8 @@ int32_t nsrm_chain_addrec (void * config_trans_p,
   }
 
 
-  CM_CBK_DEBUG_PRINT ("high : %d",nsrm_chain_config_info[3].value.high_threshold);
-  CM_CBK_DEBUG_PRINT ("low : %d",nsrm_chain_config_info[4].value.low_threshold);
+  //CM_CBK_DEBUG_PRINT ("high : %d",nsrm_chain_config_info[3].value.high_threshold);
+  //CM_CBK_DEBUG_PRINT ("low : %d",nsrm_chain_config_info[4].value.low_threshold);
   return_value = nsrm_add_nschain_object(2, nsrm_chain_key_info,
                                          nsrm_chain_config_info);
   if (return_value != OF_SUCCESS)
@@ -485,7 +485,7 @@ int32_t nsrm_chain_ucm_getparams (struct nsrm_nschain_object_record *appl_chain_
 #endif
 
    of_memset(buf, 0, sizeof(buf));
-   of_itoa (appl_chain_info->info[5].value.admin_status_e, buf);
+   of_itoa (appl_chain_info->info[1].value.admin_status_e, buf);
    CM_CBK_DEBUG_PRINT("debug1");
    CM_CBK_DEBUG_PRINT("debug2");
    FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i], CM_DM_CHAIN_ENABLED_ID,
@@ -675,7 +675,7 @@ int32_t nsrm_chain_ucm_setoptparams (struct cm_array_of_iv_pairs *pOptParams,
       break;
 #endif 
        case CM_DM_CHAIN_ENABLED_ID:
-         nsrm_chain_config_info[5].value.admin_status_e = of_atoi((char *)pOptParams->iv_pairs[uiOptParamCnt].value_p);
+         nsrm_chain_config_info[1].value.admin_status_e = of_atoi((char *)pOptParams->iv_pairs[uiOptParamCnt].value_p);
       break;
 
     }

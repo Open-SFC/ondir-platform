@@ -93,6 +93,7 @@
 #define NSRM_MAX_NSCHAINSET_OBJECT_ENTRIES               64
 #define NSRM_MAX_L2NW_SERVICE_MAP_ENTRIES                64
 #define NSRM_MAX_SELECTION_RULE_ENTRIES                  64
+#define NSRM_MAX_ZONE_ENTRIES                            64
 #define NSRM_MAX_BYPASS_RULE_ENTRIES                     64
 #define NSRM_MAX_SKIP_LIST_ENTRIES                       64
 #define NSRM_MAX_NOTIFICATION_ENTRIES                    64
@@ -106,6 +107,7 @@
 #define NSRM_MAX_NWSERVICE_INSTANCE_STATIC_ENTRIES       16
 #define NSRM_MAX_NSCHAINSET_OBJECT_STATIC_ENTRIES        16
 #define NSRM_MAX_SELECTION_RULE_STATIC_ENTRIES           16
+#define NSRM_MAX_ZONE_STATIC_ENTRIES           16
 #define NSRM_MAX_BYPASS_RULE_STATIC_ENTRIES              16
 #define NSRM_MAX_SKIP_LIST_STATIC_ENTRIES                16
 #define NSRM_MAX_L2NW_SERVICE_MAP_STATIC_ENTRIES         16

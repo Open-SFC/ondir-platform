@@ -4,26 +4,30 @@
  <breadcrumb>Not Available &gt; Chainset</breadcrumb>
  <help src="ucmchainset.htm" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="677" name="name" lbl="Chainset Name" type="STR" key="yes" mand="yes">
+ <obj oid="679" name="name" lbl="Chainset Name" type="STR" key="yes" mand="yes">
  </obj>
- <obj oid="678" name="tenant" lbl="Tenant Name" type="STR" key="yes" mand="yes">
+ <obj oid="680" name="tenant" lbl="Tenant Name" type="STR" key="yes" mand="yes">
  </obj>
- <obj oid="679" name="enabled" lbl="Enabled" type="BOOL">
+ <obj oid="681" name="enabled" lbl="Enabled" type="BOOL">
+ </obj>
+ <obj oid="684" name="zone" lbl="" type="BOOL" mand="yes">
+ </obj>
+ <obj oid="685" name="zone_direction" lbl="" type="UINT" mand="yes">
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
    <col name="Chainset Name">
-     <objref oid="677"/>
+     <objref oid="679"/>
    </col>
    <col name="Tenant Name">
-     <objref oid="678"/>
+     <objref oid="680"/>
    </col>
    <col name="Chainset Type">
      <objref oid=""/>
    </col>
    <col name="Enabled">
-     <objref oid="679"/>
+     <objref oid="681"/>
    </col>
    <col name="Configuration">
      <link name="Chain Selection Rules" mtpath="chainselrule_MetaData.xml" instancekey="chainselrule" target="new" spg="tbl_meta.xsl"/>
@@ -40,12 +44,12 @@
 <!-- ***** TABLE DATA END ***** -->
 <!-- ***** FORM DATA START ***** -->
  <form >
-   <field     oid="677"/>
-  <field oid="678" dmpath="on_director.crm.tenant" depends="name+STR" name="lstgrp-1" type="list">
+   <field     oid="679"/>
+  <field oid="680" dmpath="on_director.crm.tenant" depends="name+STR" name="lstgrp-1" type="list">
   </field>
   <field oid="" name="lstgrp-2" type="list">
   </field>
-  <field oid="679" name="" type="checkbox">
+  <field oid="681" name="" type="checkbox">
   </field>
   <btn lbl="Apply" type="submit" mtpath="chainset_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
  </form>

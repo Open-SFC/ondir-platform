@@ -643,12 +643,15 @@ int32_t crm_add_guest_crm_vmport(uint8_t*  mac_p,uint32_t ipaddr,
 * description:
 ***************************************************************************/
 int32_t crm_add_crm_vmport(char*      port_name,
-		           char*      switch_name,
+		                   char*      switch_name,
                            char*      br_name,
                            int32_t    port_type,
                            char*      vn_name,
                            char*      vm_name,
                            uint8_t*   vm_port_mac_p,
+                           /* zone_support */
+                           uint32_t   vm_port_ip,
+                           /* zone_support */
                            uint64_t*  output_crm_port_handle_p)
 {
   uint64_t  switch_handle,vn_handle,vm_handle,logical_switch_handle;
@@ -743,9 +746,10 @@ int32_t crm_add_crm_vmport(char*      port_name,
     crm_port_node_p->vmInfo.saferef_vm  = vm_handle;
     crm_port_node_p->switch_ip          = switch_ip;
     crm_port_node_p->nw_type            = nw_type;
-   
     memcpy(crm_port_node_p->vmInfo.vm_port_mac, vm_port_mac_p, sizeof(crm_port_node_p->vmInfo.vm_port_mac));
-
+    /* zone_support */
+    crm_port_node_p->vm_port_ip = vm_port_ip;
+    /* zone_support */ 
     port_status = SYSTEM_PORT_NOT_READY;
     if(port_status == SYSTEM_PORT_NOT_READY)
     {
@@ -793,6 +797,9 @@ int32_t crm_add_crm_vmport(char*      port_name,
     notification_data.crm_vn_handle     =  crm_port_node_p->saferef_vn;
     notification_data.dp_handle         =  crm_port_node_p->system_br_saferef;
     notification_data.crm_vm_handle     =  crm_port_node_p->vmInfo.saferef_vm;
+    /* zone_support */
+    notification_data.vm_port_ip        =  crm_port_node_p->vm_port_ip;
+    /* zone_support */
     /* System port handle is not known at this time */
 
     OF_LIST_SCAN(crm_port_notifications[CRM_PORT_STATUS], app_entry_p, struct crm_notification_app_hook_info *, apphookoffset)
@@ -858,6 +865,7 @@ int32_t crm_get_first_crm_vmport(char* vn_name, char* switch_name,
           strcpy(crm_port_info->port_name, crm_port_node_p->port_name);
           strcpy(port_name, crm_port_node_p->port_name);
           crm_port_info->port_type= crm_port_node_p->crm_port_type;
+          crm_port_info->vm_port_ip = crm_port_node_p->vm_port_ip;
           crm_port_info->portId= crm_port_node_p->port_id;
           strcpy(crm_port_info->vm_name, crm_port_node_p->vmInfo.vm_name);
           memcpy(crm_port_info->vm_port_mac_p, crm_port_node_p->vmInfo.vm_port_mac, sizeof(crm_port_node_p->vmInfo.vm_port_mac));
@@ -922,6 +930,7 @@ int32_t crm_get_next_crm_vmport(char* vn_name, char* switch_name,
           strcpy(crm_port_info->port_name, crm_port_node_p->port_name);
           crm_port_info->port_type= crm_port_node_p->crm_port_type;
           crm_port_info->portId= crm_port_node_p->port_id;
+          crm_port_info->vm_port_ip = crm_port_node_p->vm_port_ip;
           strcpy(crm_port_info->vm_name, crm_port_node_p->vmInfo.vm_name);
           memcpy(crm_port_info->vm_port_mac_p, crm_port_node_p->vmInfo.vm_port_mac, sizeof(crm_port_node_p->vmInfo.vm_port_mac));
           strcpy(crm_port_info->br_name, crm_port_node_p->br1_name);
@@ -1308,6 +1317,10 @@ void crm_set_port_status(char* crm_port_name, uint64_t crm_port_handle,
     crm_notification_data.crm_vm_handle   = crm_port_node_p->vmInfo.saferef_vm;
     crm_notification_data.nw_type         = crm_port_node_p->nw_type;
 
+    /* zone_support */
+    crm_notification_data.vm_port_ip      = crm_port_node_p->vm_port_ip;
+    /* zone_support */
+
     strncpy(crm_notification_data.port_name ,crm_port_node_p->port_name, CRM_MAX_PORT_NAME_LEN);
     strcpy(crm_notification_data.swname ,crm_port_node_p->switch_name);
 
@@ -1348,7 +1361,11 @@ void crm_set_port_status(char* crm_port_name, uint64_t crm_port_handle,
     crm_notification_data.crm_vm_handle   = crm_port_node_p->vmInfo.saferef_vm;
     crm_port_node_p->system_port_handle   = 0;
     crm_notification_data.nw_type         = crm_port_node_p->nw_type;
-   
+  
+    /* zone_support */
+    crm_notification_data.vm_port_ip      = crm_port_node_p->vm_port_ip;
+    /* zone_support */
+
     strcpy(crm_notification_data.port_name ,crm_port_node_p->port_name);
     strcpy(crm_notification_data.swname ,crm_port_node_p->switch_name);
 
@@ -1421,7 +1438,11 @@ void crm_set_port_status(char* crm_port_name, uint64_t crm_port_handle,
     crm_notification_data.dp_handle       =  crm_port_node_p->system_br_saferef;
     crm_notification_data.crm_vm_handle   =  crm_port_node_p->vmInfo.saferef_vm;
     crm_notification_data.nw_type         =  crm_port_node_p->nw_type;
-   
+  
+    /* zone_support */
+    crm_notification_data.vm_port_ip      = crm_port_node_p->vm_port_ip;
+    /* zone_support */
+
     strncpy(crm_notification_data.port_name ,crm_port_node_p->port_name, CRM_MAX_PORT_NAME_LEN);
     strcpy(crm_notification_data.swname ,crm_port_node_p->switch_name);
 

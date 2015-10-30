@@ -4,33 +4,35 @@
  <breadcrumb>Not Available &gt; Layer2 Network Map</breadcrumb>
  <help src="ucml2networkmap.htm" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="711" name="name" lbl="Map Name" type="STR" key="yes" mand="yes">
+ <obj oid="718" name="name" lbl="Map Name" type="STR" key="yes" mand="yes">
  </obj>
- <obj oid="712" name="tenant" lbl="Tenant Name" type="STR" key="yes" mand="yes">
+ <obj oid="719" name="tenant" lbl="Tenant Name" type="STR" key="yes" mand="yes">
  </obj>
- <obj oid="713" name="chainset" lbl="Chainset Name" type="STR">
+ <obj oid="720" name="chainset" lbl="Chainset Name" type="STR">
  </obj>
- <obj oid="714" name="vnname" lbl="Virtual Network Name" type="STR" key="yes" mand="yes">
+ <obj oid="721" name="vnname_in" lbl="" type="STR" key="yes" mand="yes">
  </obj>
- <obj oid="715" name="enabled" lbl="Enabled" type="BOOL">
+ <obj oid="722" name="vnname_out" lbl="" type="STR" key="yes" mand="yes">
+ </obj>
+ <obj oid="723" name="enabled" lbl="Enabled" type="BOOL">
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
    <col name="Map Name">
-     <objref oid="711"/>
+     <objref oid="718"/>
    </col>
    <col name="Tenant Name">
-     <objref oid="712"/>
+     <objref oid="719"/>
    </col>
    <col name="Chainset Name">
-     <objref oid="713"/>
+     <objref oid="720"/>
    </col>
    <col name="Virtual Network Name">
-     <objref oid="714"/>
+     <objref oid=""/>
    </col>
    <col name="Enabled">
-     <objref oid="715"/>
+     <objref oid="723"/>
    </col>
    <col name="Configuration">
      <link name="Attributes" mtpath="l2networkmapattribute_MetaData.xml" instancekey="l2networkmapattribute" target="new" spg="tbl_meta.xsl"/>
@@ -46,14 +48,14 @@
 <!-- ***** TABLE DATA END ***** -->
 <!-- ***** FORM DATA START ***** -->
  <form >
-   <field     oid="711"/>
-  <field oid="712" dmpath="on_director.crm.tenant" depends="name+STR" name="lstgrp-1" type="list">
+   <field     oid="718"/>
+  <field oid="719" dmpath="on_director.crm.tenant" depends="name+STR" name="lstgrp-1" type="list">
   </field>
-  <field oid="713" dmpath="on_director.nsrm.chainset" depends="name+STR" name="lstgrp-2" type="list">
+  <field oid="720" dmpath="on_director.nsrm.chainset" depends="name+STR" name="lstgrp-2" type="list">
   </field>
-  <field oid="714" dmpath="on_director.crm.virtualnetwork" depends="name+STR" name="lstgrp-3" type="list">
+  <field oid="" dmpath="on_director.crm.virtualnetwork" depends="name+STR" name="lstgrp-3" type="list">
   </field>
-  <field oid="715" name="" type="checkbox">
+  <field oid="723" name="" type="checkbox">
   </field>
   <btn lbl="Apply" type="submit" mtpath="l2networkmap_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
  </form>

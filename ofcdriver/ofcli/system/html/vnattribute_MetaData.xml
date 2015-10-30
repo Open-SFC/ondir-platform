@@ -5,20 +5,20 @@
  <help src="ucmvnattribute.htm" />
  <depends vrtlInst="name" mtpath="Virtual Network_MetaData.xml" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="588" name="attributeName" lbl="Attribute Name" type="STR" key="yes" mand="yes" defVal="">
+ <obj oid="589" name="attributeName" lbl="Attribute Name" type="STR" key="yes" mand="yes" defVal="">
    <range>1-64</range>
  </obj>
- <obj oid="589" name="attributeVal" lbl="Attribute Value" type="STR" mand="yes" defVal="">
+ <obj oid="590" name="attributeVal" lbl="Attribute Value" type="STR" mand="yes" defVal="">
    <range>1-64</range>
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
    <col name="Attribute Name">
-     <objref oid="588"/>
+     <objref oid="589"/>
    </col>
    <col name="Attribute Value">
-     <objref oid="589"/>
+     <objref oid="590"/>
    </col>
    <col name="">
      <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
@@ -31,8 +31,8 @@
 <!-- ***** TABLE DATA END ***** -->
 <!-- ***** FORM DATA START ***** -->
  <form >
-   <field     oid="588"/>
    <field     oid="589"/>
+   <field     oid="590"/>
   <btn lbl="Apply" type="submit" mtpath="vnattribute_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
  </form>
 <!-- ***** FORM DATA END ***** -->

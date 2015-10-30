@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="menu.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="menu.xsl"?>
 <root name="Home">
   <model name="Open Network (ON) Director" fqn="on_director" mtpath="AROLE_MetaData.xml" spg="tbl_meta.xsl">
   <model name="Switch" fqn="on_director.onswitch" spg="tbl_meta.xsl" mtpath="switch_MetaData.xml" >

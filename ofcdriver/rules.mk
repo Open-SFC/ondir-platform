@@ -45,7 +45,8 @@ api_dispatcher_dir = $(cntrl_dir)/../linux-integration/api-dispatcher
 #sample-app direcotry
 #===========================
 #sample_app_dir = $(cntrl_dir)/../sample-app
-tsc_app_dir = $(cntrl_dir)/../tsc-app
+#tsc_app_dir = $(cntrl_dir)/../tsc-app
+tsc_app_dir = $(cntrl_dir)/../ond-tsc
 
 #cbench-app direcotry
 #===========================

@@ -57,6 +57,11 @@ struct   mchash_table* nsrm_nschainset_object_table_g = NULL;
 void     *nsrm_selection_rule_mempool_g = NULL;
 uint32_t  nsrm_no_of_selection_rule_buckets_g = 1;
 
+/*Zones in  nschainset hashtable with 1 bucket*/
+void     *nsrm_zone_mempool_g = NULL;
+uint32_t  nsrm_no_of_zone_buckets_g = 1;
+
+
 /*bypass rules to nschain hashtable with 1 bucket*/
 void     *nsrm_bypass_rule_mempool_g = NULL;
 uint32_t  nsrm_no_of_bypass_rule_buckets_g = 1;
@@ -84,6 +89,7 @@ of_list_t nsrm_l2nw_service_map_notifications[NSRM_L2NW_SERVICE_MAP_LAST_NOTIFIC
 of_list_t nsrm_selection_rule_notifications[NSRM_SELECTION_RULE_LAST_NOTIFICATION_TYPE + 1];
 of_list_t nsrm_bypass_rule_notifications[NSRM_BYPASS_RULE_LAST_NOTIFICATION_TYPE + 1];
 
+of_list_t nsrm_zone_notifications[NSRM_ZONE_LAST_NOTIFICATION_TYPE + 1];
 
 /************************************************************************************************/
 void nsrm_notifications_free_app_entry_rcu(struct rcu_head *app_entry_p);
@@ -137,6 +143,14 @@ void nsrm_get_selection_rule_mempoolentries(uint32_t* selection_rule_entries_max
   *selection_rule_entries_max    =    NSRM_MAX_SELECTION_RULE_ENTRIES;
   *selection_rule_static_entries =    NSRM_MAX_SELECTION_RULE_STATIC_ENTRIES;
 }
+/*******************************************************************************************************/
+void nsrm_get_zone_mempoolentries(uint32_t* zone_entries_max,
+                                              uint32_t* zone_static_entries)
+{
+  *zone_entries_max    =    NSRM_MAX_ZONE_ENTRIES;
+  *zone_static_entries =    NSRM_MAX_ZONE_STATIC_ENTRIES;
+}
+
 /******************************************************************************************************/
 void nsrm_get_bypass_rule_mempoolentries(uint32_t* bypass_rule_entries_max,
                                               uint32_t* bypass_rule_static_entries)
@@ -357,6 +371,7 @@ int32_t nsrm_init()
    uint32_t nwservice_instance_entries_max, nwservice_instance_static_entries;
    uint32_t nschainset_object_entries_max, nschainset_object_static_entries;
    uint32_t selection_rule_entries_max, selection_rule_static_entries;
+   uint32_t zone_entries_max, zone_static_entries;
    uint32_t bypass_rule_entries_max, bypass_rule_static_entries;
    uint32_t nwservice_skip_list_entries_max, nwservice_skip_list_static_entries;
    uint32_t l2nw_service_map_entries_max, l2nw_service_map_static_entries;
@@ -557,6 +572,31 @@ int32_t nsrm_init()
 	   goto NSRMINIT_EXIT;
    }
 
+   /* Creating mempool for selection rule*/
+   nsrm_get_zone_mempoolentries(&zone_entries_max ,
+		   &zone_static_entries);
+
+   mempool_info.mempool_type = MEMPOOL_TYPE_HEAP;  
+   mempool_info.block_size = sizeof(struct nsrm_zone_record);
+   mempool_info.max_blocks = zone_entries_max;
+   mempool_info.static_blocks = zone_static_entries;
+   mempool_info.threshold_min = zone_static_entries/10;
+   mempool_info.threshold_max = zone_static_entries/3;
+   mempool_info.replenish_count = zone_static_entries/10;
+   mempool_info.b_memset_not_required =  FALSE;
+   mempool_info.b_list_per_thread_required =  FALSE;
+   mempool_info.noof_blocks_to_move_to_thread_list = 0;
+
+   ret_val = mempool_create_pool("nsrm_zone_pool", &mempool_info,
+		   &nsrm_zone_mempool_g );
+   OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG,"after mempool_create_pool");
+   if(ret_val != MEMPOOL_SUCCESS)
+   {
+	   OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_ERROR,"Memory Pool Creation failed for selection rule %d", ret_val);
+	   goto NSRMINIT_EXIT;
+   }
+
+
 
    /* Creating mempool for bypass rule*/
    nsrm_get_bypass_rule_mempoolentries(&bypass_rule_entries_max ,
@@ -707,6 +747,9 @@ int32_t nsrm_init()
 
    for(ii = 0; ii < NSRM_BYPASS_RULE_LAST_NOTIFICATION_TYPE; ii++)
      OF_LIST_INIT(nsrm_bypass_rule_notifications[ii], nsrm_notifications_free_app_entry_rcu);
+
+   for(ii = 0; ii < NSRM_ZONE_LAST_NOTIFICATION_TYPE; ii++)
+     OF_LIST_INIT(nsrm_zone_notifications[ii], nsrm_notifications_free_app_entry_rcu);
 
 
 

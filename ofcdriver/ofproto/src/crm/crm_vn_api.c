@@ -433,7 +433,6 @@ This function returns virtual network info for given vn_handle.
 *************************************************************************************/
 int32_t crm_get_vn_byhandle(uint64_t vn_handle,struct crm_virtual_network **crm_vn_info_p)
 {
-  /* Caller shall take RCU locks. */
   uint32_t index,magic;
   uint8_t status_b;
 

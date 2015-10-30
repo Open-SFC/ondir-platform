@@ -5,9 +5,9 @@
  <help src="ucmchainselrule.htm" />
  <depends vrtlInst="name" mtpath="Chainset_MetaData.xml" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="682" name="selname" lbl="Chain Selection Rule Name" type="STR" key="yes" mand="yes">
+ <obj oid="689" name="selname" lbl="Chain Selection Rule Name" type="STR" key="yes" mand="yes">
  </obj>
- <obj oid="683" name="location" lbl="Rule Location" type="STR" mand="yes">
+ <obj oid="690" name="location" lbl="Rule Location" type="STR" mand="yes">
   <list>
     <item name="FIRST" value="FIRST"/>
     <item name="LAST" value="LAST"/>
@@ -15,35 +15,35 @@
     <item name="AFTER" value="AFTER"/>
   </list>
  </obj>
- <obj oid="684" name="relative_name" lbl="Relative Name" type="STR">
+ <obj oid="691" name="relative_name" lbl="Relative Name" type="STR">
  </obj>
- <obj oid="685" name="srcmactype" lbl="Source MAC Type" type="STR">
+ <obj oid="692" name="srcmactype" lbl="Source MAC Type" type="STR">
   <list>
     <item name="Any" value="Any"/>
     <item name="Single" value="Single"/>
   </list>
  </obj>
- <obj oid="686" name="srcmac" lbl="Source MAC" type="STR">
+ <obj oid="693" name="srcmac" lbl="Source MAC" type="STR">
    <range>11-17</range>
  </obj>
- <obj oid="687" name="dstmactype" lbl="Destination MAC Type" type="STR">
+ <obj oid="694" name="dstmactype" lbl="Destination MAC Type" type="STR">
   <list>
     <item name="Any" value="Any"/>
     <item name="Single" value="Single"/>
   </list>
  </obj>
- <obj oid="688" name="dstmac" lbl="Destination MAC" type="STR">
+ <obj oid="695" name="dstmac" lbl="Destination MAC" type="STR">
    <range>11-17</range>
  </obj>
- <obj oid="689" name="ethtype" lbl="Ethernet Type" type="STR">
+ <obj oid="696" name="ethtype" lbl="Ethernet Type" type="STR">
   <list>
     <item name="Any" value="Any"/>
     <item name="Single" value="Single"/>
   </list>
  </obj>
- <obj oid="690" name="ethtypevalue" lbl="Ethernet Type Value" type="STR">
+ <obj oid="697" name="ethtypevalue" lbl="Ethernet Type Value" type="STR">
  </obj>
- <obj oid="691" name="siptype" lbl="Source IP Type" type="STR">
+ <obj oid="698" name="siptype" lbl="Source IP Type" type="STR">
   <list>
     <item name="Any" value="Any"/>
     <item name="Single" value="Single"/>
@@ -51,11 +51,11 @@
     <item name="Subnet" value="Subnet"/>
   </list>
  </obj>
- <obj oid="692" name="sipstart" lbl="Source IP Start" type="IPADDR">
+ <obj oid="699" name="sipstart" lbl="Source IP Start" type="IPADDR">
  </obj>
- <obj oid="693" name="sipend" lbl="Source IP End" type="IPADDR">
+ <obj oid="700" name="sipend" lbl="Source IP End" type="IPADDR">
  </obj>
- <obj oid="694" name="diptype" lbl="Destination IP Type" type="STR">
+ <obj oid="701" name="diptype" lbl="Destination IP Type" type="STR">
   <list>
     <item name="Any" value="Any"/>
     <item name="Single" value="Single"/>
@@ -63,55 +63,55 @@
     <item name="Subnet" value="Subnet"/>
   </list>
  </obj>
- <obj oid="695" name="dipstart" lbl="Destination IP Start" type="IPADDR">
+ <obj oid="702" name="dipstart" lbl="Destination IP Start" type="IPADDR">
  </obj>
- <obj oid="696" name="dipend" lbl="Destination IP End" type="IPADDR">
+ <obj oid="703" name="dipend" lbl="Destination IP End" type="IPADDR">
  </obj>
- <obj oid="697" name="sptype" lbl="Source Port Type" type="STR">
+ <obj oid="704" name="sptype" lbl="Source Port Type" type="STR">
   <list>
     <item name="Any" value="Any"/>
     <item name="Single" value="Single"/>
     <item name="Range" value="Range"/>
   </list>
  </obj>
- <obj oid="698" name="spstart" lbl="Source Port Start" type="UINT">
+ <obj oid="705" name="spstart" lbl="Source Port Start" type="UINT">
  </obj>
- <obj oid="699" name="spend" lbl="Source Port End" type="UINT">
+ <obj oid="706" name="spend" lbl="Source Port End" type="UINT">
  </obj>
- <obj oid="700" name="dptype" lbl="Destination Port Type" type="STR">
+ <obj oid="707" name="dptype" lbl="Destination Port Type" type="STR">
   <list>
     <item name="Any" value="Any"/>
     <item name="Single" value="Single"/>
     <item name="Range" value="Range"/>
   </list>
  </obj>
- <obj oid="701" name="dpstart" lbl="Destination Port Start" type="UINT">
+ <obj oid="708" name="dpstart" lbl="Destination Port Start" type="UINT">
  </obj>
- <obj oid="702" name="dpend" lbl="Destination Port End" type="UINT">
+ <obj oid="709" name="dpend" lbl="Destination Port End" type="UINT">
  </obj>
- <obj oid="703" name="protocol" lbl="Protocol" type="UINT">
+ <obj oid="710" name="protocol" lbl="Protocol" type="UINT">
  </obj>
- <obj oid="704" name="chain" lbl="Chain Name" type="STR" mand="yes">
+ <obj oid="711" name="chain" lbl="Chain Name" type="STR" mand="yes">
  </obj>
- <obj oid="705" name="enabled" lbl="Enabled" type="BOOL">
+ <obj oid="712" name="enabled" lbl="Enabled" type="BOOL">
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
    <col name="Chain Selection Rule Name">
-     <objref oid="682"/>
+     <objref oid="689"/>
    </col>
    <col name="Rule Location">
-     <objref oid="683"/>
+     <objref oid="690"/>
    </col>
    <col name="Relative Name">
-     <objref oid="684"/>
+     <objref oid="691"/>
    </col>
    <col name="Chain Name">
-     <objref oid="704"/>
+     <objref oid="711"/>
    </col>
    <col name="Enabled">
-     <objref oid="705"/>
+     <objref oid="712"/>
    </col>
    <col name="Configuration">
      <link name="Attributes" mtpath="chainselectionattribute_MetaData.xml" instancekey="chainselectionattribute" target="new" spg="tbl_meta.xsl"/>
@@ -127,39 +127,39 @@
 <!-- ***** TABLE DATA END ***** -->
 <!-- ***** FORM DATA START ***** -->
  <form >
-   <field     oid="682"/>
-  <field oid="683" name="lstgrp-1" type="list">
+   <field     oid="689"/>
+  <field oid="690" name="lstgrp-1" type="list">
   </field>
-   <field     oid="684"/>
-  <field oid="685" name="lstgrp-2" type="list">
+   <field     oid="691"/>
+  <field oid="692" name="lstgrp-2" type="list">
   </field>
-   <field     oid="686"/>
-  <field oid="687" name="lstgrp-3" type="list">
-  </field>
-   <field     oid="688"/>
-  <field oid="689" name="lstgrp-4" type="list">
-  </field>
-   <field     oid="690"/>
-  <field oid="691" name="lstgrp-5" type="list">
-  </field>
-   <field     oid="692"/>
    <field     oid="693"/>
-  <field oid="694" name="lstgrp-6" type="list">
+  <field oid="694" name="lstgrp-3" type="list">
   </field>
    <field     oid="695"/>
-   <field     oid="696"/>
-  <field oid="697" name="lstgrp-7" type="list">
+  <field oid="696" name="lstgrp-4" type="list">
   </field>
-   <field     oid="698"/>
+   <field     oid="697"/>
+  <field oid="698" name="lstgrp-5" type="list">
+  </field>
    <field     oid="699"/>
-  <field oid="700" name="lstgrp-8" type="list">
+   <field     oid="700"/>
+  <field oid="701" name="lstgrp-6" type="list">
   </field>
-   <field     oid="701"/>
    <field     oid="702"/>
    <field     oid="703"/>
-  <field oid="704" dmpath="on_director.nsrm.chain" depends="name+STR" name="lstgrp-9" type="list">
+  <field oid="704" name="lstgrp-7" type="list">
   </field>
-  <field oid="705" name="" type="checkbox">
+   <field     oid="705"/>
+   <field     oid="706"/>
+  <field oid="707" name="lstgrp-8" type="list">
+  </field>
+   <field     oid="708"/>
+   <field     oid="709"/>
+   <field     oid="710"/>
+  <field oid="711" dmpath="on_director.nsrm.chain" depends="name+STR" name="lstgrp-9" type="list">
+  </field>
+  <field oid="712" name="" type="checkbox">
   </field>
   <btn lbl="Apply" type="submit" mtpath="chainselrule_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
  </form>

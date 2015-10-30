@@ -34,6 +34,7 @@ OBJS =  $(BIN_DIR)/nsrmmisc.o\
         $(BIN_DIR)/nsrm_chainset.o\
         $(BIN_DIR)/nsrm_l2service_map.o\
         $(BIN_DIR)/nsrm_srule.o\
+        $(BIN_DIR)/nsrm_zone.o\
         $(BIN_DIR)/nsrm_brule.o\
         $(BIN_DIR)/nsrm_attribute.o\
         $(BIN_DIR)/nsrm_view_init.o

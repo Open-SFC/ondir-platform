@@ -68,6 +68,8 @@
 #define CRM_ERROR_INVALID_VM_HANDLE     -6
 #define CRM_ERROR_VM_NAME_INVALID       -7
 #define CRM_ERROR_VM_NAME_NULL          -8  
+/*zone */
+#define CRM_ERROR_VM_ZONE_INVALID       -35
 
 /* CRM Virtual Network Error  Macros */
 #define CRM_ERROR_VN_NAME_INVALID            -9
@@ -129,6 +131,7 @@
 #define CRM_ERROR_INVALID_NAME    -32
 #define CRM_ERROR_INVALID_SWITCH_HANDLE -33
 #define CRM_ERROR_INVALID_PORT_HANDLE -34
+/* use from 36 */
 
 #define CRM_MAX_APPL_NAME_LEN 8 
 
@@ -145,6 +148,10 @@
 #define CRM_LOGICAL_SWITCH_NAME_LEN    128
 #define CRM_MAX_ATTRIBUTE_NAME_LEN     128 
 #define CRM_MAX_ATTRIBUTE_VALUE_LEN    128 
+/*zone_support*/
+#define CRM_MAX_ZONE_SIZE 32
+/*zone_support*/
+
 
 /* CRM NOTIFICATIONS MACROS */
 
@@ -307,6 +314,10 @@ struct crm_port_notification_data
   uint64_t  switch_handle;   /* system switch handle */
   uint64_t  dp_handle;       /* system logical switch handle */
   uint64_t  crm_vm_handle;   /* virtual machine handle */
+
+  /* zone_support */
+  uint32_t  vm_port_ip;
+  /* zone_support */
   
   /* following two fileds will be appilcable if port is network side  .
    * remote ip has value when port broadcast side */
@@ -387,7 +398,6 @@ struct crm_nwport_config_info
     struct crm_vlan_nw  vlan_info; 
   }nw_port_config_info;
 };
-
 struct crm_port_config_info
 {
   char     port_name[CRM_MAX_PORT_NAME_LEN+1];
@@ -395,9 +405,12 @@ struct crm_port_config_info
   uint32_t portId;
   char     vn_name[CRM_MAX_VN_NAME_LEN+1];
   char     switch_name[DPRM_MAX_SWITCH_NAME_LEN +1];
-  char     vm_name[CRM_MAX_VM_NAME_LEN];
+  char     vm_name[CRM_MAX_VM_NAME_LEN + 1];
   uint8_t  vm_port_mac_p[6];
   char     br_name[CRM_LOGICAL_SWITCH_NAME_LEN +1];
+ 
+  /* New field added to support zone */
+  uint32_t vm_port_ip;
 };
 
 /****   CRM VM CONFIG STRUCTURES ********/
@@ -419,7 +432,11 @@ struct crm_vm_config_info
   char    vm_name[CRM_MAX_VM_NAME_LEN];
   int32_t vm_type;
   char    tenant_name[CRM_MAX_TENANT_NAME_LEN];
-  char    switch_name[DPRM_MAX_SWITCH_NAME_LEN]; 
+  char    switch_name[DPRM_MAX_SWITCH_NAME_LEN];
+ 
+  /* New field added to support zone */
+  char   zone[CRM_MAX_ZONE_SIZE +1];
+
   /* Optional parameters */
   char    vm_desc[CRM_MAX_VM_DESC_LEN];
 };
@@ -1221,6 +1238,9 @@ int32_t crm_add_crm_vmport(char*      port_name,
                            char*      vn_name,
                            char*      vm_name,
                            uint8_t*   vm_port_mac_p,
+                           /* zone_support */
+                           uint32_t   vm_port_ip,
+                           /* zone_support */
                            uint64_t*  output_crm_port_handle_p
                           );
 

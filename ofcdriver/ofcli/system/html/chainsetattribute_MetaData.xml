@@ -5,10 +5,10 @@
  <help src="ucmchainsetattribute.htm" />
  <depends vrtlInst="name" mtpath="Chain_MetaData.xml" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="709" name="attributeName" lbl="" type="STR" key="yes" mand="yes" defVal="">
+ <obj oid="716" name="attributeName" lbl="" type="STR" key="yes" mand="yes" defVal="">
    <range>1-64</range>
  </obj>
- <obj oid="710" name="attributeValue" lbl="" type="STR" mand="yes" defVal="">
+ <obj oid="717" name="attributeValue" lbl="" type="STR" mand="yes" defVal="">
    <range>1-64</range>
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->

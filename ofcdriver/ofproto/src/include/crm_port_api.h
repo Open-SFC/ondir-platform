@@ -66,7 +66,9 @@ struct crm_port
 
   /** following field valid for VM PORTS*/
   struct    vm_port_info vmInfo;
-
+  /* zone_support */
+  uint32_t  vm_port_ip;
+  /* zone_support */
   uint16_t  vlan_id_in;
   uint16_t  vlan_id_out;
 

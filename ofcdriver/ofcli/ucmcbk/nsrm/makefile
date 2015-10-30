@@ -39,6 +39,7 @@ OBJS += $(MODSET_CBK_OBJ_DIR)/chainsetcbk.o
 OBJS += $(MODSET_CBK_OBJ_DIR)/l2networkmap.o
 OBJS += $(MODSET_CBK_OBJ_DIR)/bypassrule.o
 OBJS += $(MODSET_CBK_OBJ_DIR)/chainselrule.o
+OBJS += $(MODSET_CBK_OBJ_DIR)/chainsetzone.o
 OBJS += $(MODSET_CBK_OBJ_DIR)/attachsrvchain.o
 OBJS += $(MODSET_CBK_OBJ_DIR)/service_instance.o
 OBJS += $(MODSET_CBK_OBJ_DIR)/bypass_servicescbk.o

@@ -112,15 +112,22 @@ Description:
 int32_t get_vm_byhandle(uint64_t vm_handle,struct crm_virtual_machine **crm_vm_info_p)
 {
   /* Caller shall take RCU locks. */
+
   uint32_t index,magic;
   uint8_t status_b = FALSE;
+
+  CNTLR_RCU_READ_LOCK_TAKE();
 
   magic = (uint32_t)(vm_handle >>32);
   index = (uint32_t)vm_handle;
 
   MCHASH_ACCESS_NODE(crm_vm_table_g,index,magic,*crm_vm_info_p,status_b);
   if(status_b == TRUE)
+  {
+    CNTLR_RCU_READ_LOCK_RELEASE();
     return CRM_SUCCESS;
+  }
+  CNTLR_RCU_READ_LOCK_RELEASE();
   return CRM_ERROR_INVALID_VM_HANDLE;
 }
 /***************************************************************************
@@ -180,6 +187,13 @@ int32_t crm_add_virtual_machine (struct crm_vm_config_info* config_info_p,
     return CRM_ERROR_INVALID_VM_TYPE;
   }
 
+  if((config_info_p->zone == NULL) || (strlen(config_info_p->zone)>=CRM_MAX_ZONE_SIZE))
+  {
+    OF_LOG_MSG(OF_LOG_CRM, OF_LOG_ERROR, "zone name invalid");
+    printf("\r\n Invalid zone name");
+    return CRM_ERROR_VM_ZONE_INVALID;
+  }
+
   CNTLR_RCU_READ_LOCK_TAKE();
 
   /** calculate hash key for the Virtual network name */
@@ -211,7 +225,10 @@ int32_t crm_add_virtual_machine (struct crm_vm_config_info* config_info_p,
   strncpy(crm_vm_node_p->switch_name_dprm, config_info_p->switch_name, DPRM_MAX_SWITCH_NAME_LEN);
   strncpy(crm_vm_node_p->vm_desc, config_info_p->vm_desc, CRM_MAX_VM_DESC_LEN);
   crm_vm_node_p->vm_type =  config_info_p->vm_type;
-
+  
+  /*zone support */
+  strncpy(crm_vm_node_p->zone,config_info_p->zone,CRM_MAX_ZONE_SIZE);
+  OF_LOG_MSG(OF_LOG_CRM, OF_LOG_ERROR, "Zone name : %s",config_info_p->zone);
   hashobj_p = (uchar8_t *)crm_vm_node_p + VMNODE_VMTBL_OFFSET;
   MCHASH_APPEND_NODE(crm_vm_table_g, hashkey, crm_vm_node_p, index, magic, hashobj_p, status_b);
   if(FALSE == status_b)
@@ -582,6 +599,7 @@ int32_t  crm_get_first_vm (struct    crm_vm_config_info* config_info_p,
       strcpy(config_info_p->switch_name, crm_vm_node_info_p->switch_name_dprm);
       strcpy(config_info_p->tenant_name, crm_vm_node_info_p->tenant_name);
       strcpy(config_info_p->vm_desc,crm_vm_node_info_p->vm_desc);
+      strcpy(config_info_p->zone,crm_vm_node_info_p->zone);
 
       //runtime_info_p->number_of_attributes = crm_vm_node_info_p->number_of_attributes;
 
@@ -630,6 +648,7 @@ int32_t crm_get_next_vm (struct crm_vm_config_info* config_info_p,
       config_info_p->vm_type = crm_vm_node_info_p->vm_type;
       strcpy(config_info_p->switch_name, crm_vm_node_info_p->switch_name_dprm);
       strcpy(config_info_p->tenant_name, crm_vm_node_info_p->tenant_name);
+      strcpy(config_info_p->zone,crm_vm_node_info_p->zone);
 
       //runtime_info_p->number_of_attributes = crm_vm_node_info_p->number_of_attributes;
 

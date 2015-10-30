@@ -4,57 +4,57 @@
  <breadcrumb>Not Available &gt; Network Ports</breadcrumb>
  <help src="ucmnwsideports.htm" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="602" name="portname" lbl="Port Name" type="STR" key="yes" mand="yes" defVal="">
+ <obj oid="604" name="portname" lbl="Port Name" type="STR" key="yes" mand="yes" defVal="">
    <range>1-16</range>
  </obj>
- <obj oid="603" name="porttype" lbl="Port Type" type="STR">
+ <obj oid="605" name="porttype" lbl="Port Type" type="STR">
  </obj>
- <obj oid="604" name="portid" lbl="Port Id" type="INT">
+ <obj oid="606" name="portid" lbl="Port Id" type="INT">
  </obj>
- <obj oid="605" name="nwtype" lbl="Network Type" type="STR" mand="yes">
+ <obj oid="607" name="nwtype" lbl="Network Type" type="STR" mand="yes">
   <list>
     <item name="Vx LAN" value="VXLAN_TYPE"/>
   </list>
  </obj>
- <obj oid="606" name="switchname" lbl="Switch Name" type="STR" mand="yes">
+ <obj oid="608" name="switchname" lbl="Switch Name" type="STR" mand="yes">
  </obj>
- <obj oid="607" name="bridgename" lbl="Bridge Name" type="STR" mand="yes">
+ <obj oid="609" name="bridgename" lbl="Bridge Name" type="STR" mand="yes">
  </obj>
- <obj oid="608" name="vxlan_vni" lbl="Vx LAN Id" type="UINT" mand="yes">
+ <obj oid="610" name="vxlan_vni" lbl="Vx LAN Id" type="UINT" mand="yes">
  </obj>
- <obj oid="609" name="vxlan_serviceport" lbl="Vx LAN Service Port" type="UINT" mand="yes">
+ <obj oid="611" name="vxlan_serviceport" lbl="Vx LAN Service Port" type="UINT" mand="yes">
  </obj>
- <obj oid="610" name="remoteip" lbl="Remote IP" type="IPADDR" mand="yes">
+ <obj oid="612" name="remoteip" lbl="Remote IP" type="IPADDR" mand="yes">
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
    <col name="Port Name">
-     <objref oid="602"/>
-   </col>
-   <col name="Port Type">
-     <objref oid="603"/>
-   </col>
-   <col name="Port Id">
      <objref oid="604"/>
    </col>
-   <col name="Network Type">
+   <col name="Port Type">
      <objref oid="605"/>
    </col>
-   <col name="Switch Name">
+   <col name="Port Id">
      <objref oid="606"/>
    </col>
-   <col name="Bridge Name">
+   <col name="Network Type">
      <objref oid="607"/>
    </col>
-   <col name="Vx LAN Id">
+   <col name="Switch Name">
      <objref oid="608"/>
    </col>
-   <col name="Vx LAN Service Port">
+   <col name="Bridge Name">
      <objref oid="609"/>
    </col>
-   <col name="Remote IP">
+   <col name="Vx LAN Id">
      <objref oid="610"/>
+   </col>
+   <col name="Vx LAN Service Port">
+     <objref oid="611"/>
+   </col>
+   <col name="Remote IP">
+     <objref oid="612"/>
    </col>
    <col name="">
      <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
@@ -67,16 +67,16 @@
 <!-- ***** TABLE DATA END ***** -->
 <!-- ***** FORM DATA START ***** -->
  <form >
-   <field     oid="602"/>
-   <field     oid="603"/>
    <field     oid="604"/>
-  <field oid="605" name="lstgrp-1" type="list">
-  </field>
+   <field     oid="605"/>
    <field     oid="606"/>
-   <field     oid="607"/>
+  <field oid="607" name="lstgrp-1" type="list">
+  </field>
    <field     oid="608"/>
    <field     oid="609"/>
    <field     oid="610"/>
+   <field     oid="611"/>
+   <field     oid="612"/>
   <btn lbl="Apply" type="submit" mtpath="nwsideports_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
  </form>
 <!-- ***** FORM DATA END ***** -->

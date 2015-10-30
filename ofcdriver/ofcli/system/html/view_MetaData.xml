@@ -4,13 +4,13 @@
  <breadcrumb>Not Available &gt; View</breadcrumb>
  <help src="ucmview.htm" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="792" name="node_name" lbl="Node Name" type="STR" mand="yes" defVal="">
+ <obj oid="800" name="node_name" lbl="Node Name" type="STR" mand="yes" defVal="">
    <range>1-32</range>
  </obj>
- <obj oid="793" name="view_value" lbl="View Value" type="STR" mand="yes" defVal="">
+ <obj oid="801" name="view_value" lbl="View Value" type="STR" mand="yes" defVal="">
    <range>1-32</range>
  </obj>
- <obj oid="794" name="type" lbl="View Type" type="STR" key="yes" mand="yes">
+ <obj oid="802" name="type" lbl="View Type" type="STR" key="yes" mand="yes">
   <list>
     <item name="Namespace Datapath ID" value="namespace_dpid"/>
   </list>
@@ -19,13 +19,13 @@
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
    <col name="Node Name">
-     <objref oid="792"/>
+     <objref oid="800"/>
    </col>
    <col name="View Value">
-     <objref oid="793"/>
+     <objref oid="801"/>
    </col>
    <col name="View Type">
-     <objref oid="794"/>
+     <objref oid="802"/>
    </col>
    <col name="">
      <btn name="Edit" spg="frm_meta.xsl" fpg="resp_meta.xsl"/>
@@ -38,9 +38,9 @@
 <!-- ***** TABLE DATA END ***** -->
 <!-- ***** FORM DATA START ***** -->
  <form >
-   <field     oid="792"/>
-   <field     oid="793"/>
-  <field oid="794" name="lstgrp-1" type="list">
+   <field     oid="800"/>
+   <field     oid="801"/>
+  <field oid="802" name="lstgrp-1" type="list">
   </field>
   <btn lbl="Apply" type="submit" mtpath="view_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
  </form>

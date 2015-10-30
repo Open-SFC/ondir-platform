@@ -92,6 +92,7 @@
 #define OFSDN_NSRM_BYPASS_SERVICES "bypass_services"
 #define OFSDN_NSRM_CHAIN_ATTRIBUTE "chainattr"
 #define OFSDN_NSRM_CHAINSELRULE "chainrule"
+#define OFSDN_NSRM_CHAINSET_ZONE "chainsetzone"
 #define OFSDN_NSRM_CHAINSET_ATTRIBUTE "chainsetattr"
 #define OFSDN_NSRM_CHAIN_SELECTION_ATTRIBUTE "chainselattr"
 #define OFSDN_NSRM_SERVICE_ATTRIBUTE "srvattr"

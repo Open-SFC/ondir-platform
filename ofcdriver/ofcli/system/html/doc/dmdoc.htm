@@ -118,6 +118,7 @@
 <br>   |____ <a href="#Service_instance">Service instance</a>
 <br>   |___ <a href="#Chain_Attributes">Chain Attributes</a>
 <br>   |__ <a href="#Chainset">Chainset</a>
+<br>   |___ <a href="#Chainset_Zone">Chainset Zone</a>
 <br>   |___ <a href="#Chain_Selection_Rule">Chain Selection Rule</a>
 <br>   |____ <a href="#Chain_Selection_Attributes">Chain Selection Attributes</a>
 <br>   |___ <a href="#Chainset_Attributes">Chainset Attributes</a>
@@ -3247,6 +3248,10 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <td>vmattribute</td><td> - </td><td>No</td><td>Read, Write</td><td><b>Description: </b>virtualmachine Attributes<br>
 </td><td> - </td>
 </tr>
+<tr>
+<td>zone</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the zone<br>
+</td><td> - </td>
+</tr>
 </table>
 <br>
 <b> <span id="VM_Attributes">VM Attributes</span></b>
@@ -3478,6 +3483,10 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>vmportmacaddr</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port MAC Address<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>vm_port_ip</td><td>IP Address</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port IP Address<br>
 </td><td> - </td>
 </tr>
 <tr>
@@ -3982,6 +3991,35 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <td>chainsetattribute</td><td> - </td><td>No</td><td>Read, Write</td><td><b>Description: </b>Chainset Attributes<br>
 </td><td> - </td>
 </tr>
+<tr>
+<td>zone</td><td>Boolean</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone Boolean Value<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone_direction</td><td>Unsigned Integer</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone Direction<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>chainsetzonerule</td><td> - </td><td>No</td><td>Read, Write</td><td><b>Description: </b>Chain Set zone Rules<br>
+</td><td> - </td>
+</tr>
+</table>
+<br>
+<b> <span id="Chainset_Zone">Chainset Zone</span></b>
+<hr>
+<table border="1" cellspacing="0" cellpadding="4" class="pagetitle" width="100%">
+<tr class="subhead">
+<th>Name</th><th>Data Type</th><th>Mandatory</th><th>Permission</th><th>Details</th><th>Default Value</th>
+</tr>
+<tr>
+<td>zone_name</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Chainset zone  Name<br>
+<b>Range: </b>0 - 32<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone_direction</td><td>Unsigned Integer</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone DIrection<br>
+</td><td> - </td>
+</tr>
 </table>
 <br>
 <b> <span id="Chain_Selection_Rule">Chain Selection Rule</span></b>
@@ -4170,7 +4208,12 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </td><td> - </td>
 </tr>
 <tr>
-<td>vnname</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
+<td>vnname_in</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
+<b>Range: </b>0 - 128<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>vnname_out</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
 <b>Range: </b>0 - 128<br>
 </td><td> - </td>
 </tr>

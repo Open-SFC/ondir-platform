@@ -96,7 +96,7 @@ int32_t nsrm_add_nschainset_object(
    struct nsrm_notification_app_hook_info *app_entry_p = NULL;
 
    uint32_t  hashkey,apphookoffset,index = 0,magic = 0;
-   uint8_t   heap_b, status_b = FALSE;
+   uint8_t   heap_b = TRUE, status_b = FALSE;
    int32_t   status = NSRM_SUCCESS,ret_value;
    uchar8_t* hashobj_p = NULL;
    uint64_t  tenant_handle,offset;
@@ -165,9 +165,13 @@ int32_t nsrm_add_nschainset_object(
      strcpy(nschainset_object_p->name_p , key_info_p->name_p);
      strcpy(nschainset_object_p->tenant_name_p , key_info_p->tenant_name_p);
      nschainset_object_p->nschainset_type    = 0;/*Hard coded to L2 */ //config_info_p[0].value.nschainset_type;
-     nschainset_object_p->admin_status_e    =  config_info_p[1].value.admin_status_e;
-  
-
+     nschainset_object_p->admin_status_e     =  config_info_p[1].value.admin_status_e;
+     OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_ERROR, "ZONE VALUE : %d",config_info_p[2].value.zone_b);
+     nschainset_object_p->zone_b             =  config_info_p[2].value.zone_b;
+     nschainset_object_p->zone_direction_default_e = config_info_p[3].value.zone_direction_default_e;
+     nschainset_object_p->nschain_selection_rule_set  = NULL;
+     nschainset_object_p->no_of_zone_records          = 0;
+     nschainset_object_p->nszone_direction_record_set = NULL;
      hashobj_p = (uchar8_t *)nschainset_object_p + NSRM_NSCHAINSET_OBJECT_TBL_OFFSET;
      MCHASH_APPEND_NODE(nsrm_nschainset_object_table_g, hashkey, nschainset_object_p,index, magic, hashobj_p, status_b);
  
@@ -389,8 +393,10 @@ int32_t nsrm_modify_nschainset_object(
    nschainset_object_node_scan_p->tenant_name_p =(char*)malloc(NSRM_MAX_NAME_LEN);
    strcpy(nschainset_object_node_scan_p->name_p , key_info_p->name_p);
    strcpy(nschainset_object_node_scan_p->tenant_name_p , key_info_p->tenant_name_p);
-   nschainset_object_node_scan_p->nschainset_type      = 0;//config_info_p[0].value.nschainset_type;
-   nschainset_object_node_scan_p->admin_status_e       = config_info_p[1].value.admin_status_e;       
+   nschainset_object_node_scan_p->nschainset_type          = 0;//config_info_p[0].value.nschainset_type;
+   nschainset_object_node_scan_p->admin_status_e           = config_info_p[1].value.admin_status_e;       
+   nschainset_object_node_scan_p->zone_b                   = config_info_p[2].value.zone_b;
+   nschainset_object_node_scan_p->zone_direction_default_e = config_info_p[3].value.zone_direction_default_e;
 
    OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_DEBUG, "nschainset Modified Successfully!");
    CNTLR_RCU_READ_LOCK_RELEASE();
@@ -432,7 +438,9 @@ int32_t nsrm_get_first_nschainset_objects(
         
          recs_p->info[0].value.nschainset_type   = 0;//nschainset_object_node_scan_p->nschainset_type;
          recs_p->info[1].value.admin_status_e = nschainset_object_node_scan_p->admin_status_e;
-        
+         recs_p->info[2].value.zone_b         = nschainset_object_node_scan_p->zone_b;
+         OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_ERROR,"ZONE DIRECTION : %d", nschainset_object_node_scan_p->zone_direction_default_e);
+         recs_p->info[3].value.zone_direction_default_e = nschainset_object_node_scan_p->zone_direction_default_e;
          status = NSRM_SUCCESS;
          number_of_nschainset_objects_requested--;
          nschainset_objects_returned++;
@@ -504,6 +512,8 @@ int32_t nsrm_get_next_nschainset_objects(
          strcpy(recs_p->key.tenant_name_p , nschainset_object_node_scan_p->tenant_name_p);
          recs_p->info[0].value.nschainset_type       = 0;//nschainset_object_node_scan_p->nschainset_type;
          recs_p->info[1].value.admin_status_e        = nschainset_object_node_scan_p->admin_status_e;
+         recs_p->info[2].value.zone_b         = nschainset_object_node_scan_p->zone_b;
+         recs_p->info[3].value.zone_direction_default_e = nschainset_object_node_scan_p->zone_direction_default_e;
          status = NSRM_SUCCESS;
          number_of_nschainset_objects_requested--;
          nschainset_objects_returned++;
@@ -579,8 +589,11 @@ int32_t nsrm_get_exact_nschainset_object(
               
       strcpy(rec_p[0].key.name_p , nschainset_object_node_scan_p->name_p);
       strcpy(rec_p[0].key.tenant_name_p , nschainset_object_node_scan_p->tenant_name_p);
-      rec_p[0].info[0].value.nschainset_type      = 0;//nschainset_object_node_scan_p->nschainset_type;
-      rec_p[0].info[1].value.admin_status_e       = nschainset_object_node_scan_p->admin_status_e;
+      rec_p[0].info[0].value.nschainset_type          = 0;//nschainset_object_node_scan_p->nschainset_type;
+      rec_p[0].info[1].value.admin_status_e           = nschainset_object_node_scan_p->admin_status_e;
+      rec_p[0].info[2].value.zone_b                   = nschainset_object_node_scan_p->zone_b;
+      OF_LOG_MSG(OF_LOG_NSRM, OF_LOG_ERROR,"ZONE DIRECTION : %d", nschainset_object_node_scan_p->zone_direction_default_e);
+      rec_p[0].info[3].value.zone_direction_default_e = nschainset_object_node_scan_p->zone_direction_default_e;
 
       CNTLR_RCU_READ_LOCK_RELEASE(); 
       return NSRM_SUCCESS;
@@ -1329,14 +1342,3 @@ int32_t nsrm_get_nschainset_object_by_view(char *view_name , char *view_value ,s
   OF_LOG_MSG(OF_LOG_NSRM,OF_LOG_DEBUG,"nschainset found by view");
   return NSRM_SUCCESS;
 }
-  
-   
-
-
-
-  
-   
-
-
-
-

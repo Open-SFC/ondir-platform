@@ -5,10 +5,10 @@
  <help src="ucmserviceattribute.htm" />
  <depends vrtlInst="name" mtpath="Service_MetaData.xml" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="632" name="attributeName" lbl="" type="STR" key="yes" mand="yes" defVal="">
+ <obj oid="634" name="attributeName" lbl="" type="STR" key="yes" mand="yes" defVal="">
    <range>1-64</range>
  </obj>
- <obj oid="633" name="attributeVal" lbl="" type="STR" mand="yes" defVal="">
+ <obj oid="635" name="attributeVal" lbl="" type="STR" mand="yes" defVal="">
    <range>1-64</range>
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->

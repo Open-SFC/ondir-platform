@@ -4,64 +4,64 @@
  <breadcrumb>Not Available &gt; Subnets</breadcrumb>
  <help src="ucmsubnet.htm" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="560" name="name" lbl="Subnet Name" type="STR" key="yes" mand="yes">
+ <obj oid="561" name="name" lbl="Subnet Name" type="STR" key="yes" mand="yes">
  </obj>
- <obj oid="561" name="vnname" lbl="Virtual Machine Name" type="STR" mand="yes">
+ <obj oid="562" name="vnname" lbl="Virtual Machine Name" type="STR" mand="yes">
  </obj>
- <obj oid="562" name="pool_start_addr" lbl="Pool Start Address" type="IPADDR">
+ <obj oid="563" name="pool_start_addr" lbl="Pool Start Address" type="IPADDR">
  </obj>
- <obj oid="563" name="pool_end_addr" lbl="Pool End Address" type="IPADDR">
+ <obj oid="564" name="pool_end_addr" lbl="Pool End Address" type="IPADDR">
  </obj>
- <obj oid="564" name="cidrip" lbl="CIDR IP Address" type="IPADDR" mand="yes">
+ <obj oid="565" name="cidrip" lbl="CIDR IP Address" type="IPADDR" mand="yes">
  </obj>
- <obj oid="565" name="cidrmask" lbl="CIDR Mask" type="IPADDR" mand="yes">
+ <obj oid="566" name="cidrmask" lbl="CIDR Mask" type="IPADDR" mand="yes">
  </obj>
- <obj oid="566" name="gateway" lbl="Gateway IP Address" type="IPADDR">
+ <obj oid="567" name="gateway" lbl="Gateway IP Address" type="IPADDR">
  </obj>
- <obj oid="567" name="ip_version" lbl="IP Version" type="UINT" mand="yes">
+ <obj oid="568" name="ip_version" lbl="IP Version" type="UINT" mand="yes">
   <list>
     <item name="4" value="4"/>
   </list>
  </obj>
- <obj oid="568" name="enabledhcp" lbl="Enabled DHCP" type="BOOL">
+ <obj oid="569" name="enabledhcp" lbl="Enabled DHCP" type="BOOL">
  </obj>
- <obj oid="569" name="dns_server1" lbl="DNS Server Address 1" type="IPADDR">
+ <obj oid="570" name="dns_server1" lbl="DNS Server Address 1" type="IPADDR">
  </obj>
- <obj oid="570" name="dns_server2" lbl="DNS Server Address 2" type="IPADDR">
+ <obj oid="571" name="dns_server2" lbl="DNS Server Address 2" type="IPADDR">
  </obj>
- <obj oid="571" name="dns_server3" lbl="DNS Server Address 3" type="IPADDR">
+ <obj oid="572" name="dns_server3" lbl="DNS Server Address 3" type="IPADDR">
  </obj>
- <obj oid="572" name="dns_server4" lbl="DNS Server Address 4" type="IPADDR">
+ <obj oid="573" name="dns_server4" lbl="DNS Server Address 4" type="IPADDR">
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
    <col name="Subnet Name">
-     <objref oid="560"/>
-   </col>
-   <col name="Virtual Machine Name">
      <objref oid="561"/>
    </col>
-   <col name="Pool Start Address">
+   <col name="Virtual Machine Name">
      <objref oid="562"/>
    </col>
-   <col name="Pool End Address">
+   <col name="Pool Start Address">
      <objref oid="563"/>
    </col>
-   <col name="CIDR IP Address">
+   <col name="Pool End Address">
      <objref oid="564"/>
    </col>
-   <col name="CIDR Mask">
+   <col name="CIDR IP Address">
      <objref oid="565"/>
    </col>
-   <col name="Gateway IP Address">
+   <col name="CIDR Mask">
      <objref oid="566"/>
    </col>
-   <col name="IP Version">
+   <col name="Gateway IP Address">
      <objref oid="567"/>
    </col>
-   <col name="Enabled DHCP">
+   <col name="IP Version">
      <objref oid="568"/>
+   </col>
+   <col name="Enabled DHCP">
+     <objref oid="569"/>
    </col>
    <col name="Configuration">
      <link name="Attributes" mtpath="subnetattribute_MetaData.xml" instancekey="subnetattribute" target="new" spg="tbl_meta.xsl"/>
@@ -77,22 +77,22 @@
 <!-- ***** TABLE DATA END ***** -->
 <!-- ***** FORM DATA START ***** -->
  <form >
-   <field     oid="560"/>
-  <field oid="561" dmpath="on_director.crm.virtualmachine" depends="name+STR" name="lstgrp-1" type="list">
+   <field     oid="561"/>
+  <field oid="562" dmpath="on_director.crm.virtualmachine" depends="name+STR" name="lstgrp-1" type="list">
   </field>
-   <field     oid="562"/>
    <field     oid="563"/>
    <field     oid="564"/>
    <field     oid="565"/>
    <field     oid="566"/>
-  <field oid="567" name="lstgrp-2" type="list">
+   <field     oid="567"/>
+  <field oid="568" name="lstgrp-2" type="list">
   </field>
-  <field oid="568" name="lstgrp-3" type="checkbox" checkval="Enable/Disable">
+  <field oid="569" name="lstgrp-3" type="checkbox" checkval="Enable/Disable">
   </field>
-   <field     oid="569"/>
    <field     oid="570"/>
    <field     oid="571"/>
    <field     oid="572"/>
+   <field     oid="573"/>
   <btn lbl="Apply" type="submit" mtpath="subnet_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
  </form>
 <!-- ***** FORM DATA END ***** -->

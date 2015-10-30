@@ -4,61 +4,61 @@
  <breadcrumb>Not Available &gt; Virtual Network</breadcrumb>
  <help src="ucmvirtualnetwork.htm" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="576" name="name" lbl="Virtual Network Name" type="STR" key="yes" mand="yes">
+ <obj oid="577" name="name" lbl="Virtual Network Name" type="STR" key="yes" mand="yes">
  </obj>
- <obj oid="577" name="tenant" lbl="Tenant Name" type="STR" mand="yes">
+ <obj oid="578" name="tenant" lbl="Tenant Name" type="STR" mand="yes">
  </obj>
- <obj oid="578" name="type" lbl="Virtual Network Type" type="STR" mand="yes">
+ <obj oid="579" name="type" lbl="Virtual Network Type" type="STR" mand="yes">
   <list>
     <item name="Vx LAN" value="VXLAN_TYPE"/>
   </list>
  </obj>
- <obj oid="579" name="segmentation_id" lbl="Segmentation Id" type="UINT" mand="yes">
+ <obj oid="580" name="segmentation_id" lbl="Segmentation Id" type="UINT" mand="yes">
  </obj>
- <obj oid="580" name="vxlan_service_port" lbl="VXLAN Service Port" type="UINT" mand="yes">
+ <obj oid="581" name="vxlan_service_port" lbl="VXLAN Service Port" type="UINT" mand="yes">
  </obj>
- <obj oid="581" name="description" lbl="Network Description" type="STR">
+ <obj oid="582" name="description" lbl="Network Description" type="STR">
  </obj>
- <obj oid="582" name="provider_physical_ntwk" lbl="Provider Physical Network" type="STR">
+ <obj oid="583" name="provider_physical_ntwk" lbl="Provider Physical Network" type="STR">
  </obj>
- <obj oid="583" name="status" lbl="Operational Status" type="BOOL">
+ <obj oid="584" name="status" lbl="Operational Status" type="BOOL">
  </obj>
- <obj oid="584" name="state" lbl="VN Admin Status" type="BOOL">
+ <obj oid="585" name="state" lbl="VN Admin Status" type="BOOL">
  </obj>
- <obj oid="585" name="external" lbl="Router External" type="BOOL">
+ <obj oid="586" name="external" lbl="Router External" type="BOOL">
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
    <col name="Virtual Network Name">
-     <objref oid="576"/>
-   </col>
-   <col name="Virtual Network Type">
-     <objref oid="578"/>
-   </col>
-   <col name="Tenant Name">
      <objref oid="577"/>
    </col>
-   <col name="Segmentation Id">
+   <col name="Virtual Network Type">
      <objref oid="579"/>
    </col>
-   <col name="VXLAN Service Port">
+   <col name="Tenant Name">
+     <objref oid="578"/>
+   </col>
+   <col name="Segmentation Id">
      <objref oid="580"/>
    </col>
-   <col name="Network Description">
+   <col name="VXLAN Service Port">
      <objref oid="581"/>
    </col>
-   <col name="Provider Physical Network">
+   <col name="Network Description">
      <objref oid="582"/>
    </col>
-   <col name="Operational Status">
+   <col name="Provider Physical Network">
      <objref oid="583"/>
    </col>
-   <col name="VN Admin Status">
+   <col name="Operational Status">
      <objref oid="584"/>
    </col>
-   <col name="Router External">
+   <col name="VN Admin Status">
      <objref oid="585"/>
+   </col>
+   <col name="Router External">
+     <objref oid="586"/>
    </col>
    <col name="Configuration">
      <link name="Attributes" mtpath="vnattribute_MetaData.xml" instancekey="vnattribute" target="new" spg="tbl_meta.xsl"/>
@@ -75,21 +75,21 @@
 <!-- ***** TABLE DATA END ***** -->
 <!-- ***** FORM DATA START ***** -->
  <form >
-   <field     oid="576"/>
-  <field oid="578" name="lstgrp-1" type="list">
+   <field     oid="577"/>
+  <field oid="579" name="lstgrp-1" type="list">
   </field>
-  <field oid="577" dmpath="on_director.crm.tenant" depends="name+STR" name="lstgrp-2" type="list">
+  <field oid="578" dmpath="on_director.crm.tenant" depends="name+STR" name="lstgrp-2" type="list">
   </field>
-   <field     oid="579"/>
    <field     oid="580"/>
-  <field oid="581" name="" type="textarea">
+   <field     oid="581"/>
+  <field oid="582" name="" type="textarea">
   </field>
-   <field     oid="582"/>
-  <field oid="583" name="" type="checkbox">
-  </field>
+   <field     oid="583"/>
   <field oid="584" name="" type="checkbox">
   </field>
   <field oid="585" name="" type="checkbox">
+  </field>
+  <field oid="586" name="" type="checkbox">
   </field>
   <btn lbl="Apply" type="submit" mtpath="virtualnetwork_MetaData.xml" spg="tbl_meta.xsl" fpg="frm_meta.xsl"/>
  </form>

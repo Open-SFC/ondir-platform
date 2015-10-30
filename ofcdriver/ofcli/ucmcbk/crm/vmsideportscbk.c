@@ -110,7 +110,10 @@ int32_t crm_vm_sideports_addrec (void * config_trans_p,
       port_config_info.port_type,
       port_config_info.vn_name,
       port_config_info.vm_name,
-      port_config_info.vm_port_mac_p, 
+      port_config_info.vm_port_mac_p,
+      /* zone_support */
+      port_config_info.vm_port_ip,
+      /* zone_support */  
       &output_vm_sideports_handle
       );
 
@@ -135,17 +138,20 @@ int32_t crm_vm_sideports_getfirstnrecs (struct cm_array_of_iv_pairs * keys_arr_p
 
   int32_t  return_value = OF_FAILURE;
   uint32_t uiRecCount = 0;
-  char     port_name [CRM_MAX_PORT_NAME_LEN];
+  char     port_name [CRM_MAX_PORT_NAME_LEN + 1];
 
   CM_CBK_DEBUG_PRINT ("Entered");
 
   of_memset(port_name, 0, sizeof(port_name));
 
+  CM_CBK_PRINT_IVPAIR_ARRAY(keys_arr_p);
   if ((crm_vm_sideports_setmandparams (keys_arr_p, &crm_port_info, &crm_vm_sideport_result)) != OF_SUCCESS)
   {
     CM_CBK_DEBUG_PRINT ("Set Mandatory Parameters Failed");
     return OF_FAILURE;
   }
+  CM_CBK_DEBUG_PRINT ("Entered");
+  CM_CBK_DEBUG_PRINT ("Entered");
   return_value = crm_get_first_crm_vmport(crm_port_info.vn_name, 
         crm_port_info.switch_name,
         crm_port_info.br_name,
@@ -307,14 +313,17 @@ int32_t crm_vm_sideports_setmandparams(struct cm_array_of_iv_pairs *pMandParams,
         break;
 
       case CM_DM_VMSIDEPORTS_PORTTYPE_ID:
+        CM_CBK_DEBUG_PRINT("debug");
+        CM_CBK_DEBUG_PRINT("debug");
         if(!strcmp((char *)pMandParams->iv_pairs[uiMandParamCnt].value_p,"VMSIDE_PORT"))
         port_config_info->port_type=0;
         else if(!strcmp((char *)pMandParams->iv_pairs[uiMandParamCnt].value_p,"VMNS_PORT"))
         port_config_info->port_type=1;
-        else if(!strcmp((char *)pMandParams->iv_pairs[uiMandParamCnt].value_p,"VMNS_IN_PORT"))
-        port_config_info->port_type=2;
-        else if(!strcmp((char *)pMandParams->iv_pairs[uiMandParamCnt].value_p,"VMNS_OUT_PORT"))
-        port_config_info->port_type=3;
+        //else if(!strcmp((char *)pMandParams->iv_pairs[uiMandParamCnt].value_p,"VMNS_IN_PORT"))
+        //port_config_info->port_type=2;
+        //else if(!strcmp((char *)pMandParams->iv_pairs[uiMandParamCnt].value_p,"VMNS_OUT_PORT"))
+        //port_config_info->port_type=3;
+        CM_CBK_DEBUG_PRINT("debug");
         CM_CBK_DEBUG_PRINT ("port_type:%d",port_config_info->port_type);
         break;
 
@@ -347,6 +356,12 @@ int32_t crm_vm_sideports_setmandparams(struct cm_array_of_iv_pairs *pMandParams,
 
         break;
 
+      case CM_DM_VMSIDEPORTS_VM_PORT_IP_ID:
+        CM_CBK_DEBUG_PRINT ("port_ip:%s",(char *) pMandParams->iv_pairs[uiMandParamCnt].value_p);
+        if(cm_val_and_conv_aton((char *)pMandParams->iv_pairs[uiMandParamCnt].value_p,&(port_config_info->vm_port_ip))!=OF_SUCCESS)
+            return OF_FAILURE;
+        break;
+
 
       case CM_DM_VMSIDEPORTS_VMPORTMACADDR_ID:
         CM_CBK_DEBUG_PRINT ("vm_sideports_mac_address:%s",(char *) pMandParams->iv_pairs[uiMandParamCnt].value_p);
@@ -361,11 +376,10 @@ int32_t crm_vm_sideports_setmandparams(struct cm_array_of_iv_pairs *pMandParams,
           of_flow_match_atox_mac_addr(data, port_config_info->vm_port_mac_p);
         }
 
-        CM_CBK_DEBUG_PRINT ("vm_sideports_mac_address:%s",port_config_info->vm_port_mac_p);
         break;
     }
   }
-  CM_CBK_PRINT_IVPAIR_ARRAY (pMandParams);
+  //CM_CBK_PRINT_IVPAIR_ARRAY (pMandParams);
   return OF_SUCCESS;
 
 }
@@ -531,8 +545,9 @@ int32_t crm_vm_sideports_ucm_getparams(char *port_name_p, struct   crm_port_conf
   uint32_t uindex_i = 0;
   char buf[128] = "";
   CM_CBK_DEBUG_PRINT ("Entered");
+  CM_CBK_DEBUG_PRINT ("Entered");
 
-#define CM_VM_PORT_CHILD_COUNT 6
+#define CM_VM_PORT_CHILD_COUNT 7
 
   result_iv_pairs_p->iv_pairs = (struct cm_iv_pair *) of_calloc (CM_VM_PORT_CHILD_COUNT, sizeof (struct cm_iv_pair));
   if (result_iv_pairs_p->iv_pairs == NULL)
@@ -541,56 +556,91 @@ int32_t crm_vm_sideports_ucm_getparams(char *port_name_p, struct   crm_port_conf
     return OF_FAILURE;
   }
 
+  CM_CBK_DEBUG_PRINT ("Debug");
+  of_memset(buf, 0 ,sizeof(buf));
+  CM_CBK_DEBUG_PRINT ("Debug");
   sprintf(buf,"%s",crm_port_info_p->port_name);
   FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i],CM_DM_VMSIDEPORTS_PORTNAME_ID,
       CM_DATA_TYPE_STRING, buf);
   uindex_i++;
 
+  CM_CBK_DEBUG_PRINT ("Debug");
+#if 0
+  sprintf(buf,"%s",crm_port_info_p->zone);
+  FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i],CM_DM_VMSIDEPORTS_ZONE_ID,
+      CM_DATA_TYPE_STRING, buf);
+  uindex_i++;
+#endif
 
+  CM_CBK_DEBUG_PRINT ("Debug");
+  of_memset(buf, 0 ,sizeof(buf));
   if(crm_port_info_p->port_type==VM_PORT)
   {
+    CM_CBK_DEBUG_PRINT ("Debug");
     sprintf(buf,"%s","VMSIDE_PORT");
   }
   else if(crm_port_info_p->port_type==VMNS_PORT)
   {
+    CM_CBK_DEBUG_PRINT ("Debug");
     sprintf(buf,"%s","VMNS_PORT");
   }
   else if(crm_port_info_p->port_type==VMNS_IN_PORT)
   {
+  CM_CBK_DEBUG_PRINT ("Debug");
     sprintf(buf,"%s","VMNS_IN_PORT");
   }
   else if(crm_port_info_p->port_type==VMNS_OUT_PORT)
   {
+  CM_CBK_DEBUG_PRINT ("Debug");
     sprintf(buf,"%s","VMNS_OUT_PORT");
   }
   else
     sprintf(buf,"%s","none");
 
+  CM_CBK_DEBUG_PRINT ("Debug");
   FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i],CM_DM_VMSIDEPORTS_PORTTYPE_ID,
-      CM_DATA_TYPE_STRING, buf);
+      CM_DATA_TYPE_INT, buf);
   uindex_i++;
 
+   of_memset(buf, 0 ,sizeof(buf));
+  CM_CBK_DEBUG_PRINT ("Debug");
+   cm_inet_ntoal(crm_port_info_p->vm_port_ip, buf);
+   FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i],CM_DM_VMSIDEPORTS_VM_PORT_IP_ID, CM_DATA_TYPE_IPADDR, buf);
+   uindex_i++;
+
+
+  of_memset(buf, 0 ,sizeof(buf));
+  CM_CBK_DEBUG_PRINT ("Debug");
   of_itoa (crm_port_info_p->portId, buf);
   FILL_CM_IV_PAIR(result_iv_pairs_p->iv_pairs[uindex_i],CM_DM_VMSIDEPORTS_PORTID_ID,
   CM_DATA_TYPE_STRING, buf);
   uindex_i++;
           
 
+  of_memset(buf, 0 ,sizeof(buf));
+  CM_CBK_DEBUG_PRINT ("Debug");
   sprintf(buf,"%s",crm_port_info_p->vm_name);
   FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i],CM_DM_VMSIDEPORTS_VMNAME_ID,
       CM_DATA_TYPE_STRING, buf);
   uindex_i++;
 
+  of_memset(buf, 0 ,sizeof(buf));
   sprintf(buf,"%s",crm_port_info_p->br_name);
   FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i],CM_DM_VMSIDEPORTS_BRIDGENAME_ID,
       CM_DATA_TYPE_STRING, buf);
   uindex_i++;
 
+  of_memset(buf, 0 ,sizeof(buf));
+  CM_CBK_DEBUG_PRINT ("Debug");
+  
   sprintf(buf,"%02x:%02x:%02x:%02x:%02x:%02x",crm_port_info_p->vm_port_mac_p[0],crm_port_info_p->vm_port_mac_p[1],crm_port_info_p->vm_port_mac_p[2],crm_port_info_p->vm_port_mac_p[3],crm_port_info_p->vm_port_mac_p[4],crm_port_info_p->vm_port_mac_p[5]);
+  
   FILL_CM_IV_PAIR(result_iv_pairs_p->iv_pairs[uindex_i], CM_DM_VMSIDEPORTS_VMPORTMACADDR_ID, CM_DATA_TYPE_STRING, buf);
   uindex_i++;
 
 
+  CM_CBK_DEBUG_PRINT ("Debug");
+  CM_CBK_DEBUG_PRINT ("Debug");
   result_iv_pairs_p->count_ui = uindex_i;
   return OF_SUCCESS;
 }

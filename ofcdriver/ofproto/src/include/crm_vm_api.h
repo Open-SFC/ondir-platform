@@ -51,6 +51,9 @@ struct crm_virtual_machine
   char     switch_name_dprm[DPRM_MAX_SWITCH_NAME_LEN]; /* Name of Switch maintained in DPRM database */
   uint64_t switch_handle;
 
+  /* New field to support zone */
+  char     zone[CRM_MAX_ZONE_SIZE + 1]; 
+
   /* List of references of ports connected towards this VM on logical switch side (br-int)
     MAC address is supposed to be part of the Port repository in DPRM). */
 

@@ -1395,7 +1395,7 @@ if (return_value != OF_SUCCESS)
           return OF_FAILURE;
         }
 
-        return_value =
+       return_value =
                  cm_dm_register_data_elements(CM_ON_DIRECTOR_NSRM_CHAINSET_CHAINSELRULE_APPL_ID, CM_DP_CHANNEL_ID,
                                          CM_DM_ON_DIRECTOR_NSRM_CHAINSET_CHAINSELRULE_PATH,
                                          (sizeof (chainselruleDataElements) /
@@ -1404,6 +1404,20 @@ if (return_value != OF_SUCCESS)
         if (return_value != OF_SUCCESS)
         {
            CM_CBK_DEBUG_PRINT ("nsrm ns chain selection rule reg DataElements, Error : %d", return_value );
+           return OF_FAILURE;
+        }
+
+
+
+        return_value =
+                 cm_dm_register_data_elements(CM_ON_DIRECTOR_NSRM_CHAINSET_CHAINSETZONERULE_APPL_ID, CM_DP_CHANNEL_ID,
+                                         CM_DM_ON_DIRECTOR_NSRM_CHAINSET_CHAINSETZONERULE_PATH,
+                                         (sizeof (chainsetzoneruleDataElements) /
+                                                sizeof (struct cm_dm_data_element)),
+                                         &(chainsetzoneruleDataElements[0]));
+        if (return_value != OF_SUCCESS)
+        {
+           CM_CBK_DEBUG_PRINT ("nsrm zone rule reg DataElements, Error : %d", return_value );
            return OF_FAILURE;
         }
 

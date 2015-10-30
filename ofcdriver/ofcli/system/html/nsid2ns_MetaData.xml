@@ -4,18 +4,18 @@
  <breadcrumb>Not Available &gt; Namespace ID to Namespace Name</breadcrumb>
  <help src="ucmnsid2ns.htm" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="771" name="nsname" lbl="Namespace Name" type="STR" mand="yes">
+ <obj oid="779" name="nsname" lbl="Namespace Name" type="STR" mand="yes">
  </obj>
- <obj oid="772" name="nsid" lbl="Namespace ID" type="INT" key="yes" mand="yes">
+ <obj oid="780" name="nsid" lbl="Namespace ID" type="INT" key="yes" mand="yes">
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
    <col name="Namespace ID">
-     <objref oid="772"/>
+     <objref oid="780"/>
    </col>
    <col name="Namespace Name">
-     <objref oid="771"/>
+     <objref oid="779"/>
    </col>
    <link name="More" opcode="MORE" spg="tbl_meta.xsl" recCnt="10" mtpath="nsid2ns_MetaData.xml"/>
    <link name="Previous" opcode="PREV" spg="tbl_meta.xsl" recCnt="10" mtpath="nsid2ns_MetaData.xml"/>

@@ -17,12 +17,12 @@
 #define CM_DPCBK_H
 
 #define CM_CBK_DEBUG
-#ifdef CM_CBK_DEBUG
+//#ifdef CM_CBK_DEBUG
 #define CM_CBK_DEBUG_PRINT printf("\n%35s(%4d): ",__FUNCTION__,__LINE__),\
 	                          printf 
-#else
-#define CM_CBK_DEBUG_PRINT(format,args...)
-#endif
+//#else
+//#define CM_CBK_DEBUG_PRINT(format,args...)
+//#endif
 
 void *UCMDP_BeginConfigTransaction(uint32_t app_id,struct cm_array_of_iv_pairs * arr_p,
 			uint32_t cmd_id,

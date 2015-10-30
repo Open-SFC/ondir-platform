@@ -432,7 +432,7 @@ int32_t nsrm_chainset_ucm_getparams (struct nsrm_nschainset_object_record *appl_
    uint32_t uindex_i = 0;
    char buf[128] = "";
    CM_CBK_DEBUG_PRINT ("Entered");
-#define CM_APPLIANCE_CHILD_COUNT 4
+#define CM_APPLIANCE_CHILD_COUNT 5
    if (appl_chainset_info == NULL)
      return OF_FAILURE;
    result_iv_pairs_p->iv_pairs =(struct cm_iv_pair *) of_calloc (CM_APPLIANCE_CHILD_COUNT, sizeof (struct cm_iv_pair));
@@ -453,6 +453,7 @@ int32_t nsrm_chainset_ucm_getparams (struct nsrm_nschainset_object_record *appl_
    uindex_i++;
 
    
+   #if 0
    CM_CBK_DEBUG_PRINT ("debug5");
    of_memset(buf, 0, sizeof(buf));
    if(appl_chainset_info->info[0].value.nschainset_type == L2)
@@ -463,8 +464,7 @@ int32_t nsrm_chainset_ucm_getparams (struct nsrm_nschainset_object_record *appl_
    {
       sprintf(buf,"%s","L3");
    }
-
-   #if 0
+   uindex_i++;
 
    FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i], CM_DM_CHAINSET_TYPE_ID,
 		   CM_DATA_TYPE_STRING, buf);
@@ -472,11 +472,21 @@ int32_t nsrm_chainset_ucm_getparams (struct nsrm_nschainset_object_record *appl_
    #endif
 
 
-   CM_CBK_DEBUG_PRINT ("debug6");
-   CM_CBK_DEBUG_PRINT ("debug7");
    of_memset(buf, 0, sizeof(buf));
    of_itoa (appl_chainset_info->info[1].value.admin_status_e, buf);
    FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i], CM_DM_CHAINSET_ENABLED_ID,
+		   CM_DATA_TYPE_STRING, buf);
+   uindex_i++;
+
+   of_memset(buf, 0, sizeof(buf));
+   of_itoa (appl_chainset_info->info[2].value.zone_b, buf);
+   FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i], CM_DM_CHAINSET_ZONE_ID,
+		   CM_DATA_TYPE_STRING, buf);
+   uindex_i++;
+
+   of_memset(buf, 0, sizeof(buf));
+   of_itoa (appl_chainset_info->info[3].value.zone_direction_default_e, buf);
+   FILL_CM_IV_PAIR (result_iv_pairs_p->iv_pairs[uindex_i], CM_DM_CHAINSET_ZONE_DIRECTION_ID,
 		   CM_DATA_TYPE_STRING, buf);
    uindex_i++;
 
@@ -510,21 +520,16 @@ int32_t nsrm_chainset_ucm_setmandparams (struct cm_array_of_iv_pairs *pMandParam
       of_strncpy (appl_chainset_info->tenant_name_p,(char *) pMandParams->iv_pairs[uiMandParamCnt].value_p,pMandParams->iv_pairs[uiMandParamCnt].value_length);
       break;
 
-#if 0 
-      case CM_DM_CHAINSET_TYPE_ID:
-      if (strcmp((char *) pMandParams->iv_pairs[uiMandParamCnt].value_p, "L2")==0)
-        {
-          nsrm_chainset_config_info[0].value.nschainset_type = L2;
-        }
-        else if(strcmp((char *) pMandParams->iv_pairs[uiMandParamCnt].value_p, "L3")==0)
-        {
-          nsrm_chainset_config_info[0].value.nschainset_type = L3;
-        }
-
-      CM_CBK_DEBUG_PRINT ("type : %d",nsrm_chainset_config_info[0].value.nschainset_type);
+      case CM_DM_CHAINSET_ZONE_ID:
+          nsrm_chainset_config_info[2].value.zone_b = of_atoi((char *)pMandParams->iv_pairs[uiMandParamCnt].value_p);
+      CM_CBK_DEBUG_PRINT ("zone : %d",nsrm_chainset_config_info[2].value.zone_b);
       break;
-#endif       
-      
+
+      case CM_DM_CHAINSET_ZONE_DIRECTION_ID:
+          nsrm_chainset_config_info[3].value.zone_direction_default_e =  of_atoi((char *)pMandParams->iv_pairs[uiMandParamCnt].value_p);
+      CM_CBK_DEBUG_PRINT ("zone : %d",nsrm_chainset_config_info[3].value.zone_direction_default_e);
+      break;
+
      }
   }
     return OF_SUCCESS;
@@ -544,8 +549,16 @@ int32_t nsrm_chainset_ucm_setoptparams (struct cm_array_of_iv_pairs *pOptParams,
         nsrm_chainset_config_info[1].value.admin_status_e = 
                    of_atoi(pOptParams->iv_pairs[uiOptParamCnt].value_p);
       break;
+     #if 0
+     case CM_DM_CHAINSET_ZONE_ID:
+        nsrm_chainset_config_info[2].value.zone_b  = of_atoi(pOptParams->iv_pairs[uiOptParamCnt].value_p);
+      break;
+     case  CM_DM_CHAINSET_ZONE_DIRECTION_ID:
+        nsrm_chainset_config_info[3].value.zone_direction_default_e = of_atoi((pOptParams->iv_pairs[uiOptParamCnt].value_p));
+      break;
+#endif 
     }
-   }
+  }
      CM_CBK_PRINT_IVPAIR_ARRAY (pOptParams);
      return OF_SUCCESS;
 

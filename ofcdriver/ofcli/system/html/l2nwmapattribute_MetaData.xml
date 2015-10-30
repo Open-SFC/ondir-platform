@@ -5,10 +5,10 @@
  <help src="ucml2nwmapattribute.htm" />
  <depends vrtlInst="name" mtpath="Layer2 Network Map_MetaData.xml" />
 <!-- ***** METADATA OBJECTS START ***** -->
- <obj oid="717" name="attributeName" lbl="" type="STR" key="yes" mand="yes" defVal="">
+ <obj oid="725" name="attributeName" lbl="" type="STR" key="yes" mand="yes" defVal="">
    <range>1-64</range>
  </obj>
- <obj oid="718" name="attributeValue" lbl="" type="STR" mand="yes" defVal="">
+ <obj oid="726" name="attributeValue" lbl="" type="STR" mand="yes" defVal="">
    <range>1-64</range>
  </obj>
 <!-- ***** METADATA OBJECTS END ***** -->

@@ -1543,12 +1543,6 @@ int32_t nsrm_register_launched_nwservice_object_instance(struct nsrm_nwservice_i
      CNTLR_RCU_READ_LOCK_RELEASE();
      return NSRM_FAILURE;
    }
-#if 0   
-   /*TBD******************NSM Testing Logic for 2 port SVM using 1 port S-VM */
-   no_of_ports   = 2;
-   port2_saferef = port1_saferef;  /* only one port id */ 
-   /*************************************************************************/
-#endif   
    ret_value = crm_get_port_byhandle(port1_saferef,&port1_info_p);
    if(ret_value != NSRM_SUCCESS)
    {
@@ -1611,12 +1605,27 @@ int32_t nsrm_register_launched_nwservice_object_instance(struct nsrm_nwservice_i
    strcpy(nwservice_instance_p->vm_ns_port1_name_p,port1_info_p->port_name);
    nwservice_instance_p->vm_ns_port1_saferef = port1_saferef;
    nwservice_instance_p->port1_id            = port1_info_p->port_id; 
-   nwservice_instance_p->no_of_ports         = no_of_ports; 
+   nwservice_instance_p->no_of_ports         = no_of_ports;
+  
+   nwservice_instance_p->inport_nw_type       = port1_info_p->nw_type;
+   if(port1_info_p->nw_type == VXLAN_TYPE)
+     nwservice_instance_p->inport_nw_id       = port1_info_p->nw_params.vxlan_nw.nid;
+   else if (port1_info_p->nw_type == NVGRE_TYPE)
+     nwservice_instance_p->inport_nw_id       = port1_info_p->nw_params.nvgre_nw.nid; 
+   
+   printf("\r\n number of ports = %d",nwservice_instance_p->no_of_ports);
+   
    if(no_of_ports == 2)
    {
-    strcpy(nwservice_instance_p->vm_ns_port2_name_p,port2_info_p->port_name);
-    nwservice_instance_p->vm_ns_port2_saferef = port2_saferef;
-    nwservice_instance_p->port2_id            = port2_info_p->port_id;
+     strcpy(nwservice_instance_p->vm_ns_port2_name_p,port2_info_p->port_name);
+     nwservice_instance_p->vm_ns_port2_saferef = port2_saferef;
+     nwservice_instance_p->port2_id            = port2_info_p->port_id;
+     
+     nwservice_instance_p->outport_nw_type      = port2_info_p->nw_type;
+     if(port2_info_p->nw_type == VXLAN_TYPE)
+       nwservice_instance_p->outport_nw_id      = port2_info_p->nw_params.vxlan_nw.nid;
+     else if (port2_info_p->nw_type == NVGRE_TYPE)
+       nwservice_instance_p->outport_nw_id      = port2_info_p->nw_params.nvgre_nw.nid;
    }
    /* To support Proactive Flow addition. */
    nwservice_instance_p->system_br_saferef  = port1_info_p->system_br_saferef;

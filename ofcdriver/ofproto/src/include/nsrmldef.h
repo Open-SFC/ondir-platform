@@ -111,6 +111,7 @@ int32_t nsrm_uninit(void);
 
 
 #define NSRM_SELECTION_RULE_TBL_OFFSET   offsetof(struct nsrm_nschain_selection_rule,selection_rule_tbl_link)
+#define NSRM_ZONE_RECORD_TBL_OFFSET      offsetof(struct nsrm_zone_record,zone_record_tbl_link)
 
 
 #define NSRM_BYPASS_RULE_TBL_OFFSET   offsetof(struct nsrm_nwservice_bypass_rule,bypass_rule_tbl_link)
@@ -133,6 +134,8 @@ int32_t nsrm_uninit(void);
 #define NSRM_BYPASS_RULE_LAST_NOTIFICATION_TYPE         NSRM_NWSERVICE_BYPASS_RULE_ATTRIBUTE_DELETED
 
 
+#define NSRM_ZONE_FIRST_NOTIFICATION_TYPE        NSRM_ZONE_ALL
+#define NSRM_ZONE_LAST_NOTIFICATION_TYPE         NSRM_ZONE_DELETED_FROM_NSCHAINSET_OBJECT
 
 #if 0
 struct nsrm_ip
@@ -399,7 +402,11 @@ struct nwservice_instance
   uint64_t vm_ns_port1_saferef;
   uint64_t vm_ns_port2_saferef;
   uint32_t port1_id;
+  uint8_t  inport_nw_type;
+  uint32_t inport_nw_id;
   uint32_t port2_id;
+  uint8_t  outport_nw_type;
+  uint32_t outport_nw_id;
 
   /* Line Added to support addition of flows at once NSMSRINI */
   uint64_t system_br_saferef;
@@ -441,8 +448,28 @@ struct nsrm_nschainset_object
   uint32_t  number_of_attributes;
   of_list_t attributes;
 
+  /*new fields to support zone */
+  uint32_t zone_b; /*0=zoneless chainset 1=zonefull chainset */
+  uint32_t zone_direction_default_e; /* ZONE_LESS=1,ZONE_LEFT=2,ZONE_RIGHT=3 */
 
+  uint8_t  no_of_zone_records;
+  struct   mchash_table* nszone_direction_record_set;
+  /* Each record contains zone(32 char string) and zone_direction */
+  /* No of buckets = 1 list of zones with zone_direction */
 };
+
+
+#define   CRM_MAX_ZONE_SIZE  32         
+#if 0
+struct nsrm_chainset_zone
+{
+    char*   name_p;
+    char*   tenant_name_p;
+    char*   nschainset_object_name_p;
+    char    zone[CRM_MAX_ZONE_SIZE + 1];    /*  Examples “Marketing”, “Engineering” etc.. */
+    uint32_t   zone_direction_e;      
+};
+#endif
 
 struct nsrm_nschain_selection_rule
 {
@@ -480,10 +507,31 @@ struct nsrm_nschain_selection_rule
  
   uint32_t  number_of_attributes;
   of_list_t attributes;
-
-
 };
 
+struct nsrm_zone_record
+{
+  char* name_p;
+  
+  /* March fields */
+
+  char     zone[CRM_MAX_ZONE_SIZE + 1];
+  uint32_t zone_direction_e;
+
+  uint64_t nschainset_object_saferef;
+
+  uint8_t operational_status_e;
+  /* Controlled internally */
+  uint8_t  heap_b;
+  uint32_t index;
+  uint32_t magic;
+  struct   mchash_table_link zone_record_tbl_link;
+  uint64_t zone_record_handle;
+
+  uint32_t  number_of_attributes;
+  of_list_t attributes;
+};
+    
 struct packet_into
 {
    uint32_t   src_ip;
@@ -507,10 +555,13 @@ struct nsrm_l2nw_service_map
   char* tenant_name_p;
   char* map_name_p;
   
-  char* vn_name_p;
+  //char* vn_name_p;
+  char* vn_name_in_p;
+  char* vn_name_out_p;
   char* nschainset_object_name_p;
   
-  uint64_t vn_saferef;
+  uint64_t vn_in_saferef;
+  uint64_t vn_out_saferef;
   uint64_t nschainset_object_saferef; 
 
   uint8_t admin_status_e; /* By default it is enabled*/

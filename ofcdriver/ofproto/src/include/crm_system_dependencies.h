@@ -18,6 +18,8 @@
 
 #include <pthread.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <urcu.h>
 #include <string.h>
 #include "cntlr_lock.h"

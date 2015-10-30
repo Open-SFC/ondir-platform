@@ -785,7 +785,7 @@ int32_t dprm_datapath_port_ucm_getparams (struct dprm_port_info *port_info,
     struct cm_array_of_iv_pairs * result_iv_pairs_p)
 {
   uint32_t index_ui = 0,ii;
-  char buf[64] = "";
+  char buf[128] = "";
 #define CM_PORT_CHILD_COUNT 11
 
   result_iv_pairs_p->iv_pairs =

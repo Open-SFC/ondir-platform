@@ -211,5 +211,141 @@
 				<DataAttrib/>
 		 </DataAttributes>
 	</DataModelNode>
+<DataModelNode>
+		<InstallPath>zone</InstallPath>
+		<Name>zone</Name>
+		<FriendlyName>Zone boolean</FriendlyName>
+		<NodeID/>
+		<Description>Zone Boolean Value</Description>
+		<SaveDirName>CM_CONFIG_DIR</SaveDirName>
+		<StorageFileName>NULL</StorageFileName>
+		<NodeAttributes>
+			<NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+			<Visible>TRUE</Visible>
+			<IsKey>FALSE</IsKey>
+			<Mandatory>TRUE</Mandatory>
+			<OrderedTable>FALSE</OrderedTable>
+			<PriorityNode>FALSE</PriorityNode>
+			<NotifyChange>TRUE</NotifyChange>
+			<NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+			<RebootOnChange>FALSE</RebootOnChange>
+			<StickyToParent>FALSE</StickyToParent>
+			<SaveInParentDir>TRUE</SaveInParentDir>
+			<NonConfigLeafNode>FALSE</NonConfigLeafNode>
+			<AccessControl>CM_ACCESS_ALL</AccessControl>
+			<GroupedScalar>FALSE</GroupedScalar>
+            <GlobalTrans>FALSE</GlobalTrans>
+            <UseParentTrans>FALSE</UseParentTrans>
+            </NodeAttributes>
+            <DataAttributes>
+            <DataType>CM_DATA_TYPE_BOOLEAN</DataType>
+                <Type>CM_DATA_ATTRIB_NONE</Type>
+                <DataAttrib/>
+           </DataAttributes>
+</DataModelNode>
+        
+        <DataModelNode>
+		<InstallPath>zone_direction</InstallPath>
+		<Name>zone_direction</Name>
+		<FriendlyName>Zone direction</FriendlyName>
+		<NodeID/>
+		<Description>Zone Direction</Description>
+		<SaveDirName>CM_CONFIG_DIR</SaveDirName>
+		<StorageFileName>NULL</StorageFileName>
+		<NodeAttributes>
+			<NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+			<Visible>TRUE</Visible>
+			<IsKey>FALSE</IsKey>
+			<Mandatory>TRUE</Mandatory>
+			<OrderedTable>FALSE</OrderedTable>
+			<PriorityNode>FALSE</PriorityNode>
+			<NotifyChange>TRUE</NotifyChange>
+			<NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+			<RebootOnChange>FALSE</RebootOnChange>
+			<StickyToParent>FALSE</StickyToParent>
+			<SaveInParentDir>TRUE</SaveInParentDir>
+			<NonConfigLeafNode>FALSE</NonConfigLeafNode>
+			<AccessControl>CM_ACCESS_ALL</AccessControl>
+			<GroupedScalar>FALSE</GroupedScalar>
+			<GlobalTrans>FALSE</GlobalTrans>
+			<UseParentTrans>FALSE</UseParentTrans>
+		</NodeAttributes>
+		<DataAttributes>
+			<DataType>CM_DATA_TYPE_UINT</DataType>
+                        <Type>CM_DATA_ATTRIB_UINT_RANGE</Type>
+                        <DataAttrib>
+                              <uIStartValue>1</uIStartValue>
+                              <uIEndValue>3</uIEndValue> 
+                       </DataAttrib>        
+		</DataAttributes>
+   </DataModelNode>
+
+   <!--DataModelNode>
+		<InstallPath>no_of_zones</InstallPath>
+		<Name>no_of_zones</Name>
+		<FriendlyName>No. of Zones</FriendlyName>
+		<NodeID/>
+		<Description>No of Zones</Description>
+		<SaveDirName>CM_CONFIG_DIR</SaveDirName>
+		<StorageFileName>NULL</StorageFileName>
+		<NodeAttributes>
+			<NodeType>CM_DMNODE_TYPE_SCALAR_VAR</NodeType>
+			<Visible>TRUE</Visible>
+			<IsKey>FALSE</IsKey>
+			<Mandatory>FALSE</Mandatory>
+			<OrderedTable>FALSE</OrderedTable>
+			<PriorityNode>FALSE</PriorityNode>
+			<NotifyChange>TRUE</NotifyChange>
+			<NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+			<RebootOnChange>FALSE</RebootOnChange>
+			<StickyToParent>FALSE</StickyToParent>
+			<SaveInParentDir>TRUE</SaveInParentDir>
+			<NonConfigLeafNode>FALSE</NonConfigLeafNode>
+			<AccessControl>CM_ACCESS_ALL</AccessControl>
+			<GroupedScalar>FALSE</GroupedScalar>
+			<GlobalTrans>FALSE</GlobalTrans>
+			<UseParentTrans>FALSE</UseParentTrans>
+		</NodeAttributes>
+		<DataAttributes>
+			<DataType>CM_DATA_TYPE_UINT</DataType>
+                        <Type>CM_DATA_ATTRIB_UINT_RANGE</Type>
+                        <DataAttrib>
+                              <uIStartValue>0</uIStartValue>
+                              <uIEndValue>65535</uIEndValue> 
+                       </DataAttrib>        
+		</DataAttributes>
+    </DataModelNode-->
+
+   	<DataModelNode>
+		<InstallPath>chainsetzonerule</InstallPath>
+		<Name>chainsetzonerule</Name>
+		<NodeID />
+		<Description>Chain Set zone Rules</Description>
+		<SaveDirName>CM_CONFIG_DIR</SaveDirName>
+		<StorageFileName>OFSDN_NSRM_CHAINSET_ZONE</StorageFileName>
+		<NodeAttributes>
+			<NodeType>CM_DMNODE_TYPE_TABLE</NodeType>
+			<Visible>TRUE</Visible>
+			<IsKey>FALSE</IsKey>
+			<Mandatory>FALSE</Mandatory>
+			<OrderedTable>FALSE</OrderedTable>
+			<PriorityNode>FALSE</PriorityNode>
+			<NotifyChange>FALSE</NotifyChange>
+			<NotifyType>CM_NOT_CHANGEABLE_BY_ACS</NotifyType>
+			<RebootOnChange>FALSE</RebootOnChange>
+			<StickyToParent>FALSE</StickyToParent>
+			<SaveInParentDir>TRUE</SaveInParentDir>
+			<NonConfigLeafNode>FALSE</NonConfigLeafNode>
+			<AccessControl>CM_ACCESS_ALL</AccessControl>
+			<GroupedScalar>FALSE</GroupedScalar>
+			<GlobalTrans>FALSE</GlobalTrans>
+			<UseParentTrans>FALSE</UseParentTrans>
+		</NodeAttributes>
+		<DataAttributes>
+			<DataType>CM_DATA_TYPE_UNKNOWN</DataType>
+			<Type>CM_DATA_ATTRIB_NONE</Type>
+			<DataAttrib/>
+		</DataAttributes>
+   </DataModelNode>
 
 </DataModel>

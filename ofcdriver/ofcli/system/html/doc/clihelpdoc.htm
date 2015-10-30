@@ -118,6 +118,7 @@
 <br> <a href="#Service_instance">Service instance</a>
 <br> <a href="#Chain_Attributes">Chain Attributes</a>
 <br> <a href="#Chainset">Chainset</a>
+<br> <a href="#Chainset_Zone">Chainset Zone</a>
 <br> <a href="#Chain_Selection_Rule">Chain Selection Rule</a>
 <br> <a href="#Chain_Selection_Attributes">Chain Selection Attributes</a>
 <br> <a href="#Chainset_Attributes">Chainset Attributes</a>
@@ -4067,7 +4068,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">virtualmachine  &lt;name&gt; </font><font color="blue">type<i> &lt;value&gt; </i>tenant<i> &lt;value&gt; </i>switch<i> &lt;value&gt; </i>[description]<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">virtualmachine  &lt;name&gt; </font><font color="blue">type<i> &lt;value&gt; </i>tenant<i> &lt;value&gt; </i>switch<i> &lt;value&gt; </i>[description]<i> &lt;value&gt; </i>zone<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -4096,6 +4097,10 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>description</td><td></td><td>Scalar Variable</td><td>String</td><td>No</td><td>Read, Write</td><td><b>Description: </b>Description of the Virtual Machine to be added.<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the zone<br>
 </td><td> - </td>
 </tr>
 </table>
@@ -4377,7 +4382,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">vmsideports  &lt;portname&gt; </font><font color="blue">porttype<i> &lt;value&gt; </i>[portid]<i> &lt;value&gt; </i>vmname<i> &lt;value&gt; </i>bridgename<i> &lt;value&gt; </i>vmportmacaddr<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">vmsideports  &lt;portname&gt; </font><font color="blue">porttype<i> &lt;value&gt; </i>[portid]<i> &lt;value&gt; </i>vmname<i> &lt;value&gt; </i>bridgename<i> &lt;value&gt; </i>vmportmacaddr<i> &lt;value&gt; </i>vm_port_ip<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -4411,6 +4416,10 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>vmportmacaddr</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port MAC Address<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>vm_port_ip</td><td></td><td>Scalar Variable</td><td>IP Address</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port IP Address<br>
 </td><td> - </td>
 </tr>
 </table>
@@ -5034,7 +5043,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">chainset  &lt;name&gt;  &lt;tenant&gt; </font><font color="blue">[enabled]<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">chainset  &lt;name&gt;  &lt;tenant&gt; </font><font color="blue">[enabled]<i> &lt;value&gt; </i>zone<i> &lt;value&gt; </i>zone_direction<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -5055,6 +5064,45 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>enabled</td><td></td><td>Scalar Variable</td><td>Boolean</td><td>No</td><td>Read, Write</td><td><b>Description: </b>Enabled Status<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone</td><td></td><td>Scalar Variable</td><td>Boolean</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone Boolean Value<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone_direction</td><td></td><td>Scalar Variable</td><td>Unsigned Integer</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone Direction<br>
+</td><td> - </td>
+</tr>
+</table>
+<br>
+<b> <span id="Chainset_Zone">Chainset Zone</span></b>
+<table border="0" cellspacing="0" cellpadding="0" class="pagetitle" width="100%">
+<tr class="toolbar">
+<td width="85%"><span id="appln" class="titlefont">&nbsp;&nbsp;&nbsp;&nbsp;Module Name: Chainset Zone<br>&nbsp;&nbsp;&nbsp;&nbsp;Data Model Path: <I>on_director.nsrm.chainset.chainsetzonerule</I></span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;
+       </td>
+</tr>
+</table>
+<hr>
+<b> <u>CLI Command Usage:</u></b>
+<br>
+<b>Step 1: </b><font color="blue">chainsetzonerule  &lt;zone_name&gt; </font><font color="blue">zone_direction<i> &lt;value&gt; </i></font>
+<br>
+<b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
+<br>
+<br>
+<table border="1" cellspacing="0" cellpadding="4" class="pagetitle" width="100%">
+<tr class="subhead">
+<th>Name</th><th>Command Identifier</th><th>Node Type</th><th>Data Type</th><th>Mandatory</th><th>Permission</th><th>Details</th><th>Default Value</th>
+</tr>
+<tr>
+<td>zone_name</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Chainset zone  Name<br>
+<b>Range: </b>0 - 32<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone_direction</td><td></td><td>Scalar Variable</td><td>Unsigned Integer</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone DIrection<br>
 </td><td> - </td>
 </tr>
 </table>
@@ -5272,7 +5320,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">networkmap  &lt;name&gt;  &lt;tenant&gt;  &lt;vnname&gt; </font><font color="blue">[chainset]<i> &lt;value&gt; </i>[enabled]<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">networkmap  &lt;name&gt;  &lt;tenant&gt;  &lt;vnname_in&gt;  &lt;vnname_out&gt; </font><font color="blue">[chainset]<i> &lt;value&gt; </i>[enabled]<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -5297,7 +5345,12 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </td><td> - </td>
 </tr>
 <tr>
-<td>vnname</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
+<td>vnname_in</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
+<b>Range: </b>0 - 128<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>vnname_out</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
 <b>Range: </b>0 - 128<br>
 </td><td> - </td>
 </tr>
@@ -19208,7 +19261,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">virtualmachine  &lt;name&gt; </font><font color="blue">type<i> &lt;value&gt; </i>tenant<i> &lt;value&gt; </i>switch<i> &lt;value&gt; </i>[description]<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">virtualmachine  &lt;name&gt; </font><font color="blue">type<i> &lt;value&gt; </i>tenant<i> &lt;value&gt; </i>switch<i> &lt;value&gt; </i>[description]<i> &lt;value&gt; </i>zone<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -19237,6 +19290,10 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>description</td><td></td><td>Scalar Variable</td><td>String</td><td>No</td><td>Read, Write</td><td><b>Description: </b>Description of the Virtual Machine to be added.<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the zone<br>
 </td><td> - </td>
 </tr>
 </table>
@@ -19518,7 +19575,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">vmsideports  &lt;portname&gt; </font><font color="blue">porttype<i> &lt;value&gt; </i>[portid]<i> &lt;value&gt; </i>vmname<i> &lt;value&gt; </i>bridgename<i> &lt;value&gt; </i>vmportmacaddr<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">vmsideports  &lt;portname&gt; </font><font color="blue">porttype<i> &lt;value&gt; </i>[portid]<i> &lt;value&gt; </i>vmname<i> &lt;value&gt; </i>bridgename<i> &lt;value&gt; </i>vmportmacaddr<i> &lt;value&gt; </i>vm_port_ip<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -19552,6 +19609,10 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>vmportmacaddr</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port MAC Address<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>vm_port_ip</td><td></td><td>Scalar Variable</td><td>IP Address</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port IP Address<br>
 </td><td> - </td>
 </tr>
 </table>
@@ -19782,7 +19843,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">virtualmachine  &lt;name&gt; </font><font color="blue">type<i> &lt;value&gt; </i>tenant<i> &lt;value&gt; </i>switch<i> &lt;value&gt; </i>[description]<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">virtualmachine  &lt;name&gt; </font><font color="blue">type<i> &lt;value&gt; </i>tenant<i> &lt;value&gt; </i>switch<i> &lt;value&gt; </i>[description]<i> &lt;value&gt; </i>zone<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -19811,6 +19872,10 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>description</td><td></td><td>Scalar Variable</td><td>String</td><td>No</td><td>Read, Write</td><td><b>Description: </b>Description of the Virtual Machine to be added.<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the zone<br>
 </td><td> - </td>
 </tr>
 </table>
@@ -20156,7 +20221,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">vmsideports  &lt;portname&gt; </font><font color="blue">porttype<i> &lt;value&gt; </i>[portid]<i> &lt;value&gt; </i>vmname<i> &lt;value&gt; </i>bridgename<i> &lt;value&gt; </i>vmportmacaddr<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">vmsideports  &lt;portname&gt; </font><font color="blue">porttype<i> &lt;value&gt; </i>[portid]<i> &lt;value&gt; </i>vmname<i> &lt;value&gt; </i>bridgename<i> &lt;value&gt; </i>vmportmacaddr<i> &lt;value&gt; </i>vm_port_ip<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -20190,6 +20255,10 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>vmportmacaddr</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port MAC Address<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>vm_port_ip</td><td></td><td>Scalar Variable</td><td>IP Address</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port IP Address<br>
 </td><td> - </td>
 </tr>
 </table>
@@ -20299,7 +20368,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">vmsideports  &lt;portname&gt; </font><font color="blue">porttype<i> &lt;value&gt; </i>[portid]<i> &lt;value&gt; </i>vmname<i> &lt;value&gt; </i>bridgename<i> &lt;value&gt; </i>vmportmacaddr<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">vmsideports  &lt;portname&gt; </font><font color="blue">porttype<i> &lt;value&gt; </i>[portid]<i> &lt;value&gt; </i>vmname<i> &lt;value&gt; </i>bridgename<i> &lt;value&gt; </i>vmportmacaddr<i> &lt;value&gt; </i>vm_port_ip<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -20333,6 +20402,10 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>vmportmacaddr</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port MAC Address<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>vm_port_ip</td><td></td><td>Scalar Variable</td><td>IP Address</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port IP Address<br>
 </td><td> - </td>
 </tr>
 </table>
@@ -20380,7 +20453,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">vmsideports  &lt;portname&gt; </font><font color="blue">porttype<i> &lt;value&gt; </i>[portid]<i> &lt;value&gt; </i>vmname<i> &lt;value&gt; </i>bridgename<i> &lt;value&gt; </i>vmportmacaddr<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">vmsideports  &lt;portname&gt; </font><font color="blue">porttype<i> &lt;value&gt; </i>[portid]<i> &lt;value&gt; </i>vmname<i> &lt;value&gt; </i>bridgename<i> &lt;value&gt; </i>vmportmacaddr<i> &lt;value&gt; </i>vm_port_ip<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -20414,6 +20487,10 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>vmportmacaddr</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port MAC Address<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>vm_port_ip</td><td></td><td>Scalar Variable</td><td>IP Address</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>VM Port IP Address<br>
 </td><td> - </td>
 </tr>
 </table>
@@ -21101,7 +21178,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">chainset  &lt;name&gt;  &lt;tenant&gt; </font><font color="blue">[enabled]<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">chainset  &lt;name&gt;  &lt;tenant&gt; </font><font color="blue">[enabled]<i> &lt;value&gt; </i>zone<i> &lt;value&gt; </i>zone_direction<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -21122,6 +21199,45 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>enabled</td><td></td><td>Scalar Variable</td><td>Boolean</td><td>No</td><td>Read, Write</td><td><b>Description: </b>Enabled Status<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone</td><td></td><td>Scalar Variable</td><td>Boolean</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone Boolean Value<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone_direction</td><td></td><td>Scalar Variable</td><td>Unsigned Integer</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone Direction<br>
+</td><td> - </td>
+</tr>
+</table>
+<br>
+<b> <span id="Chainset_Zone">Chainset Zone</span></b>
+<table border="0" cellspacing="0" cellpadding="0" class="pagetitle" width="100%">
+<tr class="toolbar">
+<td width="85%"><span id="appln" class="titlefont">&nbsp;&nbsp;&nbsp;&nbsp;Module Name: Chainset Zone<br>&nbsp;&nbsp;&nbsp;&nbsp;Data Model Path: <I>on_director.nsrm.chainset.chainsetzonerule</I></span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;
+       </td>
+</tr>
+</table>
+<hr>
+<b> <u>CLI Command Usage:</u></b>
+<br>
+<b>Step 1: </b><font color="blue">chainsetzonerule  &lt;zone_name&gt; </font><font color="blue">zone_direction<i> &lt;value&gt; </i></font>
+<br>
+<b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
+<br>
+<br>
+<table border="1" cellspacing="0" cellpadding="4" class="pagetitle" width="100%">
+<tr class="subhead">
+<th>Name</th><th>Command Identifier</th><th>Node Type</th><th>Data Type</th><th>Mandatory</th><th>Permission</th><th>Details</th><th>Default Value</th>
+</tr>
+<tr>
+<td>zone_name</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Chainset zone  Name<br>
+<b>Range: </b>0 - 32<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone_direction</td><td></td><td>Scalar Variable</td><td>Unsigned Integer</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone DIrection<br>
 </td><td> - </td>
 </tr>
 </table>
@@ -21339,7 +21455,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">networkmap  &lt;name&gt;  &lt;tenant&gt;  &lt;vnname&gt; </font><font color="blue">[chainset]<i> &lt;value&gt; </i>[enabled]<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">networkmap  &lt;name&gt;  &lt;tenant&gt;  &lt;vnname_in&gt;  &lt;vnname_out&gt; </font><font color="blue">[chainset]<i> &lt;value&gt; </i>[enabled]<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -21364,7 +21480,12 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </td><td> - </td>
 </tr>
 <tr>
-<td>vnname</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
+<td>vnname_in</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
+<b>Range: </b>0 - 128<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>vnname_out</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
 <b>Range: </b>0 - 128<br>
 </td><td> - </td>
 </tr>
@@ -22301,7 +22422,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">chainset  &lt;name&gt;  &lt;tenant&gt; </font><font color="blue">[enabled]<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">chainset  &lt;name&gt;  &lt;tenant&gt; </font><font color="blue">[enabled]<i> &lt;value&gt; </i>zone<i> &lt;value&gt; </i>zone_direction<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -22322,6 +22443,45 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </tr>
 <tr>
 <td>enabled</td><td></td><td>Scalar Variable</td><td>Boolean</td><td>No</td><td>Read, Write</td><td><b>Description: </b>Enabled Status<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone</td><td></td><td>Scalar Variable</td><td>Boolean</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone Boolean Value<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone_direction</td><td></td><td>Scalar Variable</td><td>Unsigned Integer</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone Direction<br>
+</td><td> - </td>
+</tr>
+</table>
+<br>
+<b> <span id="Chainset_Zone">Chainset Zone</span></b>
+<table border="0" cellspacing="0" cellpadding="0" class="pagetitle" width="100%">
+<tr class="toolbar">
+<td width="85%"><span id="appln" class="titlefont">&nbsp;&nbsp;&nbsp;&nbsp;Module Name: Chainset Zone<br>&nbsp;&nbsp;&nbsp;&nbsp;Data Model Path: <I>on_director.nsrm.chainset.chainsetzonerule</I></span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;
+       </td>
+</tr>
+</table>
+<hr>
+<b> <u>CLI Command Usage:</u></b>
+<br>
+<b>Step 1: </b><font color="blue">chainsetzonerule  &lt;zone_name&gt; </font><font color="blue">zone_direction<i> &lt;value&gt; </i></font>
+<br>
+<b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
+<br>
+<br>
+<table border="1" cellspacing="0" cellpadding="4" class="pagetitle" width="100%">
+<tr class="subhead">
+<th>Name</th><th>Command Identifier</th><th>Node Type</th><th>Data Type</th><th>Mandatory</th><th>Permission</th><th>Details</th><th>Default Value</th>
+</tr>
+<tr>
+<td>zone_name</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Chainset zone  Name<br>
+<b>Range: </b>0 - 32<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone_direction</td><td></td><td>Scalar Variable</td><td>Unsigned Integer</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone DIrection<br>
 </td><td> - </td>
 </tr>
 </table>
@@ -22525,6 +22685,37 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <td>attributeValue</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>This field contains attribute value.<br>
 <b>Range: </b>1 - 64<br>
 </td><td></td>
+</tr>
+</table>
+<br>
+<b> <span id="Chainset_Zone">Chainset Zone</span></b>
+<table border="0" cellspacing="0" cellpadding="0" class="pagetitle" width="100%">
+<tr class="toolbar">
+<td width="85%"><span id="appln" class="titlefont">&nbsp;&nbsp;&nbsp;&nbsp;Module Name: Chainset Zone<br>&nbsp;&nbsp;&nbsp;&nbsp;Data Model Path: <I>on_director.nsrm.chainset.chainsetzonerule</I></span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;
+       </td>
+</tr>
+</table>
+<hr>
+<b> <u>CLI Command Usage:</u></b>
+<br>
+<b>Step 1: </b><font color="blue">chainsetzonerule  &lt;zone_name&gt; </font><font color="blue">zone_direction<i> &lt;value&gt; </i></font>
+<br>
+<b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
+<br>
+<br>
+<table border="1" cellspacing="0" cellpadding="4" class="pagetitle" width="100%">
+<tr class="subhead">
+<th>Name</th><th>Command Identifier</th><th>Node Type</th><th>Data Type</th><th>Mandatory</th><th>Permission</th><th>Details</th><th>Default Value</th>
+</tr>
+<tr>
+<td>zone_name</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Chainset zone  Name<br>
+<b>Range: </b>0 - 32<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>zone_direction</td><td></td><td>Scalar Variable</td><td>Unsigned Integer</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Zone DIrection<br>
+</td><td> - </td>
 </tr>
 </table>
 <br>
@@ -22773,7 +22964,7 @@ This page allows the user to add a static ARP entry. The IP address should such 
 <hr>
 <b> <u>CLI Command Usage:</u></b>
 <br>
-<b>Step 1: </b><font color="blue">networkmap  &lt;name&gt;  &lt;tenant&gt;  &lt;vnname&gt; </font><font color="blue">[chainset]<i> &lt;value&gt; </i>[enabled]<i> &lt;value&gt; </i></font>
+<b>Step 1: </b><font color="blue">networkmap  &lt;name&gt;  &lt;tenant&gt;  &lt;vnname_in&gt;  &lt;vnname_out&gt; </font><font color="blue">[chainset]<i> &lt;value&gt; </i>[enabled]<i> &lt;value&gt; </i></font>
 <br>
 <b>Step 2: </b> <font color="blue">commit </font><b>press Enter</b>
 <br>
@@ -22798,7 +22989,12 @@ This page allows the user to add a static ARP entry. The IP address should such 
 </td><td> - </td>
 </tr>
 <tr>
-<td>vnname</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
+<td>vnname_in</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
+<b>Range: </b>0 - 128<br>
+</td><td> - </td>
+</tr>
+<tr>
+<td>vnname_out</td><td></td><td>Scalar Variable</td><td>String</td><td>yes</td><td>Read, Write</td><td><b>Description: </b>Name of the Virtual Network.<br>
 <b>Range: </b>0 - 128<br>
 </td><td> - </td>
 </tr>

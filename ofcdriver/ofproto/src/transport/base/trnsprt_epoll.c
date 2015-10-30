@@ -323,7 +323,7 @@ cntlr_trnsprt_handle_handshake(int32_t            fd,
       }
       if (( received_events & ePOLL_POLLHUP) || (received_events & ePOLL_POLLERR))
       {
-         OF_LOG_MSG(OF_LOG_XPRT_PROTO, OF_LOG_ERROR,"recieved poll error/hup events");
+     //    OF_LOG_MSG(OF_LOG_XPRT_PROTO, OF_LOG_ERROR,"recieved poll error/hup events");
          break;
       }
 

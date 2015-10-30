@@ -18,6 +18,8 @@
  </obj>
  <obj oid="556" name="description" lbl="Description" type="STR">
  </obj>
+ <obj oid="558" name="zone" lbl="" type="STR" mand="yes">
+ </obj>
 <!-- ***** METADATA OBJECTS END ***** -->
 <!-- ***** TABLE DATA START ***** -->
  <tbl>
